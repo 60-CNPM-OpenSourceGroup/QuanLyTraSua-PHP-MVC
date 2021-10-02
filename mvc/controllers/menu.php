@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 class Menu extends Controller{
 
@@ -40,4 +41,58 @@ class Menu extends Controller{
         
     }
 }
+=======
+<?php
+class Menu extends Controller{
+    
+
+
+    function Menu(){
+
+        // Gọi model
+        $sp = $this->model("SanPhamModels");
+
+        // Gọi view
+        $this->view("_layoutmenu",
+        [
+            "page"=>"menu",
+            "du"=>$sp->GetSP(),
+            "ldu"=>$sp->LoaiDoUong(),
+            "topping"=>$sp->Topping()
+        ]
+        );
+    }
+
+    function Details($id){
+        
+        // Gọi model
+        $sp = $this->model("SanPhamModels");
+        // if($id == null){
+        //     return http_response_code(404); 
+        // }
+        // // Gọi model
+        // $sp = $this->model("SanPhamModels");
+        // $checkId = array_search($id, ($sp->GetSP()));
+
+        // if($checkId == null || $checkId == ""){
+        //     return CURLE_HTTP_NOT_FOUND;
+        // }
+        // else{
+            
+        // }
+
+        // Gọi view
+        $this->view("_layoutmenu",
+        [
+            "page"=>"details_sp",
+            "du"=>$sp->GetSP(),
+            "topping"=>$sp->Topping()
+            // "ldu"=>$sp->LoaiDoUong(),
+            // "topping"=>$sp->Topping()
+        ]
+        );
+        
+    }
+}
+>>>>>>> 38f760c11d5805b0476b381e41435409f56e1be7
 ?>

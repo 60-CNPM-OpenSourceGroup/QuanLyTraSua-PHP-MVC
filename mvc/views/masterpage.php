@@ -24,7 +24,7 @@
     <meta property="og:url" content="https://www.homitatea.com/">
     <link rel="canonical" href="https://www.homitatea.com/">
     <base href="<?php echo BASE; ?>">
-    <link rel="preload" as="script" href="public/assets/js/jquery/jquery.min.js?v=<?php echo time(); ?>">
+    
     <link rel="preload" as="script" href="public/assets/js/language/vi.js?v=<?php echo time(); ?>">
     <link rel="preload" as="script" href="public/assets/js/global.js"?v=<?php echo time(); ?>>
     <link rel="preload" as="script" href="public/themes/js/page.js?v=<?php echo time(); ?>">
@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="public/themes/plugins/owl.theme.default.min.css?v=<?php echo time(); ?>" media="all" />
     <link rel="StyleSheet" href="public/themes/assets/css/mobile3.css?v=<?php echo time(); ?>" />
     <link rel="StyleSheet" href="public/themes/assets/css/mobile5.css?v=<?php echo time(); ?>" />
+    <link rel="preload" as="script" href="public/assets/js/jquery/jquery.min.js?v=<?php echo time(); ?>">
     <style>
         .homi_slide .owl-dots {
             position: absolute;
@@ -90,7 +91,7 @@
             }
 
             .homi_slide.owl-theme .owl-dots .owl-dot .dot-number {
-                color: #fff;
+                color: #1a6634;
                 font-family: Oswald,sans-serif;
                 margin-top: 5px;
                 -webkit-transform: scale(1);
@@ -135,23 +136,35 @@
                 <button class="navbar-toggler opm" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+<<<<<<< HEAD
                 <a class="logo" href="Home/Index"><img src="public/images/logo-homita-white.png?v=<?php echo time(); ?>" alt="HOMITA Coffee &amp; Tea House - Real love with milktea" class="img-fluid"></a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto smooth-scroll text-uppercase">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" href="Home/Index" role="button" aria-expanded="false" title="Trang chủ">Trang Chủ</a>
+=======
+                <a class="logo" href="Home"><img src="public/images/logo-homita-white.png?v=<?php echo time(); ?>" alt="HOMITA Coffee &amp; Tea House - Real love with milktea" class="img-fluid"></a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto smooth-scroll text-uppercase">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="Home" role="button" aria-expanded="false" title="Trang chủ">Trang Chủ</a>
+>>>>>>> 38f760c11d5805b0476b381e41435409f56e1be7
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="@Url.Action(" About", "Homita" )" role="button" aria-expanded="false" title="Giới thiệu">Giới thiệu</a>
+                            <a class="nav-link" href="GioiThieu" role="button" aria-expanded="false" title="Giới thiệu">Giới thiệu</a>
                         </li>
                         <li class="nav-item" role="presentation">
+<<<<<<< HEAD
                             <a class="nav-link" href="Menu/Index" role="button" aria-expanded="false" title="Thực đơn">Thực đơn</a>
+=======
+                            <a class="nav-link" href="Menu" role="button" aria-expanded="false" title="Thực đơn">Thực đơn</a>
+>>>>>>> 38f760c11d5805b0476b381e41435409f56e1be7
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="@Url.Action(" PhanHoi", "Homita" )" role="button" aria-expanded="false" title="Tin tức">Phản hồi</a>
+                            <a class="nav-link" href="PhanHoi" role="button" aria-expanded="false" title="Tin tức">Phản hồi</a>
                         </li>
                         <li style="position: relative" class="nav-item" role="presentation">
-                            <a class="nav-link nav-link1" href="@Url.Action(" Index", "GioHang" )" role="button" aria-expanded="false" title="Cửa hàng">
+                            <a class="nav-link nav-link1" href="Giỏ Hàng" role="button" aria-expanded="false" title="Cửa hàng">
                                 Giỏ hàng
                                 <i class="header__cart-icon fas fa-cart-plus"></i>
                                 <span class="header__cart-notice">0</span> <!-- ViewBag.TongSoLuong -->
@@ -160,7 +173,7 @@
 
                     </ul>
                 </div>
-                <a class="cart__mobi" href="@Url.Action(" Index", "GioHang" )" role="button" aria-expanded="false" title="Cửa hàng">
+                <a class="cart__mobi" href="Giỏ Hàng" role="button" aria-expanded="false" title="Cửa hàng">
                     <i class=" fas fa-cart-plus"></i>
                     <span style="left: 15px; top: -8px;" class="header__cart-notice">0</span> <!-- ViewBag.TongSoLuong -->
                 </a>
@@ -187,7 +200,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h2 class="menu_title line_after_heading section_heading">Menu</h2>
-                        <div class="viewmore_menu_home"><a class="animate_btn" href="@Url.Action("Index", "Menu")" title="Xem thêm tất cả sản phẩm">xem thêm tất cả sản phẩm</a></div>
+                        <div class="viewmore_menu_home"><a class="animate_btn" href="Menu" title="Xem thêm tất cả sản phẩm">xem thêm tất cả sản phẩm</a></div>
                     </div>
                 </div>
                 <div class="box-padding">
@@ -195,67 +208,20 @@
                         <div class="hm_block_menu_items">
                             <h1 class="hm_menu_items_title">Món mới</h1>
                             <div class="row">
-                                @foreach (var item in Model.listMonMoi)
-                                {
-                                    <div class="col-lg-3 col-md-6 col-6">
-                                        <a href="@Url.Action("Details", "Menu", new { id = item.MaDU})">
-                                            <div class="hm_menu_item">
-                                                <div class="hm_item_image">
-                                                    <img src="~/Images/@item.HinhAnh" alt="@item.TenDU" class="img-fluid">
-                                                </div>
-                                                <div class="hm_item_info">
-                                                    <div class="item_title">
-                                                        <h3>@item.TenDU</h3>
-                                                    </div>
-                                                    <div class="item_price">
-                                                        <div class="size">
-                                                            <span>M</span><br>
-                                                            <span>@item.DonGia ₫</span>
-                                                        </div>
-                                                        @{ int giaL = item.DonGia + 5000;}
-                                                        <div class="size">
-                                                            <span>L</span><br>
-                                                            <span>@giaL ₫</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                }
+                                <!-- @foreach (var item in Model.listMonMoi) -->
+                                
+                                <?php
+                                require_once "./mvc/views/pages/".$data["page_new"].".php";
+                                ?>
                             </div>
                         </div>
                         <div class="hm_block_menu_items">
                             <h1 class="hm_menu_items_title">Bán chạy</h1>
                             <div class="row">
-                                @foreach (var item in Model.listNoiBat)
-                                {
-                                <div class="col-lg-3 col-md-6 col-6">
-                                    <a href="@Url.Action("Details", "Menu", new { id = item.MaDU})">
-                                        <div class="hm_menu_item">
-                                            <div class="hm_item_image">
-                                                <img src="~/Images/@item.HinhAnh" alt="@item.TenDU" class="img-fluid">
-                                            </div>
-                                            <div class="hm_item_info">
-                                                <div class="item_title">
-                                                    <h3>@item.TenDU</h3>
-                                                </div>
-                                                <div class="item_price">
-                                                    <div class="size">
-                                                        <span>M</span><br>
-                                                        <span>@item.DonGia ₫</span>
-                                                    </div>
-                                                    @{ int giaL = item.DonGia + 5000;}
-                                                    <div class="size">
-                                                        <span>L</span><br>
-                                                        <span>@giaL ₫</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                }
+                                <!-- @foreach (var item in Model.listNoiBat) -->
+                                <?php
+                                require_once "./mvc/views/pages/".$data["page_hot"].".php";
+                                ?>
                             </div>
                         </div>
                     </div>
