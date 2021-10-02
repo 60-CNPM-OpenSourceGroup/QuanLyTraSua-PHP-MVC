@@ -143,7 +143,7 @@
                             <a class="nav-link" href="Home/Index" role="button" aria-expanded="false" title="Trang chủ">Trang Chủ</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="GioiThieu" role="button" aria-expanded="false" title="Giới thiệu">Giới thiệu</a>
+                            <a class="nav-link" href="GioiThieu/Index" role="button" aria-expanded="false" title="Giới thiệu">Giới thiệu</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" href="Menu/Index" role="button" aria-expanded="false" title="Thực đơn">Thực đơn</a>

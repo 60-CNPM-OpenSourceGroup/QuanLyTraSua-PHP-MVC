@@ -43,26 +43,26 @@
                             <a class="nav-link" href="Home/Index" role="button" aria-expanded="false" title="Trang chủ">Trang chủ</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="@Url.Action("About", "Homita")" role="button" aria-expanded="false" title="Giới thiệu">Giới thiệu</a>
+                            <a class="nav-link" href="GioiThieu/Index" role="button" aria-expanded="false" title="Giới thiệu">Giới thiệu</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" href="Menu/Index" role="button" aria-expanded="false" title="Thực đơn">Thực đơn</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="@Url.Action("PhanHoi", "Homita")" role="button" aria-expanded="false" title="Tin tức">Phản hồi</a>
+                            <a class="nav-link" href="PhanHoi/Index" role="button" aria-expanded="false" title="Tin tức">Phản hồi</a>
                         </li>
                         <li style="position: relative" class="nav-item" role="presentation">
                             <a class="nav-link nav-link1" href="@Url.Action("Index", "GioHang")" role="button" aria-expanded="false" title="Cửa hàng">
                                 Giỏ hàng
                                 <i class="header__cart-icon fas fa-cart-plus"></i>
-                                <span class="header__cart-notice">@sl</span>
+                                <span class="header__cart-notice">0</span>
                             </a>
                         </li>
                     </ul>
                 </div>
                 <a class="cart__mobi" href="@Url.Action("Index", "GioHang")" role="button" aria-expanded="false" title="Cửa hàng">
                     <i class=" fas fa-cart-plus"></i>
-                    <span style="left: 15px; top: -8px;" class="header__cart-notice">@sl</span> <!-- ViewBag.TongSoLuong -->
+                    <span style="left: 15px; top: -8px;" class="header__cart-notice">0</span> <!-- ViewBag.TongSoLuong -->
                 </a>
             </div>
         </nav>

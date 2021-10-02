@@ -17,7 +17,7 @@ for($i = 1; $i <= 4; $i++){
         <a href="#" >
             <div class="hm_menu_item">
                 <div class="hm_item_image">
-                    <img src="public/images_sp/'.$row["HinhAnh"].'" alt="'.$row["MaDU"].'" class="img-fluid">
+                    <img src="public/upload/douong/'.$row["HinhAnh"].'" alt="'.$row["TenDU"].'" class="img-fluid">
                 </div>
                 <div class="hm_item_info">
                     <div class="item_title">
