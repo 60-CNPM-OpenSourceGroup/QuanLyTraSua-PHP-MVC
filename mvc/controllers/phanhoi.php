@@ -1,15 +1,13 @@
 <?php
 class PhanHoi extends Controller{
     
-    function PhanHoi(){
-    
+    function Homita(){
+
         //Gọi view
         $this->view("_layoutmenu",
         [
-            "page"=>"phanhoi"
-            // "SP"=>$sp->SanPham()
-        ]
-        );
+            "page"=>"phanhoi",
+        ]);
     }
 }
 ?>
