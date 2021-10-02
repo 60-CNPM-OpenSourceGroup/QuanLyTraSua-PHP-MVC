@@ -135,17 +135,17 @@
                 <button class="navbar-toggler opm" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="logo" href="@Url.Action(" Index", "Homita" )"><img src="public/images/logo-homita-white.png?v=<?php echo time(); ?>" alt="HOMITA Coffee &amp; Tea House - Real love with milktea" class="img-fluid"></a>
+                <a class="logo" href="Home/Index"><img src="public/images/logo-homita-white.png?v=<?php echo time(); ?>" alt="HOMITA Coffee &amp; Tea House - Real love with milktea" class="img-fluid"></a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto smooth-scroll text-uppercase">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="@Url.Action(" Index", "Homita" )" role="button" aria-expanded="false" title="Trang chủ">Trang Chủ</a>
+                            <a class="nav-link" href="Home/Index" role="button" aria-expanded="false" title="Trang chủ">Trang Chủ</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" href="@Url.Action(" About", "Homita" )" role="button" aria-expanded="false" title="Giới thiệu">Giới thiệu</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="@Url.Action(" Index", "Menu" )" role="button" aria-expanded="false" title="Thực đơn">Thực đơn</a>
+                            <a class="nav-link" href="Menu/Index" role="button" aria-expanded="false" title="Thực đơn">Thực đơn</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" href="@Url.Action(" PhanHoi", "Homita" )" role="button" aria-expanded="false" title="Tin tức">Phản hồi</a>

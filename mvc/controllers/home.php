@@ -1,7 +1,7 @@
 <?php
 class Home extends Controller{
 
-    function Homita(){
+    function Index(){
 
         // Gọi model
         // $sp = $this->model("spmodels");

@@ -1,10 +1,10 @@
 <?php
-class DataBase{
+class DataBase {
     public $con;
     protected $servername = "localhost";
     protected $username = "root";
     protected $password = "";
-    protected $dbname = "qltrasua";
+    protected $dbname = "quanlytrasua";
 
     function __construct()
     {
