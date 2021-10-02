@@ -13,6 +13,9 @@
     <link href="public/themes/assets/css/details1.css" rel="stylesheet" />
     <link rel="StyleSheet" href="public/themes/assets/css/mobile3.css" />
     <link rel="StyleSheet" href="public/themes/assets/css/mobile5.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=vietnamese" rel="stylesheet">
+    <link rel="preload" as="script" href="public/assets/js/jquery/jquery.min.js?v=<?php echo time(); ?>">
+
 
 
     <style>
