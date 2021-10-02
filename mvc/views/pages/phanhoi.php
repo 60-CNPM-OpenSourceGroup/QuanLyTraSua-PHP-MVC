@@ -1,6 +1,6 @@
 <section class="contact-w3ls" id="contact">
     <div class="page-header">
-        <img alt="page=header" src="~/Content/images/page-header.jpg" class="img-fluid">
+        <img alt="page=header" src="./public/images/page-header.jpg" class="img-fluid">
     </div>
     <div class="container">
         <div class="row">
