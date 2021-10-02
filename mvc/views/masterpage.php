@@ -25,6 +25,8 @@
     <link rel="canonical" href="https://www.homitatea.com/">
     <base href="<?php echo BASE; ?>">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    
     <link rel="preload" as="script" href="public/assets/js/language/vi.js?v=<?php echo time(); ?>">
     <link rel="preload" as="script" href="public/assets/js/global.js"?v=<?php echo time(); ?>>
     <link rel="preload" as="script" href="public/themes/js/page.js?v=<?php echo time(); ?>">
@@ -47,6 +49,7 @@
     <link rel="stylesheet" href="public/themes/plugins/owl.theme.default.min.css?v=<?php echo time(); ?>" media="all" />
     <link rel="StyleSheet" href="public/themes/assets/css/mobile3.css?v=<?php echo time(); ?>" />
     <link rel="StyleSheet" href="public/themes/assets/css/mobile5.css?v=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=vietnamese" rel="stylesheet">
     <link rel="preload" as="script" href="public/assets/js/jquery/jquery.min.js?v=<?php echo time(); ?>">
     <style>
         .homi_slide .owl-dots {

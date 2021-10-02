@@ -14,16 +14,17 @@
     border: solid 2px #2B292C
 }
 
-    .radio-size label:hover {
-        cursor: pointer
-    }
+.radio-size label:hover {
+    cursor: pointer
+}
 
-.radio-size input[type=radio]:checked + label {
+.radio-size input[type=radio]:checked+label {
     background-color: #2B292C;
     color: #fff
 }
 
-.radio-ice input[type=radio], .radio-sugar input[type=radio] {
+.radio-ice input[type=radio],
+.radio-sugar input[type=radio] {
     display: none
 }
 
@@ -31,158 +32,163 @@
     text-align: right
 }
 
-    .radio-ice label:hover, .radio-sugar label:hover {
-        cursor: pointer
-    }
+.radio-ice label:hover,
+.radio-sugar label:hover {
+    cursor: pointer
+}
 
-    .radio-ice .block, .radio-sugar .block {
-        display: inline-block;
-        width: 18%
-    }
+.radio-ice .block,
+.radio-sugar .block {
+    display: inline-block;
+    width: 18%
+}
 
-        .radio-ice .block span {
-            display: block;
-            text-align: left;
-            padding-left: 4px
-        }
+.radio-ice .block span {
+    display: block;
+    text-align: left;
+    padding-left: 4px
+}
 
-        .radio-sugar .block span {
-            display: block;
-            text-align: right;
-            padding-right: 5px
-        }
+.radio-sugar .block span {
+    display: block;
+    text-align: right;
+    padding-right: 5px
+}
 
-.sugar > label {
+.sugar>label {
     padding-left: 16px
 }
 
-.ice-sugar .ice, .ice-sugar .sugar {
+.ice-sugar .ice,
+.ice-sugar .sugar {
     float: left;
     width: 50%;
     display: block
 }
 
-.radio-ice .ice10 + label {
+.radio-ice .ice10+label {
     background: url(images/ice-10.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice10:checked + label {
+.radio-ice .ice10:checked+label {
     background: url(images/ice-10.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice30 + label {
+.radio-ice .ice30+label {
     background: url(images/ice-30.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice30:checked + label {
+.radio-ice .ice30:checked+label {
     background: url(images/ice-30.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice50 + label {
+.radio-ice .ice50+label {
     background: url(images/ice-50.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice50:checked + label {
+.radio-ice .ice50:checked+label {
     background: url(images/ice-50.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice70 + label {
+.radio-ice .ice70+label {
     background: url(images/ice-70.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice70:checked + label {
+.radio-ice .ice70:checked+label {
     background: url(images/ice-70.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice100 + label {
+.radio-ice .ice100+label {
     background: url(images/ice-100.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-ice .ice100:checked + label {
+.radio-ice .ice100:checked+label {
     background: url(images/ice-100.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar10 + label {
+.radio-sugar .sugar10+label {
     background: url(images/sg-10.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar10:checked + label {
+.radio-sugar .sugar10:checked+label {
     background: url(images/sg-10.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar30 + label {
+.radio-sugar .sugar30+label {
     background: url(images/sg-30.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar30:checked + label {
+.radio-sugar .sugar30:checked+label {
     background: url(images/sg-30.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar50 + label {
+.radio-sugar .sugar50+label {
     background: url(images/sg-50.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar50:checked + label {
+.radio-sugar .sugar50:checked+label {
     background: url(images/sg-50.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar70 + label {
+.radio-sugar .sugar70+label {
     background: url(images/sg-70.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar70:checked + label {
+.radio-sugar .sugar70:checked+label {
     background: url(images/sg-70.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar100 + label {
+.radio-sugar .sugar100+label {
     background: url(images/sg-100.gif) 0 0 no-repeat;
     width: 22px;
     height: 35px
 }
 
-.radio-sugar .sugar100:checked + label {
+.radio-sugar .sugar100:checked+label {
     background: url(images/sg-100.gif) 0 -35px no-repeat;
     width: 22px;
     height: 35px
 }
 
-.monthem .dropdown, .size .radio-size, .soluong .form-group {
+.monthem .dropdown,
+.size .radio-size,
+.soluong .form-group {
     float: right
 }
 
@@ -200,22 +206,24 @@
     padding: 0
 }
 
-    .soluong .input-group-addon .fa {
-        display: block;
-        padding: 0;
-        line-height: 30px
-    }
+.soluong .input-group-addon .fa {
+    display: block;
+    padding: 0;
+    line-height: 30px
+}
 
-    .soluong .input-group-addon:hover {
-        cursor: pointer
-    }
+.soluong .input-group-addon:hover {
+    cursor: pointer
+}
 
 .soluong .form-control {
     background-color: #fff;
     border: none
 }
 
-.monthem label, .size label, .soluong label {
+.monthem label,
+.size label,
+.soluong label {
     line-height: 30px;
     margin-bottom: 0
 }
@@ -224,7 +232,8 @@
     color: #98b021
 }
 
-.icon-plus, .icon-plus:after, .sp-bar {
+.icon-plus,
+.icon-plus:after,
+.sp-bar {
     display: none
 }
-
