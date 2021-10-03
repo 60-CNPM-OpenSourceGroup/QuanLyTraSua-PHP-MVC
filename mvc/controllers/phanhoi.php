@@ -2,10 +2,18 @@
 class PhanHoi extends Controller{
     function Index(){
         //Gọi view
-        $this->view("_layoutmenu",
+        return $this->view("_layoutmenu",
         [
             "page"=>"phanhoi",
         ]);
+    }
+    function xuly() {
+        ///
+
+        return $this->redirectTo("PhanHoi", "Thankyou");
+    }
+    function thankyou() {
+        return ;
     }
 }
 ?>
