@@ -13,7 +13,7 @@ for($i = 1; $i <= 4; $i++){
     // var_dump($row["NgayThem"]);
     echo 
     '<div class="col-lg-3 col-md-6 col-6">
-        <a href="@Url.Action(" Details", "Menu" , new { id=item.MaDU})">
+        <a href="Menu/Details/'.$row["MaDU"].'">
             <div class="hm_menu_item">
                 <div class="hm_item_image">
                     <img src="public/upload/douong/'.$row["HinhAnh"].'" alt="'.$row["TenDU"].'" class="img-fluid">

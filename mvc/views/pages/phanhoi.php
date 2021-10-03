@@ -8,9 +8,7 @@
                 <div class="contact-agileits">
                     <h5 style="color:black; font-size:18px">Những đóng góp, những ý kiến của bạn sẽ giúp cửa hàng của chúng tôi hoàn thiện hơn.</h5>
                     <br />
-                    <!-- @using (Html.BeginForm("PhanHoi", "Homita", FormMethod.Post, new { @name = "sentMessage", @id = "contactForm" }))
-                    { -->
-                    <form action="" method="post" name="sentMessage" id="contactForm">
+                    <form action="PhanHoi/GuiPhanHoi" method="post" name="sentMessage" id="contactForm">
                         <div class="control-group form-group">
 
                             <label class="contact-p1">Họ và tên:</label>
@@ -40,11 +38,9 @@
 
                         </div>
                         <input type="submit" name="sub" value="Gửi ngay" class="btn btn-primary" style="margin: 0 auto">
-                    </form>
-                        <!-- @Html.AntiForgeryToken() -->
-                        
-                    <!-- } -->
+                    </form>                        
                 </div>
+                
                 <br />
             </div>
         </div>
