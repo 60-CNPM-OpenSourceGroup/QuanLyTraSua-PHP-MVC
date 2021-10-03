@@ -82,8 +82,13 @@ class Menu extends Controller{
                     }
                 }
             }
-            
-            $id = count($_SESSION['cart']) == 0 ? 1 : end($_SESSION['cart'])->id + 1;
+            if(count($_SESSION['cart']) == 0) {
+                $id = 1;
+            }
+            else {
+                $endItem = end($_SESSION['cart']);
+                $id = $endItem['id'] + 1;
+            }
             $doUong = $DU[0];
             $size = $_POST['size'];
             $soluong = $_POST['quantity'];
@@ -113,9 +118,6 @@ class Menu extends Controller{
             $_SESSION['cart'] = $listItemInCart;
             $this->redirectTo("Menu", "Index");
         }
-        $salt = "Iui8*&@IJsad".date("Y-m-d H:i:s");
-        $token = md5($salt.TaoChuoiRandom(20)); 
-        $_SESSION["token"] = $token;
     }
     public function temp()
     {
