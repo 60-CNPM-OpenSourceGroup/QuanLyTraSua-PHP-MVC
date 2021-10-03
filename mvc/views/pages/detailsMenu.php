@@ -21,7 +21,7 @@
         <h2><strong><?php echo $data["du"]["TenDU"]?></strong></h2>
         <!-- Begin Form -->
         <form class="form-addcart" name="form_addcart" id="form_addcart" action="Menu/AddToCart" method="post">
-            <input type="hidden" value="<?php echo $data["du"]["MaDU"]?>">
+            <input type="hidden" name="MaDU" value="<?php echo $data["du"]["MaDU"]?>">
             <!--Giá SP-->
             <div class="price" align="left" style="color:red; font-size:16px">
                 <span><strong>
@@ -33,9 +33,9 @@
             <div class="size">
                 <label style="font-size: 18px">Size</label>
                 <div class="radio-size">
-                    <input type="radio" id="sizeM" name="sizename" value="M" checked="checked">
+                    <input type="radio" id="sizeM" name="size" value="M" checked="checked">
                     <label for="sizeM">M</label>
-                    <input type="radio" id="sizeL" name="sizename" value="L">
+                    <input type="radio" id="sizeL" name="size" value="L">
                     <label for="sizeL">L</label>
                 </div>
                 <div class="clearfix"></div>
@@ -122,7 +122,7 @@
             <!--Chọn món thêm-->
             <div class="monthem">
                 <label style="font-size: 18px">Món thêm</label>
-                <select name="listTP" class="chosen-select" multiple>
+                <select name="listTP[]" class="chosen-select" multiple="multiple">
                     <?php
                         foreach ($data["listTP"] as $tp) {
                             echo '<option value="'.$tp["MaTP"].'">'.$tp["TenTP"].'</option>';
@@ -133,12 +133,13 @@
             <!--End chọn món thêm-->
             <div>
                 <br />
-                <input type="submit" value="Thêm vào giỏ" class="btn-success text-black" />
+                <input type="submit" value="Thêm vào giỏ" class="btn-success text-black" name="submitBtn"/>
             </div>
             <br />
             <?php 
-                if(isset($data['error']))
-                    echo '<div class="bg-danger p-2" style="font-weight:bold">'.$data['error'].'</div>';
+                if(isset($_SESSION['error']))
+                    echo '<div class="bg-danger p-2" style="font-weight:bold">'.$_SESSION['error'].'</div>';
+                    unset($_SESSION['error']);
             ?>
         </form>
         <!-- End Form  add-to-cart buttons -->
@@ -168,7 +169,7 @@
                 }
             )
             var giaBanDau = $("#DonGia").val();
-            $(':radio[name="sizename"]').change(function() {
+            $(':radio[name="size"]').change(function() {
                 if (this.value == "M") {
                     $("#DonGia").val(giaBanDau);
                 } else {

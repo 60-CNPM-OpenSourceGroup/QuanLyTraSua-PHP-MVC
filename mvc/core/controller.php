@@ -11,5 +11,15 @@ class Controller{
     public function view($view, $data=[]){
         require_once "./mvc/views/".$view.".php";
     }
+    public function redirectTo($controller, $action, $params = []) {
+        $url = 'Location: '.BASE.''.$controller.'/'.$action;
+
+        if(count($params) > 0) {
+            foreach ($params as $param) {
+                $url .= '/'.$param;
+            }
+        }
+        header($url);
+    }
 }
 ?>
