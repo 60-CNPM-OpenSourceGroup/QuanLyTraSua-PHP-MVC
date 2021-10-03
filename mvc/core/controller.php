@@ -11,5 +11,8 @@ class Controller{
     public function view($view, $data=[]){
         require_once "./mvc/views/".$view.".php";
     }
+    public function redirectTo($controller, $action) {
+        header('Location: '.BASE.''.$controller.'/'.$action);
+    }
 }
 ?>
