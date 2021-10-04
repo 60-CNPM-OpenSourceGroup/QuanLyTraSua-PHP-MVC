@@ -31,6 +31,7 @@
 
     <!-- Custom styles for this template-->
     <link href="public/admin/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 
     <style>
         .tabA {
@@ -334,6 +335,14 @@
         <script src="public/admin/Admin/js/sb-admin-2.min.js"></script>
         <script src="public/html2pdf.bundle.min.js"></script>
         <script src="public/jquery.table2excel.js"></script>
+        <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#dataTable').DataTable();
+            });
+        </script>
 </body>
 
 </html>
