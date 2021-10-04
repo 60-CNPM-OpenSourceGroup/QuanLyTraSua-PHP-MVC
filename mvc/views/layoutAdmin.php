@@ -22,6 +22,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/9315670d89.js" crossorigin="anonymous"></script>
 
@@ -52,6 +56,7 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
     </style>
+
 </head>
 
 <body id="page-top">
@@ -69,8 +74,6 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">HOMITA</div>
             </div>
-
-
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -99,7 +102,6 @@
             <div class="sidebar-heading">
                 Cửa hàng
             </div>
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="tabA collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -117,7 +119,6 @@
                     </div>
                 </div>
             </li>
-
             <li class="nav-item">
                 <a class="tabA" href="DonHang/Index">
                     <span class="nav-link">
@@ -126,30 +127,24 @@
                     </span>
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="tabA" href="#">
                     <span class="nav-link">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <span>Đơn tại quầy</span>
                     </span>
-
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="tabA" href="#">
                     <span class="nav-link">
                         <i class="fas fa-cash-register"></i>
                         <span>Order tại quầy</span>
                     </span>
-
                 </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Khách hàng
@@ -163,22 +158,18 @@
                     </span>
                 </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Thống kê
             </div>
-
             <li class="nav-item">
                 <a class="tabA" href="#">
                     <span class="nav-link">
                         <i class="fas fa-chart-bar"></i>
                         <span>Theo sản phẩm</span>
                     </span>
-
                 </a>
             </li>
             <li class="nav-item">
@@ -187,7 +178,6 @@
                         <i class="fas fa-chart-pie"></i>
                         <span>Theo hình thức KD</span>
                     </span>
-
                 </a>
             </li>
             <li class="nav-item">
@@ -196,18 +186,14 @@
                         <i class="fas fa-chart-line"></i>
                         <span>Theo tháng</span>
                     </span>
-
                 </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Người dùng
             </div>
-
             <!-- Nav Item - Thông tin nhân viên -->
             <li class="nav-item">
                 <a class="tabA" href="#">
@@ -217,7 +203,6 @@
                     </span>
                 </a>
             </li>
-
             <!-- Nav Item - Tài khoản nhân viên -->
             <li class="nav-item">
                 <a class="tabA" href="#">
@@ -227,7 +212,6 @@
                     </span>
                 </a>
             </li>
-
             <!-- Nav Item - Nhóm nhân viên -->
             <li class="nav-item">
                 <a class="tabA" href="#">
@@ -237,7 +221,6 @@
                     </span>
                 </a>
             </li>
-
             <!-- Nav Item - Phân quyền -->
             <li class="nav-item">
                 <a class="tabA" href="#">
@@ -247,10 +230,8 @@
                     </span>
                 </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -259,25 +240,18 @@
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
                     <h2 style="color: red; margin-left: auto; font-weight:600">Trà sữa Homita</h2>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
@@ -307,76 +281,59 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <?php require_once "./mvc/views/admin_pages/" . $data['page'] . ".php" ?>
-
+                    <!-- /.container-fluid -->
                 </div>
-                <!-- /.container-fluid -->
-
+                <!-- End of Main Content -->
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; @DateTime.Now.Year</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
             </div>
-            <!-- End of Main Content -->
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; @DateTime.Now.Year</span>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn đăng xuất?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Chọn "Đăng xuất" bên dưới nếu bạn thật sự muốn kết thúc phiên làm việc hiện tại của mình.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                        <a class="btn btn-primary" href="#">Đăng xuất</a>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn đăng xuất?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Chọn "Đăng xuất" bên dưới nếu bạn thật sự muốn kết thúc phiên làm việc hiện tại của mình.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                    <a class="btn btn-primary" href="#">Đăng xuất</a>
-                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="public/admin/Admin/vendor/jquery/jquery.min.js"></script>
-    <script src="public/admin/Admin/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="public/admin/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="public/admin/Admin/js/sb-admin-2.min.js"></script>
-
-
-    <script src="public/html2pdf.bundle.min.js"></script>
-    <script src="public/jquery.table2excel.js"></script>
-
-    <!-- @RenderSection("scripts", required: false)
-    @RenderSection("styles", required: false) -->
+        <!-- Bootstrap core JavaScript-->
+        <script src="public/admin/Admin/vendor/jquery/jquery.min.js"></script>
+        <script src="public/admin/Admin/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="public/admin/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="public/admin/Admin/js/sb-admin-2.min.js"></script>
+        <script src="public/html2pdf.bundle.min.js"></script>
+        <script src="public/jquery.table2excel.js"></script>
 </body>
 
 </html>

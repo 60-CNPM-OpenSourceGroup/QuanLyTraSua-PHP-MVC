@@ -1,93 +1,128 @@
-<style type="text/css">
-    #gridContent {
-        font-size: 15px;
+<style>
+    table {
+        margin-top: 25px;
+        font-size: 1rem;
     }
 
-    .grid-footer {
-        color: #000;
-        font: 17px Calibri;
+    table th,
+    table td {
         text-align: center;
-        font-weight: bold;
     }
 
-    .grid-footer a {
-        background-color: #ffffff;
-        color: blue;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        padding: 1px 10px 2px 10px;
+    .row_head,
+    .row_body {
+        vertical-align: middle !important;
+    }
+    
+    table tr:nth-child(even) {
+        background-color: aqua;
     }
 
-    .grid-footer a:active,
-    a:hover {
-        background-color: #ffffff;
-        color: #FFAD33;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    .pagination-container{
+        margin-top: 40px;
+    }
+    .pagination li:hover {
+        cursor: pointer;
     }
 
-    .alternatingRowStyle {
-        background-color: aliceblue;
+    .pagination {
+        display: inline-block;
     }
-
-    table .table1 {
-        text-align: left;
-        margin-left: 0px;
-        margin-right: 0px;
-        width: 800px;
+    .pagination li.active{
+        background-color: darkseagreen;
+        color: white;
+        border-radius: 5px;
     }
-
-    .tr,
-    .td {
-        text-align: left;
+    .pagination li {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
     }
-
-    .ChildGrid {
-        width: 80%;
-        margin: 0 auto
-    }
-
-    .ChildGrid th {
-        background-color: #4e73df;
-        color: #fff;
-        font-weight: bold;
+    .pagination li:hover:not(.active) {
+        background-color: #ddd;
+        border-radius: 5px;
     }
 </style>
 
-<h3>DANH SÁCH ĐƠN ĐẶT HÀNG TRỰC TUYẾN</h3>
-<div id="gridContent">
-    <table>
+<section>
+    <h3>DANH SÁCH ĐƠN ĐẶT HÀNG TRỰC TUYẾN</h3>
+    <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
+        <!-- Show Numbers Of Rows -->
+        <div>
+            <span style="line-height: 2.4rem; font-weight: 800; margin-right: 1.5rem;">Số dòng hiển thị: </span>
+        </div>
+        <div style="width: 12%;">
+            <select class="form-control" name="state" id="maxRows">
+                <option value="5000">Hiện tất cả</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="70">70</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+    </div>
+    <table class="table table-striped table-class" id="table-id">
+
         <tr>
-            <th>STT</th>
-            <th>Mã hóa đơn</th>
-            <th>Số điện thoại</th>
-            <th>Địa chỉ</th>
-            <th>Tổng tiền</th>
-            <th>Ngày lập</th>
-            <th>Ghi chú</th>
-            <th>Tình trạng</th>
-            <th>Shipper</th>
-            <th>Chức năng</th>
+            <th class="row_head">STT</th>
+            <th class="row_head">Mã hóa đơn</th>
+            <th class="row_head">Họ tên</th>
+            <th class="row_head">Số điện thoại</th>
+            <th class="row_head">Địa chỉ</th>
+            <th class="row_head">Tổng tiền</th>
+            <th class="row_head">Ngày lập</th>
+            <th class="row_head">Ghi chú</th>
+            <th class="row_head">Tình trạng</th>
+            <th class="row_head">Shipper</th>
+            <th class="row_head">Chức năng</th>
         </tr>
         <?php
         $stt = 1;
         foreach ($data['listHD'] as $item) {
             echo "
             <tr>
-                <td>".($stt++)."</td>
-                <td>".$item['MaHDOnl']."</td>
-                <td>".$item['HoTen']."</td>
-                <td>".$item['Sdt']."</td>
-                <td>".$item['DiaChi']."</td>
-                <td>".$item['TongTien']."</td>
-                <td>".$item['NgayLap']."</td>
-                <td>".$item['GhiChu']."</td>
-                <td>".$item['TinhTrang']."</td>
-                <td>"."Bảo"."</td>
-                <td>"."123"."</td>
+                <td class='row_body'>" . ($stt++) . "</td>
+                <td class='row_body'>" . $item['MaHD'] . "</td>
+                <td class='row_body'>" . $item['HoTen'] . "</td>
+                <td class='row_body'>" . $item['Sdt'] . "</td>
+                <td class='row_body'>" . $item['DiaChi'] . "</td>
+                <td class='row_body'>" . $item['TongTien'] . "</td>
+                <td class='row_body'>" . $item['NgayLap'] . "</td>
+                <td class='row_body'>" . $item['GhiChu'] . "</td>
+                <td class='row_body'>" . $item['TinhTrang'] . "</td>
+                <td class='row_body'>" . "Bảo" . "</td>
+                <td class='row_body'>
+                    <a href='DonHang/Check'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;
+                    <a href='DonHang/Details'><i class='fa fa-info-circle'></i></a>&nbsp;|&nbsp;
+                    <a href='DonHang/Delete'><i class='fa fa-trash'></i></a>&nbsp;|&nbsp;
+                    <a href='DonHang/Print'><i class='fa fa-print'></i></a>
+                </td>
             </tr>
             ";
         }
         ?>
-        
-        
     </table>
-</div>
+    <!-- Start Pagination -->
+    <div class='pagination-container'>
+        <nav style="text-align: center;">
+            <ul class="pagination">
+                <li data-page="prev" class="page-item">
+                    <span>
+                    &laquo; <span class="sr-only">(current)
+                    </span></span>
+                </li>
+                <!--	Here the JS Function Will Add the Rows -->
+                <li data-page="next" id="prev">
+                    <span> &raquo; <span class="sr-only">(current)</span></span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+</section>
+
+<script src="public/admin/Admin/js/phantrang.js"></script>

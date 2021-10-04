@@ -25,27 +25,44 @@ class DonHang extends Controller{
             // 'listCTHD' => $listCTHD
         ]);
     }
-    function details($id) {
+    function Details($id) {
         //view chi tiết đồ uống
+
+        $this->view("layoutAdmin", [
+            'page' => 'DonHang/detailsDH'
+            // 'listCTHD' => $listCTHD
+        ]);
     }
-    function Create() {
+    function Print() {
         // thêm mới đồ uống
+        $this->view("layoutAdmin", [
+            'page' => 'DonHang/printDH'
+            // 'listCTHD' => $listCTHD
+        ]);
     }
 
     function Store() {
         // thêm thành công
         //return redirectTo("DoUong", "Index")
     }
-    function edit($id) {
+    function Check($id) {
         //view edit
+        $this->view("layoutAdmin", [
+            'page' => 'DonHang/checkDH'
+            // 'listCTHD' => $listCTHD
+        ]);
     }
-    function save() {
+    function Save() {
         // sửa thành công, lưu
         //return redirectTo("DoUong", "Index")
     }
 
-    function delete($id) {
+    function Delete($id) {
         //view edit
+        $this->view("layoutAdmin", [
+            'page' => 'DonHang/deleteDH'
+            // 'listCTHD' => $listCTHD
+        ]);
     }
 }
 ?>

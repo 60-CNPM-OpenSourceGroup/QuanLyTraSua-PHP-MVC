@@ -1,7 +1,7 @@
 <?php
 class CTHoaDonModel extends DataBase {
     public function listAll(){
-        $qr = "SELECT * FROM chitiethdnonl";
+        $qr = "SELECT * FROM chitiethd";
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
         while($row = mysqli_fetch_array($rows)) {
