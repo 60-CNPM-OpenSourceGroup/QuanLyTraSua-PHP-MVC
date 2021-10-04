@@ -1,5 +1,20 @@
 USE quanlytrasua;
 
+
+INSERT INTO `nhomnhanvien` (`IDNhom`, `TenNhom`)
+VALUES
+('ADMIN', 'Quản trị hệ thống'),
+('QUANLY', 'Quản lý'),
+('SHIPPER', 'Nhân viên giao hàng'),
+('THUNGAN', 'Thu ngân');
+
+INSERT INTO `nhanvien` (`maNV`, `tenNV`, `gioiTinh`, `ngaySinh`, `diaChi`, `email`, `password`, `sdt`, `hinhAnh`, `IDNhom`) VALUES
+('NV0001', 'Phan Thanh Hà', 1, '2000-03-08', 'Ninh Hòa', 'hathanh.0113@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '0334370822', 'ha_avatar.jpg', 'ADMIN'),
+('NV0002', 'Nguyễn Văn Trí', 1, '2000-10-17', 'Cam Ranh', 'trinv60cntt@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '0365062796', 'tri_avatar1.jpg', 'SHIPPER'),
+('NV0003', 'Lê Minh Long', 1, '2000-06-01', 'Cam Lâm', 'long@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '0356827189', 'long_avatar.jpg', 'QUANLY'),
+('NV0004', 'Mang Bảo', 1, '2000-01-13', 'Cam Ranh', 'bao@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '0372978074', 'bao_avatar.jpg', 'THUNGAN'),
+('NV0005', 'Nguyễn Đức Lộc', 1, '2000-02-19', 'Cam Ranh', 'loc@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '0369909999', 'loc_avatar.jpg', 'SHIPPER');
+
 INSERT INTO `loaidouong` (`MaLoaiDU`, `TenLoaiDU`)
 VALUES
 ('DOUONGDACBIET', 'Đồ uống đặc biệt'),
