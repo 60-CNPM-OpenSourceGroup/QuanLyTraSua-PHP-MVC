@@ -17,7 +17,7 @@ class Menu extends Controller{
         $listLDU = json_decode($this->lduModel->listAll(), true);
         $listDU = json_decode($this->duModel->listAll(), true);
         $listTP = json_decode($this->tpModel->listAll(), true);
-        $this->view("masterpage2", [
+        $this->view("layoutCustomer", [
             'page' => 'indexMenu',
             'listLDU' => $listLDU,
             'listDU' => $listDU,
@@ -29,7 +29,7 @@ class Menu extends Controller{
         $du = json_decode($this->duModel->getDoUongById($id), true);
         $listTP = json_decode($this->tpModel->listAll(), true);
         if(count($du) > 0) {
-            $this->view("masterpage2", [
+            $this->view("layoutCustomer", [
                 'page' => 'detailsMenu',
                 'du' => $du[0],
                 'listTP' => $listTP,

@@ -19,8 +19,8 @@
         background-color: #116333;
     }
 </style>
-
-<div style="margin-top:100px">
+<section id="menu">
+<div style="margin-top:100px; margin-bottom: 32px;">
     <h2 style="margin-left: 20px"><strong>GIỎ HÀNG CỦA BẠN</strong></h2>
     <hr />
 
@@ -153,3 +153,4 @@
         }
 ?>
 </div>
+</section>

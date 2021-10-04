@@ -9,24 +9,25 @@
     .chosen-select-deselect,
     .chosen-select-rtl,
     .chosen-select-width {
-    width: 350px;
+        width: 350px;
     }
 </style>
+<section id="menu">
 <div class="row" style="margin-top:100px">
     <div class="col-md-6 col-md-offset-1" align="center">
-        <div class="thumbnail detail"><img style="width:500px; height:500px" src="public/upload/douong/<?php echo $data["du"]["HinhAnh"]?>" class="img-responsive wp-post-image" alt="" /></div>
+        <div class="thumbnail detail"><img style="width:500px; height:500px" src="public/upload/douong/<?php echo $data["du"]["HinhAnh"] ?>" class="img-responsive wp-post-image" alt="" /></div>
     </div>
 
     <div class="col-md-5 p-3" align="left">
-        <h2><strong><?php echo $data["du"]["TenDU"]?></strong></h2>
+        <h2><strong><?php echo $data["du"]["TenDU"] ?></strong></h2>
         <!-- Begin Form -->
         <form class="form-addcart" name="form_addcart" id="form_addcart" action="Menu/AddToCart" method="post">
-            <input type="hidden" name="MaDU" value="<?php echo $data["du"]["MaDU"]?>">
+            <input type="hidden" name="MaDU" value="<?php echo $data["du"]["MaDU"] ?>">
             <!--Giá SP-->
             <div class="price" align="left" style="color:red; font-size:16px">
                 <span><strong>
-                    <input type="text" id="DonGia" value="<?php echo $data["du"]["DonGia"]?>" readonly style="border:none; width:50px">&nbsp;VND
-                </strong></span>
+                        <input type="text" id="DonGia" value="<?php echo $data["du"]["DonGia"] ?>" readonly style="border:none; width:50px">&nbsp;VND
+                    </strong></span>
             </div>
             <!--End giá-->
             <!--Chọn size-->
@@ -124,29 +125,29 @@
                 <label style="font-size: 18px">Món thêm</label>
                 <select name="listTP[]" class="chosen-select" multiple="multiple">
                     <?php
-                        foreach ($data["listTP"] as $tp) {
-                            echo '<option value="'.$tp["MaTP"].'">'.$tp["TenTP"].'</option>';
-                        }
+                    foreach ($data["listTP"] as $tp) {
+                        echo '<option value="' . $tp["MaTP"] . '">' . $tp["TenTP"] . '</option>';
+                    }
                     ?>
                 </select>
             </div>
             <!--End chọn món thêm-->
             <div>
                 <br />
-                <input type="submit" value="Thêm vào giỏ" class="btn-success text-black" name="submitBtn"/>
+                <input type="submit" value="Thêm vào giỏ" class="btn-success text-black" name="submitBtn" />
             </div>
             <br />
-            <?php 
-                if(isset($_SESSION['error']))
-                    echo '<div class="bg-danger p-2" style="font-weight:bold">'.$_SESSION['error'].'</div>';
-                    unset($_SESSION['error']);
+            <?php
+            if (isset($_SESSION['error']))
+                echo '<div class="bg-danger p-2" style="font-weight:bold">' . $_SESSION['error'] . '</div>';
+            unset($_SESSION['error']);
             ?>
         </form>
         <!-- End Form  add-to-cart buttons -->
     </div>
     <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
-
 </div>
+</section>
 
 <script src="public/bootstrap-chosen/chosen.jquery.js" type="text/javascript"></script>
 <script src="public/bootstrap-chosen/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>

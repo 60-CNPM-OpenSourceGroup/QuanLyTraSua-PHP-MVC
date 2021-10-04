@@ -8,10 +8,9 @@ class Home extends Controller{
         // echo $sp->GetSP();
 
         //Gọi view
-        $this->view("masterpage", 
+        $this->view("layoutCustomer", 
         [
-            "page_new"=>"produce_new",
-            "page_hot"=>"produce_hot",
+            "page"=>"indexHome",
             "SPn"=>$sp->SanPham_New(),
             "SPh"=>$sp->SanPham_Hot()
         ]

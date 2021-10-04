@@ -1,15 +1,11 @@
-<!-- @{
-    ViewBag.Title = "Trang chủ";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-} -->
 <style>
     a.card {
         text-decoration: none;
     }
 
-        a.card:hover {
-            background-color: aliceblue;
-        }
+    a.card:hover {
+        background-color: aliceblue;
+    }
 
     .notification {
         position: relative;

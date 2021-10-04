@@ -12,7 +12,7 @@ class GioHang extends Controller {
         if(!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
-        $this->view("masterpage2", [
+        $this->view("layoutCustomer", [
             "page" => "indexGioHang"
         ]);
     }

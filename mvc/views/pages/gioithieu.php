@@ -1,7 +1,7 @@
-<section class="news">
+<section id="menu" class="news" style="padding-top: 0;">
     <!-- Page Header -->
     <div class="page-header">
-        <img alt="page=header" src="./public/images/page-header.jpg" class="img-fluid">
+        <img alt="page=header" src="public/images/page-header.jpg" class="img-fluid">
     </div>
     <div class="container">
         <div class="container">
@@ -68,15 +68,13 @@
                             đưa đến một mô hình trà sữa tự phục vụ hoàn toàn mới cho “fan” trà sữa tại Nha Trang. Với
                             mong muốn đem lại một sự trải nghiệm mới đối với người thích uống trà sữa, chúng tôi đã đưa
                             đến văn hoá mới đến với các bạn cùng mong đợi văn hoá trà tại thành phố Nha Trang cũng sẽ
-                            sánh vai được với các thành phố lớn cũng như các hãng trà ngoại . </span> <span
-                            style="font-size: 120%; line-height:110%;">Từ&nbsp;
+                            sánh vai được với các thành phố lớn cũng như các hãng trà ngoại . </span> <span style="font-size: 120%; line-height:110%;">Từ&nbsp;
                             khát khao mang đến những thức uống tươi ngon, đậm vị được pha chế trực tiếp, phục vụ tận tay
                             khách hàng với phong cách hiện đại và mức giá hợp lý, cửa hàng Homita nhượng quyền đầu tiên
                             đã ra mắt tại Ninh Hoà. Đây là sự kiện đánh dấu bước chuyển mình trong lịch sử phát triển
                             của thương hiệu Homita bước trở thành thương hiệu Việt hiếm hoi chính thức tham gia vào lĩnh
                             vực Thực phẩm &amp; Đồ uống với cửa hàng hoạt động theo mô hình tự phục vụ trong không gian
-                            hiện đại, đẳng cấp và nổi bật.</span> <span
-                            style="font-size: 120%; line-height:110%;">Là
+                            hiện đại, đẳng cấp và nổi bật.</span> <span style="font-size: 120%; line-height:110%;">Là
                             một thương hiệu trẻ và tiềm năm dưới sự lãnh đạo của một CEO trẻ tuổi, tài năng với tinh
                             thần không ngại khó, không ngại thay đổi. Chúng tôi tự hào luôn là điểm đến đáng tin cậy với
                             khách hàng ở mọi lứa tuổi.</span>

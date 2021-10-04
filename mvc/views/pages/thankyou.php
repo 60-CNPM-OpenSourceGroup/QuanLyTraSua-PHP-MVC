@@ -9,7 +9,7 @@
         text-align: center;
     }
 </style>
-<section class="contact-w3ls" id="contact">
+<section id="menu" class="contact-w3ls" id="contact" style="padding-top: 0;">
     <div class="page-header">
         <img alt="page=header" src="public/images/page-header.jpg" class="img-fluid">
     </div>

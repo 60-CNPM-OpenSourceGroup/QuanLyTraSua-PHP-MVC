@@ -1,6 +1,6 @@
-<section class="contact-w3ls" id="contact">
+<section id="menu" class="contact-w3ls" id="contact" style="padding-top: 0;">
     <div class="page-header">
-        <img alt="page=header" src="./public/images/page-header.jpg" class="img-fluid">
+        <img alt="page=header" src="public/images/page-header.jpg" class="img-fluid">
     </div>
     <div class="container">
         <div class="row">
@@ -8,9 +8,7 @@
                 <div class="contact-agileits">
                     <h5 style="color:black; font-size:18px">Những đóng góp, những ý kiến của bạn sẽ giúp cửa hàng của chúng tôi hoàn thiện hơn.</h5>
                     <br />
-                    <!-- @using (Html.BeginForm("PhanHoi", "Homita", FormMethod.Post, new { @name = "sentMessage", @id = "contactForm" }))
-                    { -->
-                    <form action="" method="post" name="sentMessage" id="contactForm">
+                    <form action="PhanHoi/GuiPhanHoi" method="post" name="sentMessage" id="contactForm">
                         <div class="control-group form-group">
 
                             <label class="contact-p1">Họ và tên:</label>
@@ -41,9 +39,6 @@
                         </div>
                         <input type="submit" name="sub" value="Gửi ngay" class="btn btn-primary" style="margin: 0 auto">
                     </form>
-                        <!-- @Html.AntiForgeryToken() -->
-                        
-                    <!-- } -->
                 </div>
                 <br />
             </div>
