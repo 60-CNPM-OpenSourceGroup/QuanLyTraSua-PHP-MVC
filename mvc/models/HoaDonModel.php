@@ -2,7 +2,7 @@
 class HoaDonModel extends DataBase {
 
     public function listAll(){
-        $qr = "SELECT * FROM hoadon";
+        $qr = "SELECT * FROM hoadononl";
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
         while($row = mysqli_fetch_array($rows)) {

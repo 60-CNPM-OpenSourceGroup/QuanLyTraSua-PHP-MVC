@@ -39,18 +39,18 @@
             font-weight: bold;
         }
 
-            .grid-footer a {
-                background-color: #fefeff;
-                color: blue;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-                padding: 1px 10px 2px 10px;
-            }
+        .grid-footer a {
+            background-color: #fefeff;
+            color: blue;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 1px 10px 2px 10px;
+        }
 
-                .grid-footer a:active {
-                    background-color: #fefeff;
-                    color: #FFAD33;
-                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-                }
+        .grid-footer a:active {
+            background-color: #fefeff;
+            color: #FFAD33;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -91,7 +91,7 @@
                         <span>Test Đăng xuất</span>
                     </span>
                 </a>
-            </li>  
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -102,8 +102,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="tabA collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
+                <a class="tabA collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <span class="nav-link">
                         <i class="fas fa-coffee"></i>
                         <span>Danh mục</span>
@@ -120,7 +119,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="tabA" href="#">
+                <a class="tabA" href="DonHang/Index">
                     <span class="nav-link">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <span>Đơn đặt hàng</span>
@@ -282,20 +281,17 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="fas fa-shopping-cart" style=" color: #4e73df"></i><span style=" color: red">&nbsp;(0)</span> 
+                                <i class="fas fa-shopping-cart" style=" color: #4e73df"></i><span style=" color: red">&nbsp;(0)</span>
                             </a>
                         </li>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">@session.UserName</span>
-                                <img class="img-profile rounded-circle"
-                                     src="@avatar">
+                                <img class="img-profile rounded-circle" src="@avatar">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Thông tin tài khoản
@@ -319,7 +315,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <?php require_once "./mvc/views/admin_pages/".$data['page'].".php" ?>
+                    <?php require_once "./mvc/views/admin_pages/" . $data['page'] . ".php" ?>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -347,8 +343,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -383,5 +378,5 @@
     <!-- @RenderSection("scripts", required: false)
     @RenderSection("styles", required: false) -->
 </body>
-</html>
 
+</html>
