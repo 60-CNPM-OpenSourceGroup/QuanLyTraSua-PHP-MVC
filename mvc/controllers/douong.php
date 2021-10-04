@@ -10,6 +10,11 @@ class DoUong extends Controller{
 
     function Index(){
         // trả về list đồ uống
+        $this->view("layoutAdmin",
+        [
+            "page"=>"douong/indexDU"
+        ]
+    );
     }
     function details($id) {
         //view chi tiết đồ uống
