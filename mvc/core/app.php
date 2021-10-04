@@ -10,10 +10,12 @@ class App {
         $arr = $this->UrlProcess();
         //print_r($arr);
         
-        // Xử lý controller 
-        if(file_exists("./mvc/controllers/".$arr[0].".php")){
-            $this->controller = $arr[0];
-            unset($arr[0]);
+        // Xử lý controller
+        if(isset($arr[1])){
+            if(file_exists("./mvc/controllers/".$arr[0].".php")){
+                $this->controller = $arr[0];
+                unset($arr[0]);
+            }
         }
         require_once "./mvc/controllers/".$this->controller.".php";
         $this->controller = new $this->controller;
