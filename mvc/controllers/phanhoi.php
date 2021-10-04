@@ -5,7 +5,7 @@ class PhanHoi extends Controller{
         //Gọi view
         return $this->view("layoutCustomer",
         [
-            "page"=>"phanhoi",
+            "page"=>"indexPhanhoi",
         ]);
     }
 

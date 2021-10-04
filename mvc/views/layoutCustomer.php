@@ -192,7 +192,7 @@
         </nav>
     </header>
     <?php
-    require_once "./mvc/views/pages/" . $data["page"] . ".php";
+        require_once "./mvc/views/pages/" . $data["page"] . ".php";
     ?>
     <footer id=footer>
         <div class=footer-info>
