@@ -6,7 +6,7 @@ class GioiThieu extends Controller{
         //Gọi view
         $this->view("layoutCustomer",
         [
-            "page"=>"gioithieu"
+            "page"=>"indexGioithieu"
         ]
         );
     }

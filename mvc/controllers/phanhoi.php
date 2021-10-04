@@ -35,7 +35,7 @@ class PhanHoi extends Controller{
 
         return $this->view("layoutCustomer",
         [
-            "page"=>"thankyou"
+            "page"=>"indexThankyou"
         ]);
     }
 }
