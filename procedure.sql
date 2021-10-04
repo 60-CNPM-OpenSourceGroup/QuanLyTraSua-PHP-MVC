@@ -1,4 +1,4 @@
-USE QLTraSua;
+USE quanlytrasua;
 
 -- CREATE PROCEDURE NhanVien_TimKiem
 -- (

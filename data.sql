@@ -1,4 +1,4 @@
-use qltrasua;
+use quanlytrasua;
 
 INSERT INTO NhanVien (maNV, tenNV, gioiTinh, ngaySinh, diaChi, email, sdt, hinhAnh) VALUES
 ('NV0001', 'Phan Thanh Hà', 1, CAST('2000-03-08' AS Date), 'Ninh Hòa', 'hathanh.0113@gmail.com', '0334370822', 'ha_avatar.jpg'),

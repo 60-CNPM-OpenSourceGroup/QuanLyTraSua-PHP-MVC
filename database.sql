@@ -1,6 +1,6 @@
-create database QLTraSua;
+create database quanlytrasua;
 
-use QLTraSua;
+use quanlytrasua;
 
 create table NhanVien (
 	maNV varchar(10) not null,
