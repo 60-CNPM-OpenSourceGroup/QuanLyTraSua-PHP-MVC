@@ -1,9 +1,3 @@
-<!-- @{
-    Layout = null;
-    var session = (BTNHOM_QLTS.Common.UserLogin)Session[BTNHOM_QLTS.Common.CommonConstants.USER_SESSION];
-    string avatar = "/images/" + session.Avatar;
-} -->
-
 <!DOCTYPE html>
 <html lang="en">
 

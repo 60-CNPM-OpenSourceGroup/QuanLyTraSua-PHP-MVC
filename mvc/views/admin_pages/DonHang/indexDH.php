@@ -83,6 +83,7 @@
         <?php
         $stt = 1;
         foreach ($data['listHD'] as $item) {
+            $date = str_replace('-', '/', $item["NgayLap"]);
             echo "
             <tr>
                 <td class='row_body'>" . ($stt++) . "</td>
@@ -91,7 +92,7 @@
                 <td class='row_body'>" . $item['Sdt'] . "</td>
                 <td class='row_body'>" . $item['DiaChi'] . "</td>
                 <td class='row_body'>" . $item['TongTien'] . "</td>
-                <td class='row_body'>" . $item['NgayLap'] . "</td>
+                <td class='row_body'>" . date('d/m/Y', strtotime($date)) . "</td>
                 <td class='row_body'>" . $item['GhiChu'] . "</td>
                 <td class='row_body'>" . $item['TinhTrang'] . "</td>
                 <td class='row_body'>" . "Bảo" . "</td>

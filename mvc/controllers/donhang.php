@@ -33,7 +33,7 @@ class DonHang extends Controller{
             // 'listCTHD' => $listCTHD
         ]);
     }
-    function Print() {
+    function Print($id) {
         // thêm mới đồ uống
         $this->view("layoutAdmin", [
             'page' => 'DonHang/printDH'
