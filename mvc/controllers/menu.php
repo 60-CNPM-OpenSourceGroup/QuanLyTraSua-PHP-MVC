@@ -42,6 +42,7 @@ class Menu extends Controller{
 
     public function AddToCart() {
         if(isset($_POST['submitBtn'])) {
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
             $DU = json_decode($this->duModel->getDoUongById($_POST['MaDU']), true);
             $len = isset($_POST['listTP']) ? count($_POST['listTP']) : 0;
             if (!isset($_SESSION['cart']))
@@ -124,6 +125,7 @@ class Menu extends Controller{
         echo '<pre>';
         print_r($_SESSION['cart']);
         echo '</pre>';
+        echo date("dmY");
     }   
 }
 ?>

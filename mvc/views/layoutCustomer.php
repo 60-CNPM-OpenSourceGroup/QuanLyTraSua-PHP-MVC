@@ -222,7 +222,7 @@
                             <div class=widget-content>
                                 <p>Homita sẽ gọi lại tư vấn quý khách trong thời gian ngắn nhất!
                                 <form action="https://homitatea.com/index.php?nv=subscribe" id=frm_subscribe method=post>
-                                    <p><input class=name id=subscribe_data name=data placeholder="Nhập số điện thoại" required>
+                                    <p><input class=name id=subscribe_data name=data placeholder="Nhập số điện thoại">
                                     <p><button class=hvr-shutter-out-horizontal name=do-subscribe type=submit>Gửi</button>
                                 </form>
                             </div>

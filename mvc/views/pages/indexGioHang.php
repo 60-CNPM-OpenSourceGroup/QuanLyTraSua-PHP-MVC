@@ -56,7 +56,7 @@
                     }
                     else
                     {
-                        $tienTS = $item['dongia'] + 5000;
+                        $tienTS = $item['doUong']['DonGia'] + 5000;
                     }
     
                     if (isset($item['listTP']) && count($item['listTP']) > 0)
@@ -107,7 +107,7 @@
                         <div class="col-lg-8 col-md-8 col-sm-8 contact-w3-agile2" data-aos="flip-left">
                             <div class="contact-agileits">
                                 <br />
-                                    <form method="post" action="/Hotel/Create" name="sentMessage" id="contactForm">
+                                    <form method="post" action="GioHang/TaoDonHang" name="sentMessage" id="contactForm">
                                     <div class="control-group form-group">
     
                                         <label class="contact-p1">Họ và tên:</label>
@@ -136,7 +136,8 @@
                                         <p class="help-block"></p>
     
                                     </div>
-                                    <input type="submit" value="Đặt ngay" class="btn btn-primary" style="margin: 0 auto">
+                                    <input type="hidden" value="'.$tongTatCa.'" name="tongtien">
+                                    <input type="submit" value="Đặt ngay" class="btn btn-primary" name="submitBtn" style="margin: 0 auto">
                                 
                             </div>
                             <br />

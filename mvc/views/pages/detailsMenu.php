@@ -9,8 +9,13 @@
     .chosen-select-deselect,
     .chosen-select-rtl,
     .chosen-select-width {
-        width: 350px;
+        width: 400px;
     }
+    
+    .nice-select.chosen-select {
+        display: none
+    }
+
 </style>
 <section id="menu">
 <div class="row" style="margin-top:100px">
