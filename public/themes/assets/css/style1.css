@@ -489,7 +489,8 @@ header .navbar {
     justify-content: center;
     line-height: 1;
     padding: 8px 15px;
-    font-size: 16px
+    font-size: 20px
+    /* color:white; font-size:20px; text-align:center */
 }
 
 .btn,
@@ -515,7 +516,7 @@ header .navbar {
 }
 
 .btn:hover {
-    border: 2px solid #116333
+    border: 2px solid #116333;
 }
 
 .btn:hover,
