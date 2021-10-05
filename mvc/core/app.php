@@ -11,7 +11,7 @@ class App {
         //print_r($arr);
         
         // Xử lý controller
-        if(isset($arr[1])){
+        if(isset($arr[0])){
             if(file_exists("./mvc/controllers/".$arr[0].".php")){
                 $this->controller = $arr[0];
                 unset($arr[0]);
