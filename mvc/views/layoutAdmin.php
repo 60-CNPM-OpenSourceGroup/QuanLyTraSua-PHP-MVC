@@ -88,14 +88,7 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item active">
-                <a class="tabA" href="login/logout">
-                    <span class="nav-link">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                        <span>Test Đăng xuất</span>
-                    </span>
-                </a>
-            </li>
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -253,12 +246,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-shopping-cart" style=" color: #4e73df"></i><span style=" color: red">&nbsp;(0)</span>
-                            </a>
-                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>`
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -321,7 +309,7 @@
                     <div class="modal-body">Chọn "Đăng xuất" bên dưới nếu bạn thật sự muốn kết thúc phiên làm việc hiện tại của mình.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                        <a class="btn btn-primary" href="#">Đăng xuất</a>
+                        <a class="btn btn-primary" href="login/logout">Đăng xuất</a>
                     </div>
                 </div>
             </div>
