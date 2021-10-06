@@ -18,6 +18,31 @@
     th {
         background-color: #116333;
     }
+
+    #clearAll {
+        text-align: right;
+        font-size: 20px;
+        margin-right: 50px;
+    }
+    #clearAll a, #btnSm{
+        border-radius: 15px;
+        background-color: #116333;
+        border: 1px solid black;
+        padding: 5px;
+        color: black;
+    }
+
+    #btnSm {
+        width: 50px;
+    }
+    #clearAll a:hover, #btnSm:hover{
+        color: white;
+    }
+    #changeSL {
+        width: 50px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
 </style>
 <section id="menu">
 <div style="margin-top:100px; margin-bottom: 32px;">
@@ -31,6 +56,7 @@
             $tongTien = 0;
             $tongTatCa = 0;
             $tongSL = 0;
+            echo '<p id="clearAll"><a href="GioHang/DeleteAll">Xóa tất cả</a></p>';
             echo '<table>
                 <tr>
                     <th>Hình ảnh</th>
@@ -45,7 +71,7 @@
                     <th>Thành tiền</th>
                     <th></th>
                 </tr>';
-                foreach($_SESSION['cart'] as $item)
+                foreach($_SESSION['cart'] as $key => $item)
                 {
                     $tongSL += $item['soluong'];
                     $tongTienTP = 0;
@@ -73,7 +99,12 @@
                     echo '<tr>
                         <td><img height="100px" width="100px" src="public/upload/douong/'.$item['doUong']['HinhAnh'].'" /></td>';
                         echo '<td>'.$item['doUong']['TenDU'].'</td>';
-                        echo '<td>'.$item['soluong'].'</td>';
+                        echo '<td>
+                                <form action="GioHang/ThayDoiSL/'.$key.'" method="post">
+                                    <input type="number" value="'.$item['soluong'].'" name="changeSL" id="changeSL" min="1" step="1">
+                                    <input type="submit" value="Lưu" name="btnSm" id="btnSm">
+                                </form>
+                            </td>';
                         echo '<td>'.$item['size'].'</td>';
                         echo '<td>'.$item['da'].'</td>';
                         echo '<td>'.$item['duong'].'</td>';
@@ -88,10 +119,9 @@
                         echo '<td>'.$item["soluong"].' x '.$tienTS.'</td>';
                         echo '<td>'.$item["soluong"].' x '.$tongTienTP.'</td>';
                         echo '<td>'.$tongTien.'</td>';
-                        echo '<td><span style="color:red">Xóa</span></td>';
+                        echo '<td><a href="GioHang/Delete/'.$key.'"><span style="color:red">Xóa</span></a></td>';
                     echo '</tr>';
                 }
-    
             echo '</table>';
             echo '<div style="float:right; font-size: 24px; font-weight:bold; margin-right: 40px">Tổng hóa đơn: '.$tongTatCa.'</div>';
             if ($tongSL < 2)

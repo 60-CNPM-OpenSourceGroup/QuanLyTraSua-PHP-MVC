@@ -1,6 +1,33 @@
-<link rel="stylesheet" href="public/bootstrap-chosen/chosen.css">
 <link href="public/Client/details.css" rel="stylesheet" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+    $(document).ready(
+        function() {
+            $("#themSL").click(
+                function() {
+                    var sl = eval($("#quantity").val() + "+ 1");
+                    $("#quantity").val(sl);
+                }
+            )
+            $("#botSL").click(
+                function() {
+                    if (eval($("#quantity").val()) > 1) {
+                        var sl = eval($("#quantity").val() + "- 1");
+                        $("#quantity").val(sl);
+                    }
+                }
+            )
+            var giaBanDau = $("#DonGia").val();
+            $(':radio[name="size"]').change(function() {
+                if (this.value == "M") {
+                    $("#DonGia").val(giaBanDau);
+                } else {
+                    $("#DonGia").val(eval(giaBanDau + "+ 5000"));
+                }
+            });
+        }
+    )
+</script>
 <style>
     .select,
     .chosen-select,
@@ -12,8 +39,10 @@
         width: 400px;
     }
     
-    .nice-select.chosen-select {
-        display: none
+    #tpTable {
+        text-align: left;
+        width: 100%;
+        padding: 10px;
     }
 
 </style>
@@ -128,13 +157,17 @@
             <!--Chọn món thêm-->
             <div class="monthem">
                 <label style="font-size: 18px">Món thêm</label>
-                <select name="listTP[]" class="chosen-select" multiple="multiple">
+                <table id="tpTable">
                     <?php
-                    foreach ($data["listTP"] as $tp) {
-                        echo '<option value="' . $tp["MaTP"] . '">' . $tp["TenTP"] . '</option>';
-                    }
+                        for($i = 0; $i < count($data["listTP"]); $i = $i + 3) {
+                            echo '<tr>';
+                            if(isset($data["listTP"][$i])) echo '<td><input type="checkbox" name="listTP[]" value="'.$data["listTP"][$i]["MaTP"].'">'.$data["listTP"][$i]["TenTP"].'</td>';
+                            if(isset($data["listTP"][$i+1])) echo '<td><input type="checkbox" name="listTP[]" value="'.$data["listTP"][$i+1]["MaTP"].'">'.$data["listTP"][$i+1]["TenTP"].'</td>';
+                            if(isset($data["listTP"][$i+2])) echo '<td><input type="checkbox" name="listTP[]" value="'.$data["listTP"][$i+2]["MaTP"].'">'.$data["listTP"][$i+2]["TenTP"].'</td>';
+                            echo '</tr>';
+                        } 
                     ?>
-                </select>
+                </table>
             </div>
             <!--End chọn món thêm-->
             <div>
@@ -153,37 +186,3 @@
     <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
 </div>
 </section>
-
-<script src="public/bootstrap-chosen/chosen.jquery.js" type="text/javascript"></script>
-<script src="public/bootstrap-chosen/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
-<script src="public/bootstrap-chosen/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    $(document).ready(
-        function() {
-            $("#themSL").click(
-                function() {
-                    var sl = eval($("#quantity").val() + "+ 1");
-                    $("#quantity").val(sl);
-                }
-            )
-            $("#botSL").click(
-                function() {
-                    if (eval($("#quantity").val()) > 1) {
-                        var sl = eval($("#quantity").val() + "- 1");
-                        $("#quantity").val(sl);
-                    }
-                }
-            )
-            var giaBanDau = $("#DonGia").val();
-            $(':radio[name="size"]').change(function() {
-                if (this.value == "M") {
-                    $("#DonGia").val(giaBanDau);
-                } else {
-                    $("#DonGia").val(eval(giaBanDau + "+ 5000"));
-                }
-            });
-            $(".chosen-select").chosen();
-
-        }
-    )
-</script>

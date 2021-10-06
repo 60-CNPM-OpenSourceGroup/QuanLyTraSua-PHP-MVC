@@ -69,11 +69,42 @@ class GioHang extends Controller {
             return $this->redirectTo("GioHang", "Announce");
         }
     }
+
+    public function Delete($id) {
+        $listItemInCart = $_SESSION["cart"];
+        array_splice($listItemInCart, $id, 1);
+        $_SESSION["cart"] = $listItemInCart;
+        return $this->redirectTo("GioHang", "Index");
+    }
+
+    public function DeleteAll() {
+        unset($_SESSION["cart"]);
+        return $this->redirectTo("GioHang", "Index");
+    }
     
     public function Announce() {
         return $this->view('layoutCustomer', [
             'page' => 'announceGioHang'
         ]);
     }
+
+    public function ThayDoiSL($id)
+    {
+        if(isset($_POST['changeSL'])) {
+            $listItemInCart = $_SESSION["cart"];
+            $listItemInCart[$id]['soluong'] = $_POST['changeSL'];
+            $_SESSION["cart"] = $listItemInCart;
+            return $this->redirectTo("GioHang", "Index");
+        }
+    }
+
+    public function temp()
+    {
+        if(isset($_SESSION['cart'])) {
+            echo '<pre>';
+            print_r($_SESSION['cart']);
+            echo '</pre>';
+        }
+    } 
 } 
 ?>

@@ -120,12 +120,5 @@ class Menu extends Controller{
             $this->redirectTo("Menu", "Index");
         }
     }
-    public function temp()
-    {
-        echo '<pre>';
-        print_r($_SESSION['cart']);
-        echo '</pre>';
-        echo date("dmY");
-    }   
 }
 ?>
