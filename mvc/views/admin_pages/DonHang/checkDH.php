@@ -16,7 +16,7 @@
     .checkform {
         display: flex;
         justify-content: center;
-        margin-top: 6rem;
+        margin-top: 8rem;
         
     }
     .content{
@@ -77,81 +77,48 @@
         });
     });
 </script>
-<?php
-$date = str_replace('-', '/', $data['donhang']['NgayLap']);
-?>
+
 <div class="checkform">
     <div class="content">
-        <h3 class="title">BẠN CÓ CHẮC MUỐN XÓA ĐƠN NÀY?</h3>
+        <h3 class="title">DUYỆT THÔNG TIN HÓA ĐƠN HÀNG</h3>
 
-        <form action="DonHang/Confirm/<?php echo $data['donhang']['MaHD'] ?>" method="post" enctype="multipart/form-data">
+        <form action="DonHang/Save/<?php echo $data["listDH"]['MaHD'] ?>" method="post" enctype="multipart/form-data">
             <div class="form-horizontal">
                 <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Họ tên: </label>
+                    <label for="" class="control-label col-md-4">Mã đơn hàng: </label>
                     <div class="col-md-8">
-                        <input type="text" readonly class="form-control" value="<?php echo $data['donhang']['HoTen'] ?>">
-                    </div>
-                </div>
-
-                <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Số điện thoại: </label>
-                    <div class="col-md-8">
-                        <input type="text" readonly class="form-control" value="<?php echo $data['donhang']['Sdt'] ?>">
-                    </div>
-                </div>
-
-                <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Địa chỉ: </label>
-                    <div class="col-md-8">
-                        <input type="text" readonly class="form-control" value="<?php echo $data['donhang']['DiaChi'] ?>">
-                    </div>
-                </div>
-
-                <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Tổng thanh toán: </label>
-                    <div class="col-md-8">
-                        <input type="text" readonly class="form-control" value="<?php echo $data['donhang']['TongTien'] ?>">
-                    </div>
-                </div>
-
-                <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Ngày mua: </label>
-                    <div class="col-md-8">
-                        <input type="text" readonly class="form-control" value="<?php echo date('d/m/Y', strtotime($date)) ?>">
+                        <input type="text" class="form-control" readonly value="<?php echo $data["listDH"]['MaHD'] ?>">
                     </div>
                 </div>
 
                 <div class="form-group1">
                     <label for="" class="control-label col-md-4">Tình trạng: </label>
                     <div class="col-md-8">
-                        <input type="text" readonly class="form-control" value="
-                        <?php 
-                        $tt = ($data['donhang']['TinhTrang'] == 0) ? 'Đơn hủy' : (($data['donhang']['TinhTrang'] == 1) ? 'Đơn chưa kiểm' : 'Đã giao');
-                        echo $tt;
-                        ?>">
+                        <div class="checkbox" style="width: 475px;">
+                            Đơn hủy <input type="radio" name="tinhtrang" id="" value="0" checked> &nbsp;
+                            Chưa kiểm duyệt <input type="radio" name="tinhtrang" id="" value="1"> &nbsp;
+                            Đang giao hàng <input type="radio" name="tinhtrang" id="" value="2">
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Người giao hàng: </label>
+                    <label for="" class="control-label col-md-4">Shipper</label>
                     <div class="col-md-8">
-                        <input type="text" readonly class="form-control" value="<?php 
-                        $n = "";
-                        foreach($data['shipper'] as $s){
-                            if($s['maNV'] == $data['donhang']['MaNV']){
-                                echo $s['tenNV'];
-                            } else {
-                                $n = "Chưa có";
-                            }                           
-                        }  
-                        echo $n;                      
-                        ?>">
+                        <select name="shipper" id="" class="shipper">
+                            <option value="0" class="form-control">Chưa có</option>
+                            <?php
+                            foreach ($data['listShipper'] as $shipper) {
+                                echo '<option value="' . $shipper['maNV'] . '" class = "form-control">' . $shipper['tenNV'] . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-6">
-                        <input type="submit" value="Xóa" class="btn btn-primary" />
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
                     </div>
                     <div class="col-md-offset-2 col-md-6">
                         <button class="comeback">

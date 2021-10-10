@@ -13,14 +13,15 @@
     .row_body {
         vertical-align: middle !important;
     }
-    
+
     table tr:nth-child(even) {
         background-color: aqua;
     }
 
-    .pagination-container{
+    .pagination-container {
         margin-top: 40px;
     }
+
     .pagination li:hover {
         cursor: pointer;
     }
@@ -28,17 +29,20 @@
     .pagination {
         display: inline-block;
     }
-    .pagination li.active{
+
+    .pagination li.active {
         background-color: darkseagreen;
         color: white;
         border-radius: 5px;
     }
+
     .pagination li {
         color: black;
         float: left;
         padding: 8px 16px;
         text-decoration: none;
     }
+
     .pagination li:hover:not(.active) {
         background-color: #ddd;
         border-radius: 5px;
@@ -94,13 +98,25 @@
                 <td class='row_body'>" . $item['TongTien'] . "</td>
                 <td class='row_body'>" . date('d/m/Y', strtotime($date)) . "</td>
                 <td class='row_body'>" . $item['GhiChu'] . "</td>
-                <td class='row_body'>" . $item['TinhTrang'] . "</td>
-                <td class='row_body'>" . "Bảo" . "</td>
+                <td class='row_body'>" . $item['TinhTrang'] . "</td>";
+
+            // var_dump($item['MaNV']);
+
+            foreach ($data['tenNV'] as $ten) {
+                if ($ten['maNV'] == $item['MaNV']) {
+                    echo "<td class='row_body'>" . $ten['tenNV'] . "</td>";
+                }
+                // else {
+                //     echo "<td class='row_body'>Chưa có</td>";
+                // }
+            }
+
+            echo "
                 <td class='row_body'>
-                    <a href='DonHang/Check'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;
-                    <a href='DonHang/Details'><i class='fa fa-info-circle'></i></a>&nbsp;|&nbsp;
-                    <a href='DonHang/Delete'><i class='fa fa-trash'></i></a>&nbsp;|&nbsp;
-                    <a href='DonHang/Print'><i class='fa fa-print'></i></a>
+                    <a href='DonHang/Check/" . $item["MaHD"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;
+                    <a href='DonHang/Details/" . $item["MaHD"] . "'><i class='fa fa-info-circle'></i></a>&nbsp;|&nbsp;
+                    <a href='DonHang/Delete/" . $item["MaHD"] . "'><i class='fa fa-trash'></i></a>&nbsp;|&nbsp;
+                    <a href='DonHang/Print/" . $item["MaHD"] . "'><i class='fa fa-print'></i></a>
                 </td>
             </tr>
             ";
@@ -113,8 +129,8 @@
             <ul class="pagination">
                 <li data-page="prev" class="page-item">
                     <span>
-                    &laquo; <span class="sr-only">(current)
-                    </span></span>
+                        &laquo; <span class="sr-only">(current)
+                        </span></span>
                 </li>
                 <!--	Here the JS Function Will Add the Rows -->
                 <li data-page="next" id="prev">

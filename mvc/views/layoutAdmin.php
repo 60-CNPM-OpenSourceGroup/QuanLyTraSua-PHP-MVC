@@ -12,7 +12,7 @@
     <title>Trang chủ</title>
     <base href="<?php echo BASE; ?>">
     <!-- Custom fonts for this template-->
-    <link href="public/admin/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="public/admin/Admin/vendor/fontawesome-free/css/all.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -24,7 +24,7 @@
     <script src="https://kit.fontawesome.com/9315670d89.js" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template-->
-    <link href="public/admin/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="public/admin/Admin/css/sb-admin-2.min.css?v=<?php echo time(); ?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 
     <style>
@@ -309,15 +309,14 @@
             </div>
         </div>
         <!-- Bootstrap core JavaScript-->
-        <script src="public/admin/Admin/vendor/jquery/jquery.min.js"></script>
-        <script src="public/admin/Admin/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="public/admin/Admin/vendor/jquery/jquery.min.js?v=<?php echo time(); ?>"></script>
+        <script src="public/admin/Admin/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js?v=<?php echo time(); ?>"></script>
         <!-- Core plugin JavaScript-->
-        <script src="public/admin/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="public/admin/Admin/vendor/jquery-easing/jquery.easing.min.js?v=<?php echo time(); ?>"></script>
         <!-- Custom scripts for all pages-->
-        <script src="public/admin/Admin/js/sb-admin-2.min.js"></script>
-        <script src="public/html2pdf.bundle.min.js"></script>
-        <script src="public/jquery.table2excel.js"></script>
-        <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+        <script src="public/admin/Admin/js/sb-admin-2.min.js?v=<?php echo time(); ?>"></script>
+        <script src="public/jquery.table2excel.js?v=<?php echo time(); ?>"></script>
+        <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js?v=<?php echo time(); ?>">
 
         </script>
         <script type="text/javascript">
