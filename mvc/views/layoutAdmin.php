@@ -75,7 +75,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="tabA" href="#">
+                <a class="tabA" href="HomeAdmin/Index">
                     <span class="nav-link">
                         <i class="fas fa-home" aria-hidden="true"></i>
                         <span>Trang chủ</span>
@@ -184,7 +184,7 @@
             </div>
             <!-- Nav Item - Thông tin nhân viên -->
             <li class="nav-item">
-                <a class="tabA" href="#">
+                <a class="tabA" href="nhanvien/indexNV">
                     <span class="nav-link">
                         <i class="fa fa-users"></i>
                         <span>Thông tin nhân viên</span>
@@ -202,7 +202,7 @@
             </li>
             <!-- Nav Item - Nhóm nhân viên -->
             <li class="nav-item">
-                <a class="tabA" href="#">
+                <a class="tabA" href="nhomnhanvien/indexNNV">
                     <span class="nav-link">
                         <i class="fa fa-users"></i>
                         <span>Nhóm nhân viên</span>

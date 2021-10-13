@@ -1,21 +1,21 @@
 <?php
-class NhanVien extends Controller{
+class NhomNhanVien extends Controller{
 
-    public $nvModel;
+    public $nnvModel;
     public function __construct()
     {
         if(!isset($_SESSION["user"])){
             $this->redirectTo("Login", "Index");
         }
-        $this->nvModel = $this->model("NhanVienModel");
+        $this->nvModel = $this->model("NhomNhanVienModel");
     }
 
     function Index(){
-        $listNV = json_decode($this->nvModel->getTenNV(), true);
+        $listNNV = json_decode($this->nvModel->getNNV(), true);
         $this->view("layoutAdmin",
         [
-            "page"=>"nhanvien/indexNV",
-            'listNV' => $listNV
+            "page"=>"nhomnhanvien/indexNNV",
+            'listNNV' => $listNNV
         ]
     );
     }

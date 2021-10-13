@@ -67,42 +67,20 @@
     <table class="table table-striped table-class" id="table-id">
         <tr>
             <th class="row_head">STT</th>
-            <th class="row_head">Mã nhân viên</th>
-            <th class="row_head">Tên nhân viên</th>
-            <th class="row_head">Giới tính</th>
-            <th class="row_head">Ngày sinh</th>
-            <th class="row_head">Địa chỉ</th>
-            <th class="row_head">Số điện thoại</th>
-            <th class="row_head">Hình ảnh</th>
-            <th class="row_head">Nhóm nhân viên</th>
+            <th class="row_head">Mã nhóm nhân viên</th>
+            <th class="row_head">Tên nhóm nhân viên</th>
             <th class="row_head">Chức năng</th>
         </tr>
         <?php
           $i = 1;
-          foreach ($data['listNV'] as $item) { 
+          foreach ($data['listNNV'] as $item) { 
           ?>
             <tr>
             <td><?php echo $i; ?></td>
-              <td><?php echo $item["maNV"]; ?></td>
-              <td><?php echo $item["tenNV"]; ?></td>
-              <td><?php if ($item["gioiTinh"] == 1)
-                    echo "Nam";
-                  else
-                    echo "Nữ";
-                  ?></td>
-              <td><?php 
-              
-              $date = str_replace('-', '/', $item["ngaySinh"]);
-              echo date('d/m/Y', strtotime($date));
-               ?></td>
-              <td><?php echo $item["diaChi"]; ?></td>
-              <td><?php echo $item["sdt"]; ?></td>
-              <td><?php echo $item["hinhAnh"]; ?></td>
               <td><?php echo $item["IDNhom"]; ?></td>
-              <td width="30">
-                    <a href="NhanVien/Edit"><img src="public/upload/topping/edit.png" width="20" height="20" /></a>
-                    <a href="NhanVien/Details"><img src="public/upload/topping/details.png" width="20" height="20" /></a>
-                    <a href="NhanVien/Delete"><img src="public/upload/topping/delete.png" width="20" height="20" /></a>
+              <td><?php echo $item["TenNhom"]; ?></td>
+              <td>
+                    <a href="NhomNhanVien/Delete"><img src="public/upload/topping/delete.png" width="20" height="20" /></a>
                 </td>
             </tr>
           <?php
