@@ -100,8 +100,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Đồ uống</a>
-                        <a class="collapse-item" href="#">Loại đồ uống</a>
+                        <a class="collapse-item" href="DoUong/Index">Đồ uống</a>
+                        <a class="collapse-item" href="LoaiDoUong/Index">Loại đồ uống</a>
                         <a class="collapse-item" href="#">Topping</a>
                         <a class="collapse-item" href="#">Loại topping</a>
                     </div>

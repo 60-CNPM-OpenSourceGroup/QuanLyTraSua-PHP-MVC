@@ -26,7 +26,7 @@
 <hr>
 <div class="row">
     <div class="col-xl-3 col-md-6 mb-4">
-        <a class="card border-left-primary shadow h-100 py-2 stretched-link" href="DoUong/indexDU.php">
+        <a class="card border-left-primary shadow h-100 py-2 stretched-link" href="DoUong/Index">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="col-xl-3 col-md-6 mb-4">
-        <a class="card border-left-success shadow h-100 py-2 stretched-link" href="#">
+        <a class="card border-left-success shadow h-100 py-2 stretched-link" href="LoaiDoUong/Index">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">

@@ -13,10 +13,11 @@
     .row_body {
         vertical-align: middle !important;
     }
-    
-    .pagination-container{
+
+    .pagination-container {
         margin-top: 40px;
     }
+
     .pagination li:hover {
         cursor: pointer;
     }
@@ -24,17 +25,20 @@
     .pagination {
         display: inline-block;
     }
-    .pagination li.active{
+
+    .pagination li.active {
         background-color: darkseagreen;
         color: white;
         border-radius: 5px;
     }
+
     .pagination li {
         color: black;
         float: left;
         padding: 8px 16px;
         text-decoration: none;
     }
+
     .pagination li:hover:not(.active) {
         background-color: #ddd;
         border-radius: 5px;
@@ -77,35 +81,47 @@
             <th class="row_head">Chức năng</th>
         </tr>
         <?php
-          $i = 1;
-          foreach ($data['listDU'] as $item) { 
-          ?>
+        $i = 1;
+        foreach ($data['listDU'] as $item) {
+        ?>
             <tr>
                 <td><?php echo $i; ?></td>
-                <td><?php echo '<img src="public/upload/douong/'.$item['HinhAnh'].'"style ="max-width: 50px">';?></td> 
+                <td><?php echo '<img src="public/upload/douong/' . $item['HinhAnh'] . '"style ="max-width: 50px">'; ?></td>
                 <td><?php echo $item["MaDU"]; ?></td>
                 <td><?php echo $item["TenDU"]; ?></td>
-                <td><?php echo $item['DonGia'] ?></td> 
-                <td><?php 
-                        $date = str_replace('-', '/', $item["NgayThem"]);
-                        echo date('d/m/Y', strtotime($date));
-                ?></td>
+                <td><?php echo $item['DonGia'] ?></td>
+                <td><?php
+                    $date = str_replace('-', '/', $item["NgayThem"]);
+                    echo date('d/m/Y', strtotime($date));
+                    ?></td>
                 <td><?php if ($item["BanChay"] == 1)
                         echo "X";
                     else
-                        echo " ";?>
+                        echo " "; ?>
                 </td>
-                <td><?php echo $item['MaLoaiDU'] ?></td> 
+
+                <td><?php
+
+                    foreach ($data['listTenLoaiDU'] as $loaiDU) {
+                        if ($item["MaLoaiDU"] == $loaiDU['MaLoaiDU']) {
+                            echo $loaiDU['TenLoaiDU'];
+                        }
+                    }
+
+                    ?></td>
+
                 <td>
-                    <a href="DoUong/Edit"><i class="fa fa-edit"></i></a>&nbsp;|&nbsp;
-                    <a href="DoUong/Details"><i class="fa fa-info-circle"></i></a>&nbsp;|&nbsp;
-                    <a href="DoUong/Delete"><i class="fa fa-trash"></i></a>
+                    <?php
+                    echo "<a href='DoUong/Edit/" . $item["MaDU"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;";
+                    echo "<a href='DoUong/Delete/" . $item["MaDU"] . "'><i class='fa fa-trash'></i></a>&nbsp; ";
+                    ?>
                 </td>
             </tr>
-          <?php
+        <?php
             $i++;
-          }
-          ?>
+        }
+
+        ?>
 
     </table>
     <!-- Start Pagination -->
@@ -114,8 +130,8 @@
             <ul class="pagination">
                 <li data-page="prev" class="page-item">
                     <span>
-                    &laquo; <span class="sr-only">(current)
-                    </span></span>
+                        &laquo; <span class="sr-only">(current)
+                        </span></span>
                 </li>
                 <!--	Here the JS Function Will Add the Rows -->
                 <li data-page="next" id="prev">
