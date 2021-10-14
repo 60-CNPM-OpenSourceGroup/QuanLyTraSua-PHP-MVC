@@ -79,7 +79,7 @@
         <?php
           $i = 1;
           foreach ($data['listTP'] as $item) { 
-          ?>
+        ?>
             <tr>
                 <td><?php echo $i; ?></td>
                 <td><?php echo '<img src="public/upload/topping/'.$item['HinhAnh'].'"style ="max-width: 50px">';?></td> 
@@ -88,11 +88,20 @@
                 <td><?php echo $item['DonGia'] ?></td> 
 
               
-                <td><?php echo $item['MaLoaiTP'] ?></td> 
+                <td><?php
+
+                    foreach ($data['listTenLoaiTP'] as $loaiTP) {
+                        if ($item["MaLoaiTP"] == $loaiTP['MaLoaiTP']) {
+                            echo $loaiTP['TenLoaiTP'];
+                        }
+                    }
+
+                    ?></td>
                 <td>
-                    <a href="Topping/Edit"><i class="fa fa-edit"></i></a>&nbsp;|&nbsp;
-                    <a href="Topping/Details"><i class="fa fa-info-circle"></i></a>&nbsp;|&nbsp;
-                    <a href="Topping/Delete"><i class="fa fa-trash"></i></a>
+                   <?php
+                    echo "<a href='Topping/Edit/" . $item["MaTP"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;";
+                    echo "<a href='Topping/Delete/" . $item["MaTP"] . "'><i class='fa fa-trash'></i></a>&nbsp; ";
+                    ?>
                 </td>
             </tr>
           <?php
@@ -111,7 +120,8 @@
                     </span></span>
                 </li>
                 <!--	Here the JS Function Will Add the Rows -->
-                <li data-page="next" id="prev">
+                <li 
+                    data-page="next" id="prev">
                     <span> &raquo; <span class="sr-only">(current)</span></span>
                 </li>
             </ul>

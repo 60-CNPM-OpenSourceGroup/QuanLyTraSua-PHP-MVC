@@ -102,8 +102,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="DoUong/Index">Đồ uống</a>
                         <a class="collapse-item" href="LoaiDoUong/Index">Loại đồ uống</a>
-                        <a class="collapse-item" href="#">Topping</a>
-                        <a class="collapse-item" href="#">Loại topping</a>
+                        <a class="collapse-item" href="Topping/Index">Topping</a>
+                        <a class="collapse-item" href="LoaiTopping/Index">Loại topping</a>
                     </div>
                 </div>
             </li>
