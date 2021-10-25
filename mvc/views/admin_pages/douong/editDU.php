@@ -3,8 +3,7 @@
 		<div class="panel-heading">
 			<h2 class="text-center">Chỉnh sửa đồ uống</h2>
 		</div>
-		<div class="panel-body">
-			<form action="DoUong/Save/<?php echo $data["du"]['MaDU'] ?>" method="post" enctype="multipart/form-data">
+		<form action="DoUong/Save/<?php echo $data["du"]['MaDU'] ?>" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Mã đồ uống:</label>
 					<input required="true" type="text" class="form-control" id="madu" name="madu" disabled value="<?php echo $data['du']['MaDU'] ?>">
@@ -22,8 +21,7 @@
 
 				<div class="form-group">
 					<label>Ảnh đồ uống:</label>
-					<input type="text" class="form-control" name="anhdu" value="<?php echo $data['du']['HinhAnh'] ?>">
-					<input type="file" id="anhdu" name="anhdu" value="<?php echo $data['du']['HinhAnh'] ?>">
+					<input type="file" id="hinh" name="hinh">
 				</div>
 
 				<?php $date = str_replace('-', '/', $data['du']["NgayThem"]); ?>
@@ -45,7 +43,7 @@
 					<select name="loaiDU" class="form-control">
 						<!-- <option value="<?php echo $data["du"]["MaLoaiDU"]; ?>" class="form-control"> -->
 						<?php
-						echo $data["du"]["TenLoaiDU"];
+						// echo $data["du"]["TenLoaiDU"];
 
 						?></option>
 						<?php
@@ -71,6 +69,5 @@
 					</div>
 				</div>
 			</form>
-		</div>
 	</div>
 </div>

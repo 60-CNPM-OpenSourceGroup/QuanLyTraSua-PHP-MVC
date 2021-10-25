@@ -54,16 +54,38 @@ class LoaiDoUong extends Controller
     function Store()
     {
         // thêm thành công
-        //return redirectTo("DoUong", "Index")
-    }
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["maldu"])) {
+                $maldu = $_POST['maldu'];
+            }
+            if (isset($_POST["tenldu"])) {
+                $tenldu = $_POST['tenldu'];
+            }
+            
+        }
+        $this->lduModel->insert($maldu, $tenldu);
 
+        return $this->redirectTo("LoaiDoUong", "Index");
+    }
 
 
     function Save($id)
     {
         //sửa thành công, lưu
         //return redirectTo("DoUong", "Index")
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["tenloaidu"])) {
+                $tenldu = $_POST['tenloaidu'];
+            }
+
+            $save = $this->model("LoaiDoUongModel");
+            $save->update($id, $tenldu);
+        }
+
+        return $this->redirectTo("LoaiDoUong", "Index");
     }
+
+
 
     function Delete($id)
     {
@@ -77,5 +99,14 @@ class LoaiDoUong extends Controller
             ]);
         } else
             echo "Không tìm thấy";
+    }
+
+    function Confirm($id)
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $confirm = $this->model("LoaiDoUongModel");
+            $confirm->delete($id);
+        }
+        return $this->redirectTo("LoaiDoUong", "Index");
     }
 }

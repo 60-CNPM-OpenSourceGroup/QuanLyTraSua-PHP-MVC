@@ -1,18 +1,21 @@
-<div class="container">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h2 class="text-center">Chỉnh sửa loại đồ uống</h2>
-		</div>
-		<div class="panel-body">
-			<form action="" method="post">
-				<div class="form-group">
-					<label>Mã loại đồ uống:</label>
-					<input required="true" type="text" class="form-control" id="maldu" name="maldu" disabled value="<?php echo $data['ldu']['MaLoaiDU'] ?>">
+<div class="checkform">
+	<div class="content">
+		<h3 class="title">Chỉnh sửa loại đồ uống</h3>
+
+		<form action="LoaiDoUong/Save/<?php echo $data["ldu"]['MaLoaiDU'] ?>" method="post">
+			<div class="form-horizontal">
+				<div class="form-group1">
+					<label for="" class="control-label col-md-4">Mã loại đồ uống: </label>
+					<div class="col-md-8">
+						<input type="text" name="maldu" class="form-control" readonly value="<?php echo $data['ldu']['MaLoaiDU'] ?>">
+					</div>
 				</div>
 
-				<div class="form-group">
-					<label>Tên loại sản phẩm:</label>
-					<input required="true" type="text" class="form-control" id="tenldu" name="tenldu" value="<?php echo $data['ldu']['TenLoaiDU'] ?>">
+				<div class="form-group1">
+					<label for="" class="control-label col-md-4">Tên loại đồ uống: </label>
+					<div class="col-md-8">
+						<input type="text" name="tenloaidu" class="form-control" value="<?php echo $data['ldu']['TenLoaiDU'] ?>">
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -25,7 +28,7 @@
 						</button>
 					</div>
 				</div>
-			</form>
-		</div>
+			</div>
+		</form>
 	</div>
 </div>
