@@ -115,22 +115,6 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="tabA" href="#">
-                    <span class="nav-link">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                        <span>Đơn tại quầy</span>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="tabA" href="#">
-                    <span class="nav-link">
-                        <i class="fas fa-cash-register"></i>
-                        <span>Order tại quầy</span>
-                    </span>
-                </a>
-            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -139,7 +123,7 @@
             </div>
             <!-- Nav Item -  Phản hồi-->
             <li class="nav-item">
-                <a class="tabA" href="#">
+                <a class="tabA" href="phanhoi/indexPH">
                     <span class="nav-link">
                         <i class="fa fa-comments"></i>
                         <span>Phản hồi</span>
@@ -191,15 +175,6 @@
                     </span>
                 </a>
             </li>
-            <!-- Nav Item - Tài khoản nhân viên -->
-            <li class="nav-item">
-                <a class="tabA" href="#">
-                    <span class="nav-link">
-                        <i class="fa fa-user-circle"></i>
-                        <span>Tài khoản nhân viên</span>
-                    </span>
-                </a>
-            </li>
             <!-- Nav Item - Nhóm nhân viên -->
             <li class="nav-item">
                 <a class="tabA" href="nhomnhanvien/indexNNV">
@@ -211,7 +186,7 @@
             </li>
             <!-- Nav Item - Phân quyền -->
             <li class="nav-item">
-                <a class="tabA" href="#">
+                <a class="tabA" href="phanquyen/indexPQ">
                     <span class="nav-link">
                         <i class="fa fa-puzzle-piece"></i>
                         <span>Phân quyền</span>
@@ -244,16 +219,22 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@session.UserName</span>
-                                <img class="img-profile rounded-circle" src="@avatar">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php if(isset($_SESSION["user"])) echo $_SESSION["user"]["tenNV"]; ?></span>
+                                <?php 
+                                    if(isset($_SESSION["user"])) {
+                                        $hinhAnh = $_SESSION["user"]["hinhAnh"];
+                                        echo "<img class='img-profile rounded-circle' src='public/upload/nguoidung/$hinhAnh'>";
+                                    }
+                                ?>
+                                
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="canhan/indexCN">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Thông tin tài khoản
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="canhan/doimatkhau">
                                     <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Đổi mật khẩu
                                 </a>

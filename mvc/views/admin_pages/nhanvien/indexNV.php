@@ -13,10 +13,11 @@
     .row_body {
         vertical-align: middle !important;
     }
-    
-    .pagination-container{
+
+    .pagination-container {
         margin-top: 40px;
     }
+
     .pagination li:hover {
         cursor: pointer;
     }
@@ -24,17 +25,20 @@
     .pagination {
         display: inline-block;
     }
-    .pagination li.active{
+
+    .pagination li.active {
         background-color: darkseagreen;
         color: white;
         border-radius: 5px;
     }
+
     .pagination li {
         color: black;
         float: left;
         padding: 8px 16px;
         text-decoration: none;
     }
+
     .pagination li:hover:not(.active) {
         background-color: #ddd;
         border-radius: 5px;
@@ -67,50 +71,50 @@
     <table class="table table-striped table-class" id="table-id">
         <tr>
             <th class="row_head">STT</th>
+            <th class="row_head">Hình ảnh</th>
             <th class="row_head">Mã nhân viên</th>
             <th class="row_head">Tên nhân viên</th>
             <th class="row_head">Giới tính</th>
             <th class="row_head">Ngày sinh</th>
             <th class="row_head">Địa chỉ</th>
             <th class="row_head">Số điện thoại</th>
-            <th class="row_head">Hình ảnh</th>
             <th class="row_head">Nhóm nhân viên</th>
             <th class="row_head">Chức năng</th>
         </tr>
         <?php
-          $i = 1;
-          foreach ($data['listNV'] as $item) { 
-          ?>
+        $i = 1;
+        foreach ($data['listNV'] as $item) {
+        ?>
             <tr>
-            <td><?php echo $i; ?></td>
-              <td><?php echo $item["maNV"]; ?></td>
-              <td><?php echo $item["tenNV"]; ?></td>
-              <td><?php if ($item["gioiTinh"] == 1)
-                    echo "Nam";
-                  else
-                    echo "Nữ";
-                  ?></td>
-              <td><?php 
-              
-              $date = str_replace('-', '/', $item["ngaySinh"]);
-              echo date('d/m/Y', strtotime($date));
-               ?></td>
-              <td><?php echo $item["diaChi"]; ?></td>
-              <td><?php echo $item["sdt"]; ?></td>
-              <td><?php echo $item["hinhAnh"]; ?></td>
-              <td><?php echo $item["IDNhom"]; ?></td>
-              <td width="30">
+                <td><?php echo $i; ?></td>
+                <td><img src="public/upload/nguoidung/<?php echo $item['hinhAnh'] ?>" alt="<?php echo $item['tenNV']?>" width="50" height="50"></td>
+                <td><?php echo $item["maNV"]; ?></td>
+                <td><?php echo $item["tenNV"]; ?></td>
+                <td><?php if ($item["gioiTinh"] == 1)
+                        echo "Nam";
+                    else
+                        echo "Nữ";
+                    ?></td>
+                <td><?php
+
+                    $date = str_replace('-', '/', $item["ngaySinh"]);
+                    echo date('d/m/Y', strtotime($date));
+                    ?></td>
+                <td><?php echo $item["diaChi"]; ?></td>
+                <td><?php echo $item["sdt"]; ?></td>
+                <td><?php echo $item["IDNhom"]; ?></td>
+                <td width="30">
                     <a href="NhanVien/Edit"><img src="public/upload/topping/edit.png" width="20" height="20" /></a>
                     <a href="NhanVien/Details"><img src="public/upload/topping/details.png" width="20" height="20" /></a>
                     <a href="NhanVien/Delete"><img src="public/upload/topping/delete.png" width="20" height="20" /></a>
                 </td>
             </tr>
-          <?php
+        <?php
             $i++;
-          }
-          ?>
+        }
+        ?>
 
-      
+
     </table>
     <!-- Start Pagination -->
     <div class='pagination-container'>
@@ -118,8 +122,8 @@
             <ul class="pagination">
                 <li data-page="prev" class="page-item">
                     <span>
-                    &laquo; <span class="sr-only">(current)
-                    </span></span>
+                        &laquo; <span class="sr-only">(current)
+                        </span></span>
                 </li>
                 <!--	Here the JS Function Will Add the Rows -->
                 <li data-page="next" id="prev">

@@ -11,7 +11,7 @@ class NhanVien extends Controller{
     }
 
     function Index(){
-        $listNV = json_decode($this->nvModel->getTenNV(), true);
+        $listNV = json_decode($this->nvModel->getNV(), true);
         $this->view("layoutAdmin",
         [
             "page"=>"nhanvien/indexNV",
