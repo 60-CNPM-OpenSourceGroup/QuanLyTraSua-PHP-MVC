@@ -11,6 +11,7 @@ class HoaDonModel extends DataBase {
         return json_encode($arr);
     }
 
+
     public function searchMaHDToCreate($id) {
         $qr = "SELECT MaHD FROM hoadon WHERE MaHD LIKE '$id%'";
         $rows = mysqli_query($this->con, $qr);

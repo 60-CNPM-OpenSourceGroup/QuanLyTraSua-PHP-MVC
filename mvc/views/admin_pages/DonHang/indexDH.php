@@ -79,7 +79,6 @@
             <th class="row_head">Địa chỉ</th>
             <th class="row_head">Tổng tiền</th>
             <th class="row_head">Ngày lập</th>
-            <th class="row_head">Ghi chú</th>
             <th class="row_head">Tình trạng</th>
             <th class="row_head">Shipper</th>
             <th class="row_head">Chức năng</th>
@@ -97,19 +96,18 @@
                 <td class='row_body'>" . $item['DiaChi'] . "</td>
                 <td class='row_body'>" . $item['TongTien'] . "</td>
                 <td class='row_body'>" . date('d/m/Y', strtotime($date)) . "</td>
-                <td class='row_body'>" . $item['GhiChu'] . "</td>
                 <td class='row_body'>" . $item['TinhTrang'] . "</td>";
-
-            // var_dump($item['MaNV']);
-
-            foreach ($data['tenNV'] as $ten) {
-                if ($ten['maNV'] == $item['MaNV']) {
-                    echo "<td class='row_body'>" . $ten['tenNV'] . "</td>";
+                if($item['MaNV'] == null) {
+                    echo "<td class='row_body'>Chưa có</td>";
                 }
-                // else {
-                //     echo "<td class='row_body'>Chưa có</td>";
-                // }
-            }
+                else {
+                    foreach($data['NV'] as $nv) {
+                        if($nv['maNV'] == $item['MaNV']) {
+                            echo "<td class='row_body'>".$nv['tenNV']."</td>";
+                        }
+                    }
+                }
+                
 
             echo "
                 <td class='row_body'>

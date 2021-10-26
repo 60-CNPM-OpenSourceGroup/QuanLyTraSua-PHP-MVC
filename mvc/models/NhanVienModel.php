@@ -1,6 +1,6 @@
 <?php
 class NhanVienModel extends DataBase {
-    public function getTenNV()
+    public function getNV()
     {
         $qr = "SELECT * FROM nhanvien";
         $rows = mysqli_query($this->con, $qr);

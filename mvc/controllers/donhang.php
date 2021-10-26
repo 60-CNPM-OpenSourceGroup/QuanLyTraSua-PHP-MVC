@@ -22,13 +22,13 @@ class DonHang extends Controller
     function Index()
     {
         $listHD = json_decode($this->dhModel->listAll(), true);
-        $tenNV = json_decode($this->nvModel->getTenNV(), true);
+        $NV = json_decode($this->nvModel->getNV(), true);
         // $listCTHD = json_decode($this->dhModel->listAll(), true);
 
         $this->view("layoutAdmin", [
             'page' => 'DonHang/indexDH',
             'listHD' => $listHD,
-            'tenNV' => $tenNV
+            'NV' => $NV
             // 'listCTHD' => $listCTHD
         ]);
     }
