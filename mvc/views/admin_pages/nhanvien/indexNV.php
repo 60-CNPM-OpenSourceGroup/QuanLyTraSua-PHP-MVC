@@ -3,34 +3,42 @@
         margin-top: 25px;
         font-size: 1rem;
     }
+
     table th,
     table td {
         text-align: center;
     }
+
     .row_head,
     .row_body {
         vertical-align: middle !important;
     }
+
     .pagination-container {
         margin-top: 40px;
     }
+
     .pagination li:hover {
         cursor: pointer;
     }
+
     .pagination {
         display: inline-block;
     }
+
     .pagination li.active {
         background-color: darkseagreen;
         color: white;
         border-radius: 5px;
     }
+
     .pagination li {
         color: black;
         float: left;
         padding: 8px 16px;
         text-decoration: none;
     }
+
     .pagination li:hover:not(.active) {
         background-color: #ddd;
         border-radius: 5px;
@@ -40,9 +48,9 @@
 // echo "INDEX ĐỒ UỐNG";
 ?>
 <section>
-    <h3 class="text-center">DANH SÁCH NHÂN VIÊN</h3>
-    <a href="DoUong/Create">
-        <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Nhân Viên</button>
+    <h3>DANH SÁCH NHÂN VIÊN</h3>
+    <a href="NhanVien/Create">
+        <button class="btn btn-success" style="margin-bottom: 15px;">Thêm mới</button>
     </a>
 
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
@@ -94,11 +102,21 @@
                     ?></td>
                 <td><?php echo $item["diaChi"]; ?></td>
                 <td><?php echo $item["sdt"]; ?></td>
-                <td><?php echo $item["IDNhom"]; ?></td>
+                <td><?php
+
+                    foreach ($data['listTenNhomNV'] as $nhomNV) {
+                        if ($item["IDNhom"] == $nhomNV['IDNhom']) {
+                            echo $nhomNV['TenNhom'];
+                        }
+                    }
+
+                    ?></td>
                 <td width="30">
-                    <a href="NhanVien/Edit"><img src="public/upload/topping/edit.png" width="20" height="20" /></a>
-                    <a href="NhanVien/Details"><img src="public/upload/topping/details.png" width="20" height="20" /></a>
-                    <a href="NhanVien/Delete"><img src="public/upload/topping/delete.png" width="20" height="20" /></a>
+                    <?php
+                    echo "<a href='NhanVien/Edit/" . $item["maNV"] . "'><img src='public/upload/topping/edit.png' width='20' height='20'/></a>&nbsp; ";
+                    echo "<a href='NhanVien/Details/" . $item["maNV"] . "'><img src='public/upload/topping/details.png' width='20' height='20'/></a>&nbsp; ";
+                    echo "<a href='NhanVien/Delete/" . $item["maNV"] . "'><img src='public/upload/topping/delete.png' width='20' height='20'/></a>&nbsp; ";
+                    ?>
                 </td>
             </tr>
         <?php

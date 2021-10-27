@@ -31,7 +31,7 @@
                 if(empty($_POST["email"]) || empty($_POST["password"])){
                     $this->view("login",
                     [
-                        "result"=>$result_mess,
+                        "result1"=>$result_mess,
                     ]);
                 }
                 // mớ này email đúng mk đúng thì vào trang HomeAdmin index

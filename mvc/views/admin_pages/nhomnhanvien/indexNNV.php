@@ -44,9 +44,9 @@
 // echo "INDEX ĐỒ UỐNG";
 ?>
 <section>
-    <h3 class="text-center">DANH SÁCH NHÂN VIÊN</h3>
-    <a href="DoUong/Create">
-        <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Nhân Viên</button>
+    <h3>DANH SÁCH NHÓM NHÂN VIÊN</h3>
+    <a href="NhomNhanVien/Create">
+        <button class="btn btn-success" style="margin-bottom: 15px;">Thêm mới</button>
     </a>
 
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
@@ -79,8 +79,10 @@
             <td><?php echo $i; ?></td>
               <td><?php echo $item["IDNhom"]; ?></td>
               <td><?php echo $item["TenNhom"]; ?></td>
-              <td>
-                    <a href="NhomNhanVien/Delete"><img src="public/upload/topping/delete.png" width="20" height="20" /></a>
+              <td width="30">
+                    <?php
+                    echo "<a href='NhomNhanVien/Delete/" . $item["IDNhom"] . "'><img src='public/upload/topping/delete.png' width='20' height='20'/></a>&nbsp; ";
+                    ?>
                 </td>
             </tr>
           <?php

@@ -57,6 +57,14 @@
                                                 </div>";
                                             }
                                         }
+                                        if (isset($data["result1"])) {
+                                            if ($data["result1"] == true) {
+                                            } else {
+                                                echo "<div class='alert-danger' style='padding-left:10px;'>
+                                                • Tên đăng nhập hoặc mật khẩu không được để trống.
+                                                </div>";
+                                            }
+                                        }
                                         ?>
                                         <div class="form-group">
                                             <?php echo "<br>"; ?>

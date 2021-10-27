@@ -44,6 +44,17 @@ class NhanVienModel extends DataBase {
         return json_encode($arr);
     }
 
+    public function insert($manv, $tennv, $gioitinh, $ngaysinh, $diachi, $email, $password, $sdt, $hinhanh, $nhomNV)
+    {
+        $qr = "INSERT INTO nhanvien VALUES ('" . $manv . "', '" . $tennv . "','" . $gioitinh . "', '" . $ngaysinh . "', '" . $diachi . "','" . $email . "','" . $password . "', '" . $sdt . "', '" . $hinhanh .  "', '" . $nhomNV . "')";
+        return mysqli_query($this->con, $qr);
+    }
+
+    public function delete($manv) {
+        $qr = "DELETE FROM nhanvien WHERE maNV = '$manv'";
+        return mysqli_query($this->con, $qr);
+    }
+
     public function update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $hinhAnh)
     {
         // Có update hình ảnh
