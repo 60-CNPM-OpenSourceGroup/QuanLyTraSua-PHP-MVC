@@ -3,42 +3,34 @@
         margin-top: 25px;
         font-size: 1rem;
     }
-
     table th,
     table td {
         text-align: center;
     }
-
     .row_head,
     .row_body {
         vertical-align: middle !important;
     }
-
     .pagination-container {
         margin-top: 40px;
     }
-
     .pagination li:hover {
         cursor: pointer;
     }
-
     .pagination {
         display: inline-block;
     }
-
     .pagination li.active {
         background-color: darkseagreen;
         color: white;
         border-radius: 5px;
     }
-
     .pagination li {
         color: black;
         float: left;
         padding: 8px 16px;
         text-decoration: none;
     }
-
     .pagination li:hover:not(.active) {
         background-color: #ddd;
         border-radius: 5px;
@@ -87,7 +79,7 @@
         ?>
             <tr>
                 <td><?php echo $i; ?></td>
-                <td><img src="public/upload/nguoidung/<?php echo $item['hinhAnh'] ?>" alt="<?php echo $item['tenNV']?>" width="50" height="50"></td>
+                <td><img src="public/upload/nguoidung/<?php echo $item['hinhAnh'] ?>" alt="<?php echo $item['tenNV'] ?>" width="50" height="50"></td>
                 <td><?php echo $item["maNV"]; ?></td>
                 <td><?php echo $item["tenNV"]; ?></td>
                 <td><?php if ($item["gioiTinh"] == 1)

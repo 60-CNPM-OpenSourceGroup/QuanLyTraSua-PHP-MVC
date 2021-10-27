@@ -134,36 +134,6 @@
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
-                Thống kê
-            </div>
-            <li class="nav-item">
-                <a class="tabA" href="#">
-                    <span class="nav-link">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>Theo sản phẩm</span>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="tabA" href="#">
-                    <span class="nav-link">
-                        <i class="fas fa-chart-pie"></i>
-                        <span>Theo hình thức KD</span>
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="tabA" href="#">
-                    <span class="nav-link">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Theo tháng</span>
-                    </span>
-                </a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
                 Người dùng
             </div>
             <!-- Nav Item - Thông tin nhân viên -->

@@ -11,6 +11,17 @@ class NhanVienModel extends DataBase {
         return json_encode($arr);
     }
 
+    public function getNhanVienById($id)
+    {
+        $qr = "SELECT * FROM nhanvien, nhomnhanvien WHERE nhanvien.IDNhom = nhomnhanvien.IDNhom AND nhanvien.maNV = '$id'";
+        $rows = mysqli_query($this->con, $qr);
+        $arr = array();
+        while($row = mysqli_fetch_array($rows)) {
+            $arr[] = $row;
+        }
+        return json_encode($arr);
+    }
+
     public function listShipper()
     {
         $qr = "SELECT * FROM nhanvien, nhomnhanvien WHERE nhanvien.IDNhom = nhomnhanvien.IDNhom AND nhanvien.IDNhom = 'SHIPPER'";
@@ -31,6 +42,27 @@ class NhanVienModel extends DataBase {
             $arr[] = $row;
         }
         return json_encode($arr);
+    }
+
+    public function update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $hinhAnh)
+    {
+        // Có update hình ảnh
+        if($hinhAnh != null){
+            $qr = "UPDATE nhanvien SET tenNV = '$tenNV',
+            ngaySinh = '$ngaySinh', gioiTinh = '$gioiTinh', diaChi = '$diaChi',
+            hinhAnh = '$hinhAnh', sdt ='$sdt' WHERE maNV = '$maNV'";
+        }
+        else {
+            $qr = "UPDATE nhanvien SET tenNV = '$tenNV',
+            ngaySinh = '$ngaySinh', gioiTinh = '$gioiTinh', diaChi = '$diaChi',
+            sdt ='$sdt' WHERE maNV = '$maNV'";
+        }
+        return mysqli_query($this->con, $qr);
+    }
+
+    public function doiMK($maNV, $matKhauMoi) {
+        $qr = "UPDATE nhanvien SET password = '$matKhauMoi' WHERE maNV = '$maNV'";
+        return mysqli_query($this->con, $qr);
     }
 }
 ?>

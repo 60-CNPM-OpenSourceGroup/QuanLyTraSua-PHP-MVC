@@ -132,55 +132,7 @@
     </div>
 </div>
 <br />
-<p>THỐNG KÊ</p>
-<hr>
-<div class="row">
-    <div class="col-xl-3 col-md-6 mb-4">
-        <a class="card border-left-primary shadow h-100 py-2 stretched-link" href="#">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="h5 mb-0 font-weight-bold text-primary text-uppercase">Theo Sản Phẩm</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-chart-bar fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
 
-    <div class="col-xl-3 col-md-6 mb-4">
-        <a class="card border-left-success shadow h-100 py-2 stretched-link notification" href="#">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="h5 mb-0 font-weight-bold text-success text-uppercase">Theo Hình Thức KD</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-chart-pie fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-xl-3 col-md-6 mb-4">
-        <a class="card border-left-info shadow h-100 py-2 stretched-link notification" href="#">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="h5 mb-0 font-weight-bold text-info text-uppercase">Theo Tháng</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-chart-line fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<br />
 <p>NGƯỜI DÙNG</p>
 <hr>
 <div class="row">
