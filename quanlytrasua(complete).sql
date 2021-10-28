@@ -7,6 +7,9 @@
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
+create database quanlytrasua;
+use quanlytrasua;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
