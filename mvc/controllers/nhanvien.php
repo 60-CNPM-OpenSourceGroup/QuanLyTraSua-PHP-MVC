@@ -160,8 +160,14 @@ class NhanVien extends Controller{
                 $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, null);
             }
             if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
-                if($tenAnh != "") $_SESSION['user']['hinhAnh'] = $tenAnh;
-                $_SESSION['user']['tenNV'] = $tenNV;
+                if($_SESSION['user']['maNV'] == $maNV) 
+                {
+                    if($tenAnh != "") {
+                        $_SESSION['user']['hinhAnh'] = $tenAnh;
+                    }
+                    $_SESSION['user']['tenNV'] = $tenNV;
+                    
+                }
                 $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
                 return $this->redirectTo('NhanVien', 'IndexNV');
             }

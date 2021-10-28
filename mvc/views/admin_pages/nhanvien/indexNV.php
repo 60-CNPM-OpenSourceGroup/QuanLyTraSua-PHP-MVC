@@ -52,7 +52,14 @@
     <a href="NhanVien/Create">
         <button class="btn btn-success" style="margin-bottom: 15px;">Thêm mới</button>
     </a>
-
+    <?php
+    if(isset($_SESSION['thongbao'])) {
+        echo "<div class='alert alert-success'>";
+        echo $_SESSION['thongbao'];
+        echo "</div>";
+        unset($_SESSION['thongbao']);
+    }
+    ?>
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
         <div>
