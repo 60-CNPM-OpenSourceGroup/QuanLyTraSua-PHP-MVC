@@ -50,15 +50,18 @@
         <div class="row">
             <div class="col-md-6"><b>Nhân viên giao hàng:</b>
                 <?php
-                $n = "";
-                foreach ($data['shipper'] as $s) {
-                    if ($s['maNV'] == $data['ttkh']['MaNV']) {
-                        echo $s['tenNV'];
-                    } else {
-                        $n = "Chưa có";
+
+                $s = "";
+                if ($data['ttkh']['MaNV'] == NULL) {
+                    echo $s = "Chưa có";
+                } else {
+                    foreach ($data['shipper'] as $s) {
+                        if ($s['maNV'] == $data['ttkh']['MaNV']) {
+                            echo $s['tenNV'];
+                        }
                     }
                 }
-                echo $n;
+
                 ?>
             </div>
             <div class="col-md-6">
@@ -144,5 +147,5 @@
     </div>
 </div>
 <div style="margin-top: 1.5rem;">
-    <a href="javascript:window.history.back(-1);" class="btn btn-primary">Trở về</a>
+    <a href="DonHang/Index" class="btn btn-primary">Trở về</a>
 </div>

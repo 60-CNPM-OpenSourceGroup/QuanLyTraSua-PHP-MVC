@@ -50,7 +50,7 @@
 </style>
 
 <section>
-    <h3>DANH SÁCH ĐƠN ĐẶT HÀNG TRỰC TUYẾN</h3>
+    <h3>DANH SÁCH PHẢN HỒI CỦA KHÁCH HÀNG</h3>
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
         <div>
@@ -74,50 +74,35 @@
         <tr>
             <th class="row_head">STT</th>
             <th class="row_head">Họ tên</th>
-            <th class="row_head">Tổng tiền</th>
-            <th class="row_head">Ngày mua</th>
+            <th class="row_head">Số điện thoại</th>
+            <th class="row_head">Nội dung</th>
+            <th class="row_head">Ngày gửi</th>
             <th class="row_head">Tình trạng</th>
-            <th class="row_head">Shipper</th>
             <th class="row_head">Chức năng</th>
         </tr>
         <?php
         $stt = 1;
-        foreach ($data['listHD'] as $item) {
-            $date = str_replace('-', '/', $item["NgayLap"]);
+        foreach ($data['ph'] as $item) {
+            $date = str_replace('-', '/', $item["ngayGui"]);
             echo "
             <tr>
                 <td class='row_body'>" . ($stt++) . "</td>
-                <td class='row_body'>" . $item['HoTen'] . "</td>
-                <td class='row_body'>" . $item['TongTien'] . "</td>
+                <td class='row_body'>" . $item['hoTen'] . "</td>
+                <td class='row_body'>" . $item['sdt'] . "</td>
+                <td class='row_body'>" . $item['noiDung'] . "</td>
                 <td class='row_body'>" . date('d/m/Y', strtotime($date)) . "</td>";
-                if($item['TinhTrang'] == 0) {
-                    echo "<td class='row_body'>Đơn hủy</td>";
-                }
-                else if($item['TinhTrang'] == 1){
-                    echo "<td class='row_body'>Chờ kiểm đơn</td>";
-                }
-                else if($item['TinhTrang'] == 2){
-                    echo "<td class='row_body'>Đã giao hàng</td>";
-                }
-
-                if($item['MaNV'] == null) {
-                    echo "<td class='row_body'>Chưa có</td>";
+                if($item['tinhTrang'] == 1) {
+                    echo "<td class='row_body'>Chưa xử lý</td>";
                 }
                 else {
-                    foreach($data['NV'] as $nv) {
-                        if($nv['maNV'] == $item['MaNV']) {
-                            echo "<td class='row_body'>".$nv['tenNV']."</td>";
-                        }
-                    }
+                    echo "<td class='row_body'>Đã xử lý</td>";
                 }
                 
 
             echo "
                 <td class='row_body'>
-                    <a href='DonHang/Check/" . $item["MaHD"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;
-                    <a href='DonHang/Details/" . $item["MaHD"] . "'><i class='fa fa-info-circle'></i></a>&nbsp;|&nbsp;
-                    <a href='DonHang/Delete/" . $item["MaHD"] . "'><i class='fa fa-trash'></i></a>&nbsp;|&nbsp;
-                    <a href='DonHang/Print/" . $item["MaHD"] . "'><i class='fa fa-print'></i></a>
+                    <a href='QuanLyPH/Write/" . $item["id"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;
+                    <a href='QuanLyPH/Delete/" . $item["id"] . "'><i class='fa fa-trash'></i>
                 </td>
             </tr>
             ";

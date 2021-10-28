@@ -26,7 +26,6 @@
     }
     .title {
         padding-bottom: 1.5rem;
-        text-align: center;
     }
     .form-group {
         display: flex;
@@ -81,49 +80,40 @@
 
 <div class="checkform">
     <div class="content">
-        <h3 class="title">DUYỆT ĐƠN HÀNG</h3>
+        <h3 class="title">BẠN CÓ CHẮC MUỐN XÓA PHẢN HỒI NÀY?</h3>
 
-        <form action="DonHang/Save/<?php echo $data["listDH"]['MaHD'] ?>" method="post" enctype="multipart/form-data">
+        <form action="QuanLyPH/Confirm/<?php echo $data["ph"]['id'] ?>" method="post" enctype="multipart/form-data">
             <div class="form-horizontal">
                 <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Mã đơn hàng: </label>
+                    <label for="" class="control-label col-md-4">Tên khách hàng: </label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" readonly value="<?php echo $data["listDH"]['MaHD'] ?>">
+                        <input type="text" name="tenkh" class="form-control" readonly value="<?php echo $data["ph"]['hoTen'] ?>">
                     </div>
                 </div>
 
                 <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Tình trạng: </label>
+                    <label for="" class="control-label col-md-4">Địa chỉ mail: </label>
                     <div class="col-md-8">
-                        <div class="checkbox" style="width: 475px;">
-                            Đơn hủy <input type="radio" name="tinhtrang" id="" value="0"> &nbsp;
-                            Chưa kiểm duyệt <input type="radio" name="tinhtrang" id="" value="1" checked> &nbsp;
-                            Đang giao hàng <input type="radio" name="tinhtrang" id="" value="2">
-                        </div>
+                        <input type="text" name="email" class="form-control" readonly value="<?php echo $data["ph"]['email'] ?>">
                     </div>
                 </div>
 
                 <div class="form-group1">
-                    <label for="" class="control-label col-md-4">Shipper</label>
+                    <label for="" class="control-label col-md-4">Nội dung: </label>
                     <div class="col-md-8">
-                        <select name="shipper" id="" class="shipper">
-                            <option value="null" class="form-control">Chưa có</option>
-                            <?php
-                            foreach ($data['listShipper'] as $shipper) {
-                                echo '<option value="' . $shipper['maNV'] . '" class = "form-control">' . $shipper['tenNV'] . '</option>';
-                            }
-                            ?>
-                        </select>
+                        <textarea readonly name="noidung" rows="4" cols="50" class="form-control" id="noiDung" required style="font-size: 15px">
+                            <?php echo $data["ph"]['noiDung'] ?>
+                        </textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-6">
-                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                        <input type="submit" value="Xóa" class="btn btn-primary" />
                     </div>
                     <div class="col-md-offset-2 col-md-6">
                         <button class="comeback">
-                            <a href="DonHang/Index">Quay lại</a>
+                            <a href="javascript:window.history.back(-1);">Quay lại</a>
                         </button>
                     </div>
                 </div>

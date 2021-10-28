@@ -1,4 +1,3 @@
-
 <style>
     input#ngaySinh {
         background-color: white;
@@ -69,7 +68,7 @@
             <div class="col-lg-12">
                 <div class="checkform">
                     <div class="content">
-                        <h3 style="text-align: center; color: red;" class="title">ĐƠN HÀNG NÀY ĐÃ GIAO HOẶC ĐÃ HỦY. KHÔNG THỂ THAO SỬA ĐỔI NỮA !!!</h3>
+                        <h3 style="text-align: center; color: red;" class="title">THAO TÁC CỦA BẠN ĐÃ THÀNH CÔNG !!!</h3>
 
                         <div class="comback">
                             <a href="DonHang/Index">Quay lại</a>

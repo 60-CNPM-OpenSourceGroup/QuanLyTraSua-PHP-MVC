@@ -28,15 +28,16 @@
             <div class="col-md-6"><b>Địa chỉ: </b> <?php echo $data['ttkh']['DiaChi'] ?></div>
             <div class="col-md-6"><b>Nhân viên giao hàng:</b>
                 <?php
-                $n = "";
-                foreach ($data['shipper'] as $s) {
-                    if ($s['maNV'] == $data['ttkh']['MaNV']) {
-                        echo $s['tenNV'];
-                    } else {
-                        $n = "Chưa có";
+                $s = "";
+                if ($data['ttkh']['MaNV'] == NULL) {
+                    echo $s = "Chưa có";
+                } else {
+                    foreach ($data['shipper'] as $s) {
+                        if ($s['maNV'] == $data['ttkh']['MaNV']) {
+                            echo $s['tenNV'];
+                        }
                     }
                 }
-                echo $n;
                 ?>
             </div>
         </div>
@@ -118,7 +119,7 @@
         <a id="printPDF" class="btn btn-primary">In hóa đơn</a>
     </div>
     <div style="margin-top: 1.5rem;">
-        <a href="javascript:window.history.back(-1);" class="btn btn-light" style="background-color: #d7d8db;">Trở về</a>
+        <a href="DonHang/Index" class="btn btn-light" style="background-color: #d7d8db;">Trở về</a>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
