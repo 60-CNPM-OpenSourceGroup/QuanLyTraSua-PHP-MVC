@@ -31,7 +31,31 @@ class DoUong extends Controller
             [
                 "page" => "douong/indexDU",
                 'listDU' => $listDU,
-                'listTenLoaiDU' => $listTenLoaiDU
+                'listTenLoaiDU' => $listTenLoaiDU,
+            ]
+        );
+    }
+
+    function TimKiem()
+    {       
+        $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
+        // $tukhoa ="";
+        //  $db_tk = [];
+        if(isset($_POST['tukhoa'])){
+            $tukhoa = $_POST['tukhoa'];
+            $db_tk = json_decode($this->duModel->TimKiemDU($tukhoa), true);
+        }
+        
+
+        // trả về list đồ uống
+        $this->view(
+            "layoutAdmin",
+            [
+                "page" => "douong/timkiem",
+                // 'listDU' => $listDU,
+                'listTenLoaiDU' => $listTenLoaiDU,
+                "timkiem" => $db_tk,
+                // "thongbao" => $tb
             ]
         );
     }

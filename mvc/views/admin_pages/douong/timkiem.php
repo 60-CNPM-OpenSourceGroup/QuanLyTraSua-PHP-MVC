@@ -62,7 +62,6 @@
             </form>
         </div>
     </div>
-
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
         <div>
@@ -92,7 +91,8 @@
         </tr>
         <?php
         $i = 1;
-        foreach ($data['listDU'] as $item) {
+
+        foreach ($data['timkiem'] as $item) {
         ?>
             <tr>
                 <td><?php echo $i; ?></td>
@@ -127,12 +127,21 @@
                     ?>
                 </td>
             </tr>
+
         <?php
             $i++;
         }
 
         ?>
+        <tr>
+            <?php
+            $tb = "";
+            if (count($data['timkiem']) == 0) {
+                echo '<td colspan="9" style="text-align: center; color: red;font-weight: bold;">Không tìm thấy sản phẩm </td>';
+            }
+            ?>
 
+        </tr>
     </table>
     <!-- Start Pagination -->
     <div class='pagination-container'>
