@@ -11,7 +11,7 @@ class CaNhan extends Controller
         $this->nvModel = $this->model("NhanVienModel");
     }
 
-    function IndexCN()
+    function Index()
     {
         $nv = json_decode($this->nvModel->getNhanVienById($_SESSION["user"]["maNV"]), true);
         $this->view(

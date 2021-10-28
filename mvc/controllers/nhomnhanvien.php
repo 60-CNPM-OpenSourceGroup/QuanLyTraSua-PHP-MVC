@@ -8,6 +8,12 @@ class NhomNhanVien extends Controller{
         if(!isset($_SESSION["user"])){
             $this->redirectTo("Login", "Index");
         }
+        else {
+            $pq = new HasCredentials("QUANLYNHOMNHANVIEN");
+            if(!$pq->hasCredentials()) {
+                return $this->redirectTo("Credentials", "Index");
+            }
+        }
     }
 
     function Index(){

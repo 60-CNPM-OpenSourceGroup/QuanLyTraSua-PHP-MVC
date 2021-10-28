@@ -11,6 +11,12 @@ class Topping extends Controller{
         if(!isset($_SESSION["user"])){
             $this->redirectTo("Login", "Index");
         }
+        else {
+            $pq = new HasCredentials("QUANLYDANHMUC");
+            if(!$pq->hasCredentials()) {
+                return $this->redirectTo("Credentials", "Index");
+            }
+        }
     }
     
 

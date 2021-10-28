@@ -123,7 +123,7 @@
             </div>
             <!-- Nav Item -  Phản hồi-->
             <li class="nav-item">
-                <a class="tabA" href="phanhoi/indexPH">
+                <a class="tabA" href="phanhoi/index">
                     <span class="nav-link">
                         <i class="fa fa-comments"></i>
                         <span>Phản hồi</span>
@@ -138,7 +138,7 @@
             </div>
             <!-- Nav Item - Thông tin nhân viên -->
             <li class="nav-item">
-                <a class="tabA" href="nhanvien/indexNV">
+                <a class="tabA" href="nhanvien/index">
                     <span class="nav-link">
                         <i class="fa fa-users"></i>
                         <span>Thông tin nhân viên</span>
@@ -147,7 +147,7 @@
             </li>
             <!-- Nav Item - Nhóm nhân viên -->
             <li class="nav-item">
-                <a class="tabA" href="nhomnhanvien/indexNNV">
+                <a class="tabA" href="nhomnhanvien/index">
                     <span class="nav-link">
                         <i class="fa fa-users"></i>
                         <span>Nhóm nhân viên</span>
@@ -156,7 +156,7 @@
             </li>
             <!-- Nav Item - Phân quyền -->
             <li class="nav-item">
-                <a class="tabA" href="phanquyen/indexPQ">
+                <a class="tabA" href="phanquyen/index">
                     <span class="nav-link">
                         <i class="fa fa-puzzle-piece"></i>
                         <span>Phân quyền</span>
@@ -200,7 +200,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="canhan/indexCN">
+                                <a class="dropdown-item" href="canhan/index">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Thông tin tài khoản
                                 </a>

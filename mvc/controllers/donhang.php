@@ -17,6 +17,12 @@ class DonHang extends Controller
         if (!isset($_SESSION["user"])) {
             $this->redirectTo("Login", "Index");
         }
+        else {
+            $pq = new HasCredentials("QUANLYHOADON");
+            if(!$pq->hasCredentials()) {
+                return $this->redirectTo("Credentials", "Index");
+            }
+        }
     }
 
     function Index()

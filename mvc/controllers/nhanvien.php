@@ -5,11 +5,17 @@ class NhanVien extends Controller{
     public $nnvModel;
     public function __construct()
     {
+        $this->nvModel = $this->model("NhanVienModel");
+        $this->nnvModel = $this->model("NhomNhanVienModel");
         if(!isset($_SESSION["user"])){
             $this->redirectTo("Login", "Index");
         }
-        $this->nvModel = $this->model("NhanVienModel");
-        $this->nnvModel = $this->model("NhomNhanVienModel");
+        else {
+            $pq = new HasCredentials("QUANLYNHANVIEN");
+            if(!$pq->hasCredentials()) {
+                return $this->redirectTo("Credentials", "Index");
+            }
+        }
     }
 
     function Index(){
