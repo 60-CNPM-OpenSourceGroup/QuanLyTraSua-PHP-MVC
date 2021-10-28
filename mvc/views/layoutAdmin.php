@@ -123,7 +123,11 @@
             </div>
             <!-- Nav Item -  Phản hồi-->
             <li class="nav-item">
+<<<<<<< HEAD
                 <a class="tabA" href="phanhoi/index">
+=======
+                <a class="tabA" href="QuanLyPH/Index">
+>>>>>>> 547dd631e0b106a91cd6ae907d00cf4f658c7611
                     <span class="nav-link">
                         <i class="fa fa-comments"></i>
                         <span>Phản hồi</span>

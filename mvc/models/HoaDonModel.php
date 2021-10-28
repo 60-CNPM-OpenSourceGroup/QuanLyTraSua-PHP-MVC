@@ -35,7 +35,7 @@ class HoaDonModel extends DataBase {
     public function insert($maHD, $hoten, $sdt, $diachi, $ghichu, $tongtien, $ngaylap) {
         $qr = "INSERT INTO `hoadon` (`MaHD`, `HoTen`, `Sdt`, `DiaChi`, `GhiChu`, `TongTien`, `NgayLap`, `TinhTrang`, `MaNV`) 
         VALUES
-        ('$maHD', '$hoten', '$sdt', '$diachi', '$ghichu', $tongtien, '$ngaylap', 0, NULL)";
+        ('$maHD', '$hoten', '$sdt', '$diachi', '$ghichu', $tongtien, '$ngaylap', 1, NULL)";
         $kq = mysqli_query($this->con, $qr);
         return $kq;
     }

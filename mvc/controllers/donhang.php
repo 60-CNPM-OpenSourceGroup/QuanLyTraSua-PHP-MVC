@@ -32,7 +32,7 @@ class DonHang extends Controller
         // $listCTHD = json_decode($this->dhModel->listAll(), true);
 
         $this->view("layoutAdmin", [
-            'page' => 'DonHang/indexDH',
+            'page' => 'donhang/indexDH',
             'listHD' => $listHD,
             'NV' => $NV
             // 'listCTHD' => $listCTHD
@@ -45,14 +45,14 @@ class DonHang extends Controller
         $listShipper = json_decode($this->nvModel->listShipper(), true);
         // var_dump($listDH[0]['TinhTrang']);
 
-        if ($listDH[0]['TinhTrang'] != 2) {
+        if ($listDH[0]['TinhTrang'] == 1) {
             //view edit
             $this->view("layoutAdmin", [
-                'page' => 'DonHang/checkDH',
+                'page' => 'donhang/checkDH',
                 'listDH' => $listDH[0],
                 'listShipper' => $listShipper
             ]);
-        } else if ($listDH[0]['TinhTrang'] == 2) {
+        } else if ($listDH[0]['TinhTrang'] == 2 || $listDH[0]['TinhTrang'] == 0) {
             return $this->redirectTo("DonHang", "Error");
         }
     }
@@ -70,7 +70,7 @@ class DonHang extends Controller
             $save = $this->model("HoaDonModel");
             $save->update($id, $tinhtrang, $maNV);
         }
-        return $this->redirectTo("DonHang", "Index");
+        return $this->redirectTo("DonHang", "Success");
     }
 
     function Details($id)
@@ -81,7 +81,7 @@ class DonHang extends Controller
         $ttkh = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
 
         $this->view("layoutAdmin", [
-            'page' => 'DonHang/detailsDH',
+            'page' => 'donhang/detailsDH',
             'cthd' => $cthd,
             'shipper' => $shipper,
             'cttp' => $cttp,
@@ -97,7 +97,7 @@ class DonHang extends Controller
         $ttkh = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
 
         $this->view("layoutAdmin", [
-            'page' => 'DonHang/printDH',
+            'page' => 'donhang/printDH',
             'cthd' => $cthd,
             'shipper' => $shipper,
             'cttp' => $cttp,
@@ -111,7 +111,7 @@ class DonHang extends Controller
         $shipper = json_decode($this->nvModel->listShipper(), true);
 
         $this->view("layoutAdmin", [
-            'page' => 'DonHang/deleteDH',
+            'page' => 'donhang/deleteDH',
             'donhang' => $donhang[0],
             'shipper' => $shipper
         ]);
@@ -123,7 +123,14 @@ class DonHang extends Controller
             $confirm = $this->model("HoaDonModel");
             $confirm->delete($id);
         }
-        return $this->redirectTo("DonHang", "Index");
+        return $this->redirectTo("DonHang", "Success");
+    }
+
+    function Success()
+    {
+        $this->view("layoutAdmin", [
+            'page' => 'DonHang/success',
+        ]);
     }
 
     function Error()

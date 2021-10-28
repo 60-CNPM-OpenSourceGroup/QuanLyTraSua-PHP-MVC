@@ -136,15 +136,17 @@ $date = str_replace('-', '/', $data['donhang']['NgayLap']);
                     <label for="" class="control-label col-md-4">Người giao hàng: </label>
                     <div class="col-md-8">
                         <input type="text" readonly class="form-control" value="<?php 
-                        $n = "";
-                        foreach($data['shipper'] as $s){
-                            if($s['maNV'] == $data['donhang']['MaNV']){
-                                echo $s['tenNV'];
-                            } else {
-                                $n = "Chưa có";
-                            }                           
-                        }  
-                        echo $n;                      
+                        $s = "";
+                        if($data['donhang']['MaNV'] == NULL){
+                            echo $s = "Chưa có";
+                        }
+                        else {
+                            foreach($data['shipper'] as $s){
+                                if($s['maNV'] == $data['donhang']['MaNV']){
+                                    echo $s['tenNV'];
+                                }                          
+                            }
+                        }          
                         ?>">
                     </div>
                 </div>
@@ -155,7 +157,7 @@ $date = str_replace('-', '/', $data['donhang']['NgayLap']);
                     </div>
                     <div class="col-md-offset-2 col-md-6">
                         <button class="comeback">
-                            <a href="javascript:window.history.back(-1);">Quay lại</a>
+                            <a href="DonHang/Index">Quay lại</a>
                         </button>
                     </div>
                 </div>
