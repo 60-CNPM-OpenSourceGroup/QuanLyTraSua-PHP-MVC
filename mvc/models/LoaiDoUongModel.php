@@ -26,6 +26,11 @@ class LoaiDoUongModel extends DataBase {
         return mysqli_query($this->con, $qr);
     }
 
+    public function checkPK($maldu){
+        $result = "SELECT * FROM loaidouong WHERE MaLoaiDU = '$maldu'";
+        return mysqli_query($this->con, $result);
+    }
+
     public function update($maldu, $tenldu) {
         $qr = "UPDATE loaidouong SET TenLoaiDU = '$tenldu'  WHERE MaLoaiDU = '$maldu'";   
         // var_dump($tenldu);

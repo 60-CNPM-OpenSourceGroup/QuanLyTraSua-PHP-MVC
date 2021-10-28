@@ -67,13 +67,21 @@ class LoaiDoUong extends Controller
             if (isset($_POST["tenldu"])) {
                 $tenldu = $_POST['tenldu'];
             }
+            $result = $this->lduModel->checkPK($maldu);
+            if (mysqli_num_rows($result) > 0) {
+                $_SESSION['error'] = "Mã loại đồ uống đã tồn tại";
+                return $this->redirectTo("LoaiDoUong", "Create");
+            }
+            else{
+                $save = $this->model("LoaiDoUongModel");
+                $save->insert($maldu, $tenldu);
+                $_SESSION['thongbao'] = "Thêm mới loại đồ uống thành công";
+            }
             
         }
-        $this->lduModel->insert($maldu, $tenldu);
 
         return $this->redirectTo("LoaiDoUong", "Index");
     }
-
 
     function Save($id)
     {
@@ -112,6 +120,7 @@ class LoaiDoUong extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirm = $this->model("LoaiDoUongModel");
             $confirm->delete($id);
+            $_SESSION['thongbao'] = "Xóa loại đồ uống thành công";
         }
         return $this->redirectTo("LoaiDoUong", "Index");
     }

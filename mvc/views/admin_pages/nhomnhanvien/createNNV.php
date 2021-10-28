@@ -6,6 +6,10 @@
             <label for="idNhom" class="control-label col-md-4"><b>Mã nhóm nhân viên</b></label>
             <div class="col-md-6">
                 <input required="true" type="text" class="form-control text-box single-line" id="idNhom" name="idNhom">
+                <span class="text-danger"><?php if (isset($_SESSION['error'])) {
+                                                echo $_SESSION['error'];
+                                                unset($_SESSION['error']);
+                                            } ?></span>
             </div>
         </div>
 

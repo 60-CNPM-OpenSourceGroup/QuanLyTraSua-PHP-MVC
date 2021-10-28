@@ -47,9 +47,16 @@ class NhomNhanVien extends Controller{
             if (isset($_POST["tenNhom"])) {
                 $tenNhom = $_POST['tenNhom'];
             }
-            $save = $this->model("NhomNhanVienModel");
-            $save->insert($idNhom, $tenNhom);
-            
+            $result = $this->nnvModel->checkPK($idNhom);
+            if (mysqli_num_rows($result) > 0) {
+                $_SESSION['error'] = "Mã nhóm nhân viên đã tồn tại";
+                return $this->redirectTo("NhomNhanVien", "Create");
+            }
+            else{
+                $save = $this->model("NhomNhanVienModel");
+                $save->insert($idNhom, $tenNhom);
+                $_SESSION['thongbao'] = "Thêm mới nhóm nhân viên thành công";
+            }
         }
         return $this->redirectTo("NhomNhanVien", "Index");
     }
@@ -74,6 +81,7 @@ class NhomNhanVien extends Controller{
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirm = $this->model("NhomNhanVienModel");
             $confirm->delete($id);
+            $_SESSION['thongbao'] = "Xóa nhóm nhân viên thành công";
         }
         return $this->redirectTo("NhomNhanVien", "Index");
     }

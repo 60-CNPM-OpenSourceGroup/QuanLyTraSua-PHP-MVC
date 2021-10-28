@@ -10,6 +10,10 @@
                 <div class="form-group">
                     <label>Mã loại đồ uống:</label>
                     <input type="text" class="form-control" id="maldu" name="maldu">
+                    <span class="text-danger"><?php if (isset($_SESSION['error'])) {
+                                                echo $_SESSION['error'];
+                                                unset($_SESSION['error']);
+                                            } ?></span>
                 </div>
 
                 <div class="form-group">

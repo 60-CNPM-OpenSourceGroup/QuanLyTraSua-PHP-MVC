@@ -51,6 +51,14 @@
 <a href="LoaiDoUong/Create">
     <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Loại Đồ Uống</button>
 </a>
+<?php
+    if (isset($_SESSION['thongbao'])) {
+        echo "<div class='alert alert-success'>";
+        echo $_SESSION['thongbao'];
+        echo "</div>";
+        unset($_SESSION['thongbao']);
+    }
+    ?>
 <table class="table table-striped table-class" id="table-id">
     <tr>
         <th class="row_head">STT</th>

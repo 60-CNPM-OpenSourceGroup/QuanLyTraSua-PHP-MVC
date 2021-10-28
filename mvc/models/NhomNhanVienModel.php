@@ -22,9 +22,15 @@ class NhomNhanVienModel extends DataBase {
         return json_encode($arr);
     }
     
+    
     public function insert($idNhom, $tenNhom) {
         $qr = "INSERT INTO nhomnhanvien (IDNhom, TenNhom) VALUES ('".$idNhom."', '".$tenNhom."')";
         return mysqli_query($this->con, $qr);
+    }
+
+    public function checkPK($idNhom){
+        $result = "SELECT * FROM nhomnhanvien WHERE IDNhom = '$idNhom'";
+        return mysqli_query($this->con, $result);
     }
 
     public function delete($idNhom)

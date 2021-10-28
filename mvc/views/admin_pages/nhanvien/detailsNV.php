@@ -62,7 +62,10 @@
         </td>
     </tr>
 </table>
-<p style="margin-left:50px;">
-    <a href="NhanVien/Edit">Cập nhật</a> |
-    <a href="NhanVien/Index">Quay lại</a>
-</p>
+
+<?php
+    echo "<div style='margin-left:50px;'>";
+    echo "<a href='NhanVien/Edit/" . $data['nv']['maNV']. "'>Cập nhật</a> | ";
+    echo "<a href='javascript:window.history.back(-1);'>Quay lại</a>";
+    echo "</div>";
+?>
