@@ -134,22 +134,30 @@
 
     </table>
     <!-- Start Pagination -->
-    <div class='pagination-container'>
-        <nav style="text-align: center;">
-            <ul class="pagination">
-                <li data-page="prev" class="page-item">
-                    <span>
-                        &laquo; <span class="sr-only">(current)
-                        </span></span>
-                </li>
-                <!--	Here the JS Function Will Add the Rows -->
-                <li data-page="next" id="prev">
-                    <span> &raquo; <span class="sr-only">(current)</span></span>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    </div>
+    <?php
+    if(count($data['listNV']) > 5){
+        echo '
+        <div class="pagination-container">
+            <nav style="text-align: center;">
+                <ul class="pagination">
+                    <li data-page="prev" class="page-item">
+                        <span>
+                            &laquo; <span class="sr-only">(current)
+                            </span></span>
+                    </li>
+                    <!--	Here the JS Function Will Add the Rows -->
+                    <li data-page="next" id="prev">
+                        <span> &raquo; <span class="sr-only">(current)</span></span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        ';
+    } else {
+        echo "";
+    }
+    ?>
+    <!-- </div> -->
 </section>
 
 <script src="public/admin/Admin/js/phantrang.js"></script>

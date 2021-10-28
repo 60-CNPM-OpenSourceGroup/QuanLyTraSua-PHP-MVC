@@ -82,50 +82,65 @@
         </tr>
         <?php
         $stt = 1;
-        foreach ($data['ph'] as $item) {
-            $date = str_replace('-', '/', $item["ngayGui"]);
+        if (count($data['ph']) == 0) {
             echo "
             <tr>
-                <td class='row_body'>" . ($stt++) . "</td>
-                <td class='row_body'>" . $item['hoTen'] . "</td>
-                <td class='row_body'>" . $item['sdt'] . "</td>
-                <td class='row_body'>" . $item['noiDung'] . "</td>
-                <td class='row_body'>" . date('d/m/Y', strtotime($date)) . "</td>";
-                if($item['tinhTrang'] == 1) {
-                    echo "<td class='row_body'>Chưa xử lý</td>";
-                }
-                else {
-                    echo "<td class='row_body'>Đã xử lý</td>";
-                }
-                
-
-            echo "
-                <td class='row_body'>
-                    <a href='QuanLyPH/Write/" . $item["id"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;
-                    <a href='QuanLyPH/Delete/" . $item["id"] . "'><i class='fa fa-trash'></i>
-                </td>
+                <td class='row_body' style='color: red' colspan = '7' class='row_body'>Chưa có phản hồi nào từ khách hàng</td>
             </tr>
             ";
+        } else {
+            foreach ($data['ph'] as $item) {
+                $date = str_replace('-', '/', $item["ngayGui"]);
+                echo "
+                <tr>
+                    <td class='row_body'>" . ($stt++) . "</td>
+                    <td class='row_body'>" . $item['hoTen'] . "</td>
+                    <td class='row_body'>" . $item['sdt'] . "</td>
+                    <td class='row_body'>" . $item['noiDung'] . "</td>
+                    <td class='row_body'>" . date('d/m/Y', strtotime($date)) . "</td>";
+                if ($item['tinhTrang'] == 1) {
+                    echo "<td class='row_body'>Chưa xử lý</td>";
+                } else {
+                    echo "<td class='row_body'>Đã xử lý</td>";
+                }
+
+
+                echo "
+                    <td class='row_body'>
+                        <a href='QuanLyPH/Write/" . $item["id"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;
+                        <a href='QuanLyPH/Delete/" . $item["id"] . "'><i class='fa fa-trash'></i>
+                    </td>
+                </tr>
+                ";
+            }
         }
         ?>
     </table>
     <!-- Start Pagination -->
-    <div class='pagination-container'>
-        <nav style="text-align: center;">
-            <ul class="pagination">
-                <li data-page="prev" class="page-item">
-                    <span>
-                        &laquo; <span class="sr-only">(current)
-                        </span></span>
-                </li>
-                <!--	Here the JS Function Will Add the Rows -->
-                <li data-page="next" id="prev">
-                    <span> &raquo; <span class="sr-only">(current)</span></span>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    </div>
+    <?php
+    if(count($data['ph']) > 5){
+        echo '
+        <div class="pagination-container">
+            <nav style="text-align: center;">
+                <ul class="pagination">
+                    <li data-page="prev" class="page-item">
+                        <span>
+                            &laquo; <span class="sr-only">(current)
+                            </span></span>
+                    </li>
+                    <!--	Here the JS Function Will Add the Rows -->
+                    <li data-page="next" id="prev">
+                        <span> &raquo; <span class="sr-only">(current)</span></span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        ';
+    } else {
+        echo "";
+    }
+    ?>
+    <!-- </div> -->
 </section>
 
 <script src="public/admin/Admin/js/phantrang.js"></script>

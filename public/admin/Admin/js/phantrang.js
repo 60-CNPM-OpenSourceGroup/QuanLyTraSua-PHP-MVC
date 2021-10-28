@@ -26,7 +26,7 @@ function getPagination(table) {
                 $(".pagination").show();
             }
 
-            var totalRows = $(table + " tbody tr").length; // numbers of rows
+            var totalRows = $(table + " tbody tr").length - 1; // numbers of rows
             $(table + " tr:gt(0)").each(function() {
                 // each TR in  table and not the header
                 trnum++; // Start Counter
