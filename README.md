@@ -11,3 +11,10 @@ Thành viên thực hiện:
   - Phan Thanh Hà,
   - Nguyễn Văn Trí,
   - Nguyễn Đức Lộc.
+
+Tài khoản và mật khẩu đăng nhập:
+  - Admin: hathanh.0113@gmail.com,
+  - Quản lý: long@gmail.com,
+  - Thu ngân: bao@gmail.com,
+  - Shipper: trinv60cntt@gmail.com, loc@gmail.com
+  - Mật khẩu: cho tất cả tài khoản "1234".
