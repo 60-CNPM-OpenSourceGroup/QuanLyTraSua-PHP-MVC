@@ -7,16 +7,11 @@
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
-<<<<<<< HEAD
-create database quanlytrasua;
-use quanlytrasua;
-=======
 -- Nếu sử dụng SQL Query thì mở khóa 2 dòng create và use database bên dưới
 -- create database quanlytrasua;
 -- use quanlytrasua;
 
 -- Còn không thì tạo trc 1 csdl quanlytrasua bằng GUI rồi import database vào
->>>>>>> 0d57be00504af440210283f56636a09ce858294f
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
