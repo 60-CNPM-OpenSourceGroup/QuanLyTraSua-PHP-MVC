@@ -27,8 +27,8 @@ class NhanVien extends Controller
         $idNhom = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $maNV = $_POST['maNV'];
-            $tenNV = $_POST['tenNV'];
+            $maNV = trim($_POST['maNV']);
+            $tenNV = trim($_POST['tenNV']);
             $gioiTinh = isset($_POST['gioiTinh']) ? $_POST['gioiTinh'] : "";
             $idNhom = $_POST['idNhom'];
         } //mà mặc định là get rồi '-', uawf thi tu get r ma

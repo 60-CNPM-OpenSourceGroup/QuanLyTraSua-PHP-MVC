@@ -16,10 +16,9 @@ class DonHang extends Controller
 
         if (!isset($_SESSION["user"])) {
             $this->redirectTo("Login", "Index");
-        }
-        else {
+        } else {
             $pq = new HasCredentials("QUANLYHOADON");
-            if(!$pq->hasCredentials()) {
+            if (!$pq->hasCredentials()) {
                 return $this->redirectTo("Credentials", "Index");
             }
         }
@@ -27,15 +26,34 @@ class DonHang extends Controller
 
     function Index()
     {
-        $listHD = json_decode($this->dhModel->listAll(), true);
+        $hoten = "";
+        $ngaymua = "";
+        $tinhtrang = "";
+        $shipper = "";
+        $year = 2000;
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $hoten = trim($_POST['hoten']);
+            $ngaymua = $_POST['ngaymua'];
+            $ngaymua = str_replace('/', '-', $ngaymua);
+            $ngaymua = date('Y-m-d', strtotime($ngaymua));
+            $tinhtrang = isset($_POST['tinhtrang']) ? $_POST['tinhtrang'] : "";
+            $shipper = $_POST['shipper'];
+        }
+
+        if (substr($ngaymua, 0, -6) <= $year)
+            $ngaymua = "";
+
+        // echo $ngaymua;
+        $listHD = json_decode($this->dhModel->TimKiem($hoten, $ngaymua, $tinhtrang, $shipper), true);
         $NV = json_decode($this->nvModel->getNV(), true);
-        // $listCTHD = json_decode($this->dhModel->listAll(), true);
+        $listShipper = json_decode($this->nvModel->listShipper(), true);
 
         $this->view("layoutAdmin", [
             'page' => 'donhang/indexDH',
             'listHD' => $listHD,
+            'listshipper' => $listShipper,
             'NV' => $NV
-            // 'listCTHD' => $listCTHD
         ]);
     }
 
@@ -45,15 +63,20 @@ class DonHang extends Controller
         $listShipper = json_decode($this->nvModel->listShipper(), true);
         // var_dump($listDH[0]['TinhTrang']);
 
-        if ($listDH[0]['TinhTrang'] == 1) {
-            //view edit
-            $this->view("layoutAdmin", [
-                'page' => 'donhang/checkDH',
-                'listDH' => $listDH[0],
-                'listShipper' => $listShipper
-            ]);
-        } else if ($listDH[0]['TinhTrang'] == 2 || $listDH[0]['TinhTrang'] == 0) {
-            return $this->redirectTo("DonHang", "Error");
+        if (count($listDH) > 0) {
+            if ($listDH[0]['TinhTrang'] == 1) {
+                //view edit
+                $this->view("layoutAdmin", [
+                    'page' => 'donhang/checkDH',
+                    'listDH' => $listDH[0],
+                    'listShipper' => $listShipper
+                ]);
+            } else if ($listDH[0]['TinhTrang'] == 2 || $listDH[0]['TinhTrang'] == 0) {
+                $_SESSION['error'] = "Đơn bạn chọn đã giao hoặc đã hủy, không thể thao tác !";
+                return $this->redirectTo("DonHang", "Index");
+            }
+        } else {
+            echo "Ops! Có vẻ bạn thao tác sai rồi";
         }
     }
 
@@ -69,8 +92,9 @@ class DonHang extends Controller
 
             $save = $this->model("HoaDonModel");
             $save->update($id, $tinhtrang, $maNV);
+            $_SESSION['thongbao'] = "Đơn đã được kiểm !";
         }
-        return $this->redirectTo("DonHang", "Success");
+        return $this->redirectTo("DonHang", "Index");
     }
 
     function Details($id)
@@ -80,13 +104,17 @@ class DonHang extends Controller
         $cttp = json_decode($this->cttpModel->mergeTopping($id), true);
         $ttkh = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
 
-        $this->view("layoutAdmin", [
-            'page' => 'donhang/detailsDH',
-            'cthd' => $cthd,
-            'shipper' => $shipper,
-            'cttp' => $cttp,
-            'ttkh' => $ttkh[0]
-        ]);
+        if (count($cthd) > 0) {
+            $this->view("layoutAdmin", [
+                'page' => 'donhang/detailsDH',
+                'cthd' => $cthd,
+                'shipper' => $shipper,
+                'cttp' => $cttp,
+                'ttkh' => $ttkh[0]
+            ]);
+        } else {
+            echo "Ops! Có vẻ bạn thao tác sai rồi";
+        }
     }
 
     function Print($id)
@@ -96,13 +124,17 @@ class DonHang extends Controller
         $cttp = json_decode($this->cttpModel->mergeTopping($id), true);
         $ttkh = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
 
-        $this->view("layoutAdmin", [
-            'page' => 'donhang/printDH',
-            'cthd' => $cthd,
-            'shipper' => $shipper,
-            'cttp' => $cttp,
-            'ttkh' => $ttkh[0]
-        ]);
+        if (count($cthd) > 0) {
+            $this->view("layoutAdmin", [
+                'page' => 'donhang/printDH',
+                'cthd' => $cthd,
+                'shipper' => $shipper,
+                'cttp' => $cttp,
+                'ttkh' => $ttkh[0]
+            ]);
+        } else {
+            echo "Ops! Có vẻ bạn thao tác sai rồi";
+        }
     }
 
     function Delete($id)
@@ -110,11 +142,15 @@ class DonHang extends Controller
         $donhang = json_decode($this->dhModel->getHoaDonById($id), true);
         $shipper = json_decode($this->nvModel->listShipper(), true);
 
-        $this->view("layoutAdmin", [
-            'page' => 'donhang/deleteDH',
-            'donhang' => $donhang[0],
-            'shipper' => $shipper
-        ]);
+        if (count($donhang) > 0) {
+            $this->view("layoutAdmin", [
+                'page' => 'donhang/deleteDH',
+                'donhang' => $donhang[0],
+                'shipper' => $shipper
+            ]);
+        } else {
+            echo "Ops! Có vẻ bạn thao tác sai rồi";
+        }
     }
 
     function Confirm($id)
@@ -122,21 +158,26 @@ class DonHang extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirm = $this->model("HoaDonModel");
             $confirm->delete($id);
+            $_SESSION['thongbao'] = "Đơn hàng đã được xóa !";
         }
-        return $this->redirectTo("DonHang", "Success");
+        return $this->redirectTo("DonHang", "Index");
     }
 
-    function Success()
+    function TimKiem()
     {
-        $this->view("layoutAdmin", [
-            'page' => 'DonHang/success',
-        ]);
-    }
+        $NV = json_decode($this->nvModel->getNV(), true);
+        $listShipper = json_decode($this->nvModel->listShipper(), true);
 
-    function Error()
-    {
+        if (isset($_POST['tukhoa'])) {
+            $tukhoa = $_POST['tukhoa'];
+            $db_tk = json_decode($this->dhModel->TimKiemDH($tukhoa), true);
+        }
+
         $this->view("layoutAdmin", [
-            'page' => 'DonHang/error',
+            'page' => 'donhang/timkiem',
+            'NV' => $NV,
+            'listshipper' => $listShipper,
+            "timkiem" => $db_tk,
         ]);
     }
 }

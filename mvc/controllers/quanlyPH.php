@@ -10,10 +10,9 @@ class QuanLyPH extends Controller
 
         if (!isset($_SESSION["user"])) {
             $this->redirectTo("Login", "Index");
-        }
-        else {
+        } else {
             $pq = new HasCredentials("QUANLYPHANHOI");
-            if(!$pq->hasCredentials()) {
+            if (!$pq->hasCredentials()) {
                 return $this->redirectTo("Credentials", "Index");
             }
         }
@@ -37,16 +36,20 @@ class QuanLyPH extends Controller
     {
         $ph = json_decode($this->phModel->getPhanHoiById($id), true);
 
-        if ($ph[0]['tinhTrang'] == 1) {
-            //view edit
-            return $this->view("layoutAdmin", [
-                'page' => 'phanhoi/writePH',
-                'ph' => $ph[0],
-            ]);
-        } else if ($ph[0]['tinhTrang'] == 2) {
-            return $this->redirectTo("QuanLyPH", "Error");
+        if (count($ph) > 0) {
+            if ($ph[0]['tinhTrang'] == 1) {
+                //view edit
+                return $this->view("layoutAdmin", [
+                    'page' => 'phanhoi/writePH',
+                    'ph' => $ph[0],
+                ]);
+            } else if ($ph[0]['tinhTrang'] == 2) {
+                $_SESSION['error'] = "Phản hồi này đã được xử lý trước đó !";
+                return $this->redirectTo("QuanLyPH", "Index");
+            }
+        } else {
+            echo "Ops! Có vẻ bạn thao tác sai rồi";
         }
-
     }
 
     function SendMail($id)
@@ -101,22 +104,27 @@ class QuanLyPH extends Controller
                 $save = $this->model("PhanHoiModel");
                 $save->update($id);
                 // echo 'Đã gửi mail xong';
-                return $this->redirectTo("QuanLyPH", "SuccessMail");
+                $_SESSION['thongbao'] = "Đã gửi mail thành công !";
             } catch (Exception $e) {
                 // echo 'Mail không gửi được. Lỗi: ', $mail->ErrorInfo;
-                return $this->redirectTo("QuanLyPH", "ErrorMail");
+                $_SESSION['error'] = "Mail không gửi được. Lỗi: " . $mail->ErrorInfo;
             }
         }
+        return $this->redirectTo("QuanLyPH", "Index");
     }
 
     function Delete($id)
     {
         $ph = json_decode($this->phModel->getPhanHoiById($id), true);
 
-        $this->view("layoutAdmin", [
-            'page' => 'phanhoi/deletePH',
-            'ph' => $ph[0]
-        ]);
+        if (count($ph) > 0) {
+            $this->view("layoutAdmin", [
+                'page' => 'phanhoi/deletePH',
+                'ph' => $ph[0]
+            ]);
+        } else {
+            echo "Ops! Có vẻ bạn thao tác sai rồi";
+        }
     }
 
     function Confirm($id)
@@ -124,35 +132,8 @@ class QuanLyPH extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirm = $this->model("PhanHoiModel");
             $confirm->delete($id);
+            $_SESSION['thongbao'] = "Đã xóa thành công phản hồi !";
         }
-        return $this->redirectTo("QuanLyPH", "Success");
-    }
-
-    function Success()
-    {
-        $this->view("layoutAdmin", [
-            'page' => 'phanhoi/success',
-        ]);
-    }
-
-    function Error()
-    {
-        $this->view("layoutAdmin", [
-            'page' => 'phanhoi/error',
-        ]);
-    }
-
-    function ErrorMail()
-    {
-        $this->view("layoutAdmin", [
-            'page' => 'phanhoi/errormail',
-        ]);
-    }
-
-    function SuccessMail()
-    {
-        $this->view("layoutAdmin", [
-            'page' => 'phanhoi/successmail',
-        ]);
+        return $this->redirectTo("QuanLyPH", "Index");
     }
 }

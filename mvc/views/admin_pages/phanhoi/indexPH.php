@@ -48,15 +48,16 @@
         border-radius: 5px;
     }
 
-    h3{
+    h3 {
+        text-align: center;
         padding-top: 1rem;
         padding-bottom: 2rem;
     }
 </style>
 
 <section>
-    <h3>DANH SÁCH PHẢN HỒI CỦA KHÁCH HÀNG</h3>
-    <div class="form-group" style="width: 100%; display: none; margin-top: 60px;">
+    <h3>PHẢN HỒI KHÁCH HÀNG</h3>
+    <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
         <div>
             <span style="line-height: 2.4rem; font-weight: 800; margin-right: 1.5rem;">Số dòng hiển thị: </span>
@@ -65,15 +66,29 @@
             <select class="form-control" name="state" id="maxRows">
                 <option value="5000">Hiện tất cả</option>
                 <option value="5">5</option>
-                <!-- <option value="10">10</option>
-                <option value="15">15</option>
+                <option value="10">10</option>
+                <!-- <option value="15">15</option> -->
                 <option value="20">20</option>
-                <option value="50">50</option>
+                <!-- <option value="50">50</option>
                 <option value="70">70</option>
                 <option value="100">100</option> -->
             </select>
         </div>
     </div>
+    <?php
+    if (isset($_SESSION['thongbao'])) {
+        echo "<div class='alert alert-success'>";
+        echo $_SESSION['thongbao'];
+        echo "</div>";
+        unset($_SESSION['thongbao']);
+    }
+    if (isset($_SESSION['error'])) {
+        echo "<div class='alert alert-danger'>";
+        echo $_SESSION['error'];
+        echo "</div>";
+        unset($_SESSION['error']);
+    }
+    ?>
     <table class="table table-striped table-class" id="table-id">
 
         <tr>
@@ -120,10 +135,19 @@
             }
         }
         ?>
+        <tr>
+            <?php
+            $tb = "";
+            if (count($data['ph']) == 0) {
+                echo '<td colspan="9" style="text-align: center; color: red;font-weight: bold;">Chưa có phản hồi nào từ khách hàng</td>';
+            }
+            ?>
+
+        </tr>
     </table>
     <!-- Start Pagination -->
     <?php
-    if(count($data['ph']) > 5){
+    if (count($data['ph']) > 5) {
         echo '
         <div class="pagination-container">
             <nav style="text-align: center;">

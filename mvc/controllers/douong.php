@@ -12,10 +12,9 @@ class DoUong extends Controller
 
         if (!isset($_SESSION["user"])) {
             $this->redirectTo("Login", "Index");
-        }
-        else {
+        } else {
             $pq = new HasCredentials("QUANLYDANHMUC");
-            if(!$pq->hasCredentials()) {
+            if (!$pq->hasCredentials()) {
                 return $this->redirectTo("Credentials", "Index");
             }
         }
@@ -38,15 +37,15 @@ class DoUong extends Controller
     }
 
     function TimKiem()
-    {       
+    {
         $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
         // $tukhoa ="";
         //  $db_tk = [];
-        if(isset($_POST['tukhoa'])){
-            $tukhoa = $_POST['tukhoa'];
+        if (isset($_POST['tukhoa'])) {
+            $tukhoa = trim($_POST['tukhoa']);
             $db_tk = json_decode($this->duModel->TimKiemDU($tukhoa), true);
         }
-        
+
         // trả về list đồ uống
         $this->view(
             "layoutAdmin",
@@ -67,7 +66,7 @@ class DoUong extends Controller
 
         //tạo mã tự động
         $getma = end($listDU);
-        $madu = substr($getma["MaDU"], 2 );
+        $madu = substr($getma["MaDU"], 2);
         $ma = "DU";
 
         if ((int)$madu < 10) {
@@ -79,7 +78,7 @@ class DoUong extends Controller
         } else if ((int)$madu >= 1000) {
             $ma .= ((int)$madu + 1);
         }
-        
+
         // thêm mới đồ uống
         $this->view(
             "layoutAdmin",
@@ -113,7 +112,7 @@ class DoUong extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $madu = $_POST['madu'];
             $tendu = $_POST['tendu'];
-            $dongia = $_POST['dongia']; 
+            $dongia = $_POST['dongia'];
             if ($_FILES["hinh"]['name'] != NULL) {
                 $hinh = $_FILES["hinh"]['name'];
                 move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/douong/" . $_FILES["hinh"]["name"]);
@@ -121,7 +120,7 @@ class DoUong extends Controller
             $ngaythem = $_POST['ngaythem'];
             $banChay = $_POST['banchay'];
             $loaiDU = $_POST['loaiDU'];
-            
+
             validateTenDU($tendu);
             validateGia($dongia);
             validateAnhDU($_FILES["hinh"]['name']);
@@ -167,7 +166,7 @@ class DoUong extends Controller
                 $ngaythem = str_replace('/', '-', $ngaythem);
                 $ngaythem = date('Y-m-d', strtotime($ngaythem));
             }
-            
+
             if (isset($_POST["banchay"])) {
                 $banchay = $_POST['banchay'];
             }
@@ -201,7 +200,7 @@ class DoUong extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirm = $this->model("DoUongModel");
-            $confirm->delete($id);   
+            $confirm->delete($id);
             $_SESSION['thongbao'] = " Xóa đồ uống thành công";
         }
         return $this->redirectTo("DoUong", "Index");

@@ -17,17 +17,20 @@
         display: flex;
         justify-content: center;
         margin-top: 8rem;
-        
+
     }
-    .content{
+
+    .content {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         padding: 20px;
         border-radius: 8px;
     }
+
     .title {
         padding-bottom: 1.5rem;
         text-align: center;
     }
+
     .form-group {
         display: flex;
         margin-bottom: 0.2rem;
@@ -35,6 +38,7 @@
         text-align: center;
         margin-top: 1.5rem;
     }
+
     .form-group1 {
         display: flex;
         /* justify-content: ; */
@@ -50,16 +54,16 @@
         padding: 5px;
     }
 
-    .comeback{
+    .comeback {
         border: none;
         outline: none;
         background-color: #eaecf4;
         border-radius: 6px;
         padding: 5px;
-        
+
     }
 
-    .comeback > a{
+    .comeback>a {
         text-decoration: none;
     }
 </style>
@@ -106,8 +110,8 @@
                 <div class="form-group1">
                     <label for="" class="control-label col-md-4">Shipper</label>
                     <div class="col-md-8">
-                        <select name="shipper" id="" class="shipper">
-                            <option value="null" class="form-control">Chưa có</option>
+                        <select name="shipper" id="" class="shipper" required>
+                            <option value="" class="form-control">Chưa có</option>
                             <?php
                             foreach ($data['listShipper'] as $shipper) {
                                 echo '<option value="' . $shipper['maNV'] . '" class = "form-control">' . $shipper['tenNV'] . '</option>';

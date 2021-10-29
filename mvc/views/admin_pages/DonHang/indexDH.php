@@ -1,11 +1,11 @@
 <style>
-    table {
+    #table-id {
         margin-top: 25px;
         font-size: 1rem;
     }
 
-    table th,
-    table td {
+    #table-id th,
+    #table-id td {
         text-align: center;
     }
 
@@ -14,7 +14,7 @@
         vertical-align: middle !important;
     }
 
-    table tr:nth-child(even) {
+    #table-id tr:nth-child(even) {
         background-color: aqua;
     }
 
@@ -71,29 +71,93 @@
         margin-right: 1.5rem;
     }
 
-    h3{
+    h3 {
         text-align: center;
+        padding-top: 10px;
+        padding-bottom: 40px;
     }
 </style>
 
 <section>
     <h3>DANH SÁCH ĐƠN ĐẶT HÀNG TRỰC TUYẾN</h3>
+
+    <form action="DonHang/Index" method="POST">
+        <table style="margin: auto; width:444px;">
+            <tr>
+                <td><b>Tên khách hàng: </b></td>
+                <td><input type="text" id="hoten" name="hoten" class="form-control" value="<?php if (isset($_POST['hoten'])) echo $_POST['hoten']; ?>"></td>
+            </tr>
+            <tr>
+                <td><b>Ngày mua: </b></td>
+                <td><input type="date" id="ngaymua" name="ngaymua" class="form-control" value="<?php if (isset($_POST['ngaymua'])) echo $_POST['ngaymua']; ?>"></td>
+            </tr>
+            <tr>
+                <td><b>Tình trạng: </b></td>
+                <td>
+                    <input type="radio" name="tinhtrang" value="0" <?php if (isset($_POST['tinhtrang']) && $_POST['tinhtrang'] == 0) echo "checked"; ?>> Đơn hủy
+                    <input style="margin-left: 10px;" type="radio" name="tinhtrang" value="1" <?php if (isset($_POST['tinhtrang']) && $_POST['tinhtrang'] == 1) echo "checked"; ?>> Đơn chờ kiểm
+                    <input style="margin-left: 10px;" type="radio" name="tinhtrang" value="2" <?php if (isset($_POST['tinhtrang']) && $_POST['tinhtrang'] == 2) echo "checked"; ?>> Đã giao hàng
+                </td>
+            </tr>
+            <tr>
+                <td><b>Shipper: </b></td>
+                <td><select name="shipper" class="form-control text-box single-line">
+                        <option value="">-------------- Chọn tất cả -------------</option>
+                        <?php
+                        foreach ($data['listshipper'] as $shipper) {
+                            if (isset($_POST['shipper']) && $shipper['maNV'] == $_POST['shipper']) {
+                                $s = "selected";
+                            } else {
+                                $s = "";
+                            }
+                            echo '<option ' . $s . ' value="' . $shipper['maNV'] . '" class = "form-control">
+                                    ' . $shipper['tenNV'] . '
+                                </option>';
+                        }
+                        ?>
+                    </select></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="padding-left: 91px;padding-top: 10px;">
+                    <input type="submit" value="Tìm kiếm" class="btn btn-primary" name="searchBtn" />
+                    <a href="DonHang/Index" class="btn btn-primary">Làm mới</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+
     <div class="form-group group_head">
-        <!-- Show Numbers Of Rows -->
-        <div style="display: none;">
+        <div>
             <span class="lable_dong">Số dòng hiển thị: </span>
         </div>
-        <div style="width: 12%; display: none;">
+        <div style="width: 12%;">
             <select class="form-control" name="state" id="maxRows">
                 <option value="5000">Hiện tất cả</option>
                 <option value="5">5</option>
-                <!-- <option value="10">10</option>
-                <option value="15">15</option>
-                -->
+                <option value="10">10</option>
+                <option value="20">20</option>
             </select>
         </div>
-        <input type="text" id="searchInput" onkeyup="searchFunc()" placeholder="Tìm theo họ tên..." title="Tìm theo họ tên">
+        <!-- <form action="DonHang/TimKiem" method="POST">
+            <div class="form-group" style="display: flex; ">
+                <input style="width: 300px;" type="text" class="form-control" placeholder="Tìm kiếm..." id="tukhoa" name="tukhoa" value="<?php if (isset($_POST['tukhoa'])) echo $_POST['tukhoa']; ?>">
+            </div>
+        </form> -->
     </div>
+    <?php
+    if (isset($_SESSION['thongbao'])) {
+        echo "<div class='alert alert-success'>";
+        echo $_SESSION['thongbao'];
+        echo "</div>";
+        unset($_SESSION['thongbao']);
+    }
+    if (isset($_SESSION['error'])) {
+        echo "<div class='alert alert-danger'>";
+        echo $_SESSION['error'];
+        echo "</div>";
+        unset($_SESSION['error']);
+    }
+    ?>
     <table class="table table-striped table-class" id="table-id">
 
         <tr>
@@ -118,7 +182,7 @@
             if ($item['TinhTrang'] == 0) {
                 echo "<td class='row_body'>Đơn hủy</td>";
             } else if ($item['TinhTrang'] == 1) {
-                echo "<td class='row_body'>Chờ kiểm đơn</td>";
+                echo "<td class='row_body'>Đơn chờ kiểm</td>";
             } else if ($item['TinhTrang'] == 2) {
                 echo "<td class='row_body'>Đã giao hàng</td>";
             }
@@ -144,11 +208,21 @@
             </tr>
             ";
         }
+
         ?>
+        <tr>
+            <?php
+            $tb = "";
+            if (count($data['listHD']) == 0) {
+                echo '<td colspan="9" style="text-align: center; color: red;font-weight: bold;">Không tìm thấy đơn hàng liên quan </td>';
+            }
+            ?>
+
+        </tr>
     </table>
     <!-- Start Pagination -->
     <?php
-    if(count($data['listHD']) > 5){
+    if (count($data['listHD']) > 5) {
         echo '
         <div class="pagination-container">
             <nav style="text-align: center;">
@@ -173,7 +247,7 @@
     <!-- </div> -->
 </section>
 
-<script>
+<!-- <script>
     function searchFunc() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("searchInput");
@@ -189,8 +263,8 @@
                 } else {
                     tr[i].style.display = "none";
                 }
-            }            
+            }
         }
     }
-</script>
+</script> -->
 <script src="public/admin/Admin/js/phantrang.js"></script>

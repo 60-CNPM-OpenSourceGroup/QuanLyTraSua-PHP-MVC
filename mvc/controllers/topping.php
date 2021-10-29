@@ -1,5 +1,6 @@
 <?php
-class Topping extends Controller{
+class Topping extends Controller
+{
     public $tpModel;
     public $ltpModel;
 
@@ -8,37 +9,38 @@ class Topping extends Controller{
         $this->tpModel = $this->model("ToppingModel");
         $this->ltpModel = $this->model("LoaiToppingModel");
 
-        if(!isset($_SESSION["user"])){
+        if (!isset($_SESSION["user"])) {
             $this->redirectTo("Login", "Index");
-        }
-        else {
+        } else {
             $pq = new HasCredentials("QUANLYDANHMUC");
-            if(!$pq->hasCredentials()) {
+            if (!$pq->hasCredentials()) {
                 return $this->redirectTo("Credentials", "Index");
             }
         }
     }
-    
 
-    function Index(){
+
+    function Index()
+    {
         $listTP = json_decode($this->tpModel->listAll(), true);
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
         // trả về list topping
-        $this->view("layoutAdmin",
-        [
-            "page"=>"topping/indexTP",
-            'listTP' => $listTP,
-            'listTenLoaiTP' => $listTenLoaiTP
-        ]
-    );
+        $this->view(
+            "layoutAdmin",
+            [
+                "page" => "topping/indexTP",
+                'listTP' => $listTP,
+                'listTenLoaiTP' => $listTenLoaiTP
+            ]
+        );
     }
     function TimKiem()
-    {       
+    {
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
         // $tukhoa ="";
         //  $db_tk = [];
-        if(isset($_POST['tukhoa'])){
-            $tukhoa = $_POST['tukhoa'];
+        if (isset($_POST['tukhoa'])) {
+            $tukhoa = trim($_POST['tukhoa']);
             $db_tk = json_decode($this->tpModel->TimKiemTP($tukhoa), true);
         }
         // trả về list đồ uống
@@ -53,14 +55,15 @@ class Topping extends Controller{
             ]
         );
     }
-    
 
-    function Create() {
+
+    function Create()
+    {
         $listTP = json_decode($this->tpModel->listAll(), true);
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
         //tạo mã tự động
         $getma = end($listTP);
-        $matp = substr($getma["MaTP"], 2 );
+        $matp = substr($getma["MaTP"], 2);
         $ma = "TP";
 
         if ((int)$matp < 10) {
@@ -73,35 +76,35 @@ class Topping extends Controller{
             $ma .= ((int)$matp + 1);
         }
         // thêm mới topping
-        $this->view("layoutAdmin",
-        [
-            "page"=>"topping/createTP",
-            "matp" => $ma,
-            'listTenLoaiTP' => $listTenLoaiTP
-        ]
+        $this->view(
+            "layoutAdmin",
+            [
+                "page" => "topping/createTP",
+                "matp" => $ma,
+                'listTenLoaiTP' => $listTenLoaiTP
+            ]
         );
     }
 
-    function Edit($id) {
+    function Edit($id)
+    {
         $tp = json_decode($this->tpModel->getToppingById($id), true);
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
 
-        if(count($tp) > 0) {
+        if (count($tp) > 0) {
             $this->view("layoutAdmin", [
                 'page' => 'topping/editTP',
                 'tp' => $tp[0],
                 'listTenLoaiTP' => $listTenLoaiTP
             ]);
-        }
-        else
+        } else
             echo "Không tìm thấy";
     }
 
 
-    function Store() 
-        // thêm thành công
+    function Store()
+    // thêm thành công
     {
-       
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST["matp"])) {
@@ -127,9 +130,10 @@ class Topping extends Controller{
         }
 
         return $this->redirectTo("Topping", "Index");
-    }  
+    }
 
-    function Save($id) {
+    function Save($id)
+    {
         //sửa thành công, lưu
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -143,8 +147,8 @@ class Topping extends Controller{
                 $hinh = $_FILES["hinh"]['name'];
                 move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/topping/" . $_FILES["hinh"]["name"]);
             }
-            
-            
+
+
             if (isset($_POST["loaiTP"])) {
                 $loaiTP = $_POST['loaiTP'];
             }
@@ -158,18 +162,18 @@ class Topping extends Controller{
 
 
 
-    function Delete($id) {
+    function Delete($id)
+    {
         $tp = json_decode($this->tpModel->getToppingById($id), true);
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
         //view edit
-        if(count($tp) > 0) {
+        if (count($tp) > 0) {
             $this->view("layoutAdmin", [
                 'page' => 'topping/deleteTP',
                 'tp' => $tp[0],
                 'listTenLoaiTP' => $listTenLoaiTP
             ]);
-        }
-        else
+        } else
             echo "Không tìm thấy";
     }
 
