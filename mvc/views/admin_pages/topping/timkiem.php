@@ -43,17 +43,10 @@
         background-color: #ddd;
         border-radius: 5px;
     }
-
-    h3{
-        padding-top: 1rem;
-        padding-bottom: 2rem;
-    }
 </style>
-<?php
-// echo "INDEX Topping";
-?>
 <section>
-    <h3 class="text-center">DANH SÁCH TOPPING</h3>
+    <h3 class="text-center">DANH SÁCH TOPPOMG</h3>
+
     <div class="row">
         <div class="col-lg-6">
             <a href="Topping/Create">
@@ -61,7 +54,7 @@
             </a>
         </div>
         <div class="col-lg-6" style="position: relative;">
-            <form action="Topping/TimKiem" method="POST">
+            <form action="Topping/TimKiemTP" method="POST">
                 <div class="form-group" style="display: flex; position: absolute; right: 0;">
                     <input style="width: 300px;" type="text" class="form-control" placeholder="Tìm kiếm..." id="tukhoa" name="tukhoa" value="<?php if (isset($_POST['tukhoa'])) echo $_POST['tukhoa']; ?>">
                     <input type="submit" value="Tìm kiếm">
@@ -69,8 +62,7 @@
             </form>
         </div>
     </div>
-
-    <div class="form-group" style="width: 100%; display: none; margin-top: 60px;">
+    <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
         <div>
             <span style="line-height: 2.4rem; font-weight: 800; margin-right: 1.5rem;">Số dòng hiển thị: </span>
@@ -79,9 +71,9 @@
             <select class="form-control" name="state" id="maxRows">
                 <option value="5000">Hiện tất cả</option>
                 <option value="5">5</option>
-                <!-- <option value="10">10</option>
+                <option value="10">10</option>
                 <option value="15">15</option>
-                <option value="20">20</option> -->
+                <option value="20">20</option>
             </select>
         </div>
     </div>
@@ -89,17 +81,16 @@
         <tr>
             <th class="row_head">STT</th>
             <th class="row_head">Hình ảnh</th>
-            <th class="row_head">Mã topping</th>
-            <th class="row_head">Tên topping</th>
+            <th class="row_head">Mã đồ uống</th>
+            <th class="row_head">Tên đồ uống</th>
             <th class="row_head">Giá</th>
-            <!--             <th class="row_head">Ngày thêm</th> -->
-            <!--             <th class="row_head">Bán chạy</th> -->
-            <th class="row_head">Loại topping</th>
+            <th class="row_head">Loại đồ uống</th>
             <th class="row_head">Chức năng</th>
         </tr>
         <?php
         $i = 1;
-        foreach ($data['listTP'] as $item) {
+
+        foreach ($data['timkiem'] as $item) {
         ?>
             <tr>
                 <td><?php echo $i; ?></td>
@@ -107,8 +98,6 @@
                 <td><?php echo $item["MaTP"]; ?></td>
                 <td><?php echo $item["TenTP"]; ?></td>
                 <td><?php echo $item['DonGia'] ?></td>
-
-
                 <td><?php
 
                     foreach ($data['listTenLoaiTP'] as $loaiTP) {
@@ -118,6 +107,7 @@
                     }
 
                     ?></td>
+
                 <td>
                     <?php
                     echo "<a href='Topping/Edit/" . $item["MaTP"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;";
@@ -125,15 +115,25 @@
                     ?>
                 </td>
             </tr>
+
         <?php
             $i++;
         }
-        ?>
 
+        ?>
+        <tr>
+            <?php
+            $tb = "";
+            if (count($data['timkiem']) == 0) {
+                echo '<td colspan="9" style="text-align: center; color: red;font-weight: bold;">Không tìm thấy sản phẩm </td>';
+            }
+            ?>
+
+        </tr>
     </table>
     <!-- Start Pagination -->
     <?php
-    if(count($data['listTP']) > 5){
+    if(count($data['timkiem']) > 5){
         echo '
         <div class="pagination-container">
             <nav style="text-align: center;">
@@ -155,6 +155,8 @@
         echo "";
     }
     ?>
+
+
 </section>
 
 <script src="public/admin/Admin/js/phantrang.js"></script>

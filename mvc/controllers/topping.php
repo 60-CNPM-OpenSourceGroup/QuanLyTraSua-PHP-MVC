@@ -32,14 +32,49 @@ class Topping extends Controller{
         ]
     );
     }
+    function TimKiem()
+    {       
+        $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
+        // $tukhoa ="";
+        //  $db_tk = [];
+        if(isset($_POST['tukhoa'])){
+            $tukhoa = $_POST['tukhoa'];
+            $db_tk = json_decode($this->tpModel->TimKiemTP($tukhoa), true);
+        }
+        // trả về list đồ uống
+        $this->view(
+            "layoutAdmin",
+            [
+                "page" => "topping/timkiem",
+                // 'listDU' => $listDU,
+                'listTenLoaiTP' => $listTenLoaiTP,
+                "timkiem" => $db_tk,
+                // "thongbao" => $tb
+            ]
+        );
+    }
     
 
     function Create() {
+        $listTP = json_decode($this->tpModel->listAll(), true);
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
+        //tạo mã tự động
+        $dem = count($listTP);
+        $matp = "TP";
+        if ($dem < 10) {
+            $matp .= "000" . ($dem + 1);
+        } else if ($dem >= 10) {
+            $matp .= "00" . ($dem + 1);
+        } else if ($dem >= 100) {
+            $matp .= "0" . ($dem + 1);
+        } else if ($dem >= 1000) {
+            $matp .= ($dem + 1);
+        }
         // thêm mới topping
         $this->view("layoutAdmin",
         [
             "page"=>"topping/createTP",
+            "matp" => $matp,
             'listTenLoaiTP' => $listTenLoaiTP
         ]
         );
@@ -61,9 +96,44 @@ class Topping extends Controller{
     }
 
 
-    function Store() {
+    function Store() 
         // thêm thành công
+    {
+        $listTP = json_decode($this->tpModel->listAll(), true);
+        //tạo mã tự động
+        $dem = count($listTP);
+        $matp = "TP";
+        if ($dem < 10) {
+            $matp .= "000" . ($dem + 1);
+        } else if ($dem >= 10) {
+            $matp .= "00" . ($dem + 1);
+        } else if ($dem >= 100) {
+            $matp .= "0" . ($dem + 1);
+        } else if ($dem >= 1000) {
+            $matp .= ($dem + 1);
+        }
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["tentp"])) {
+                $tentp = $_POST['tentp'];
+            }
+            if (isset($_POST["dongia"])) {
+                $dongia = $_POST['dongia'];
+            }
+            if ($_FILES["hinh"]['name'] != NULL) {
+                $hinh = $_FILES["hinh"]['name'];
+                move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/topping/" . $_FILES["hinh"]["name"]);
+            }
+
+            if (isset($_POST["loaiTP"])) {
+                $loaiTP = $_POST['loaiTP'];
+            }
+
+            $save = $this->model("ToppingModel");
+            $save->insert($matp, $tentp, $dongia, $hinh, $loaiTP);
+        }
+
+        return $this->redirectTo("Topping", "Index");
     }  
 
     function Save($id) {
@@ -76,8 +146,9 @@ class Topping extends Controller{
             if (isset($_POST["dongia"])) {
                 $dongia = $_POST['dongia'];
             }
-            if (isset($_POST["anhtp"])) {
-                $anhdu = $_POST['anhtp'];
+            if ($_FILES["hinh"]['name'] != NULL) {
+                $hinh = $_FILES["hinh"]['name'];
+                move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/topping/" . $_FILES["hinh"]["name"]);
             }
             
             
@@ -87,10 +158,12 @@ class Topping extends Controller{
 
 
             $save = $this->model("ToppingModel");
-            $save->update($id, $tentp);
+            $save->update($id, $tentp, $dongia, $hinh, $loaiTP);
         }
         return $this->redirectTo("Topping", "Index");
     }
+
+
 
     function Delete($id) {
         $tp = json_decode($this->tpModel->getToppingById($id), true);

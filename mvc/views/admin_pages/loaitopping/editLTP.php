@@ -1,18 +1,21 @@
-<div class="container">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h2 class="text-center">Chỉnh sửa loại topping</h2>
-		</div>
-		<div class="panel-body">
-			<form action="" method="post">
-				<div class="form-group">
-					<label>Mã loại topping:</label>
-					<input required="true" type="text" class="form-control" id="maltp" name="maltp" disabled value="<?php echo $data['ltp']['MaLoaiTP'] ?>">
+<div class="checkform">
+	<div class="content">
+		<h3 class="title">Chỉnh sửa loại topping</h3>
+
+		<form action="LoaiTopping/Save/<?php echo $data["ltp"]['MaLoaiTP'] ?>" method="post">
+			<div class="form-horizontal">
+				<div class="form-group1">
+					<label for="" class="control-label col-md-4">Mã loại topping: </label>
+					<div class="col-md-8">
+						<input type="text" name="maltp" class="form-control" readonly value="<?php echo $data['ltp']['MaLoaiTP'] ?>">
+					</div>
 				</div>
 
-				<div class="form-group">
-					<label>Tên loại sản phẩm:</label>
-					<input required="true" type="text" class="form-control" id="tenltp" name="tenltp" value="<?php echo $data['ltp']['TenLoaiTP'] ?>">
+				<div class="form-group1">
+					<label for="" class="control-label col-md-4">Tên loại topping: </label>
+					<div class="col-md-8">
+						<input type="text" name="tenloaitp" class="form-control" value="<?php echo $data['ltp']['TenLoaiTP'] ?>">
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -25,7 +28,7 @@
 						</button>
 					</div>
 				</div>
-			</form>
-		</div>
+			</div>
+		</form>
 	</div>
 </div>

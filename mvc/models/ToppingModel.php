@@ -21,14 +21,37 @@ class ToppingModel extends DataBase {
         return json_encode($arr);
     }
 
-    public function update($matp, $tentp) 
+    public function update($matp, $tentp, $dongia, $anhtp, $loaiTP)
     {
-        $qr = "UPDATE topping SET TenTP = $tentp WHERE topping.MaTP = '$matp'";        
+        if ($_FILES["hinh"]['name'] != NULL) {
+            $anhtp = $_FILES["hinh"]['name'];
+            move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/topping/" . $_FILES["hinh"]["name"]);
+            
+            $qr = "UPDATE topping SET TenTP = '$tentp', DonGia = '$dongia', HinhAnh ='$anhtp', MaLoaiTP = '$loaiTP' WHERE MaTP = '$matp'";
+        } else {
+            $qr = "UPDATE topping SET TenTP = '$tentp', DonGia = '$dongia', MaLoaiTP = '$loaiTP' WHERE MaTP = '$matp'";
+        }       
         return mysqli_query($this->con, $qr);
     }
 
     public function delete($matp) {
         $qr = "DELETE FROM topping WHERE MaTP = '$matp'";
+        return mysqli_query($this->con, $qr);
+    }
+
+    public function TimKiemTP($tukhoa){
+        $qr = "SELECT * FROM topping where TenTP like '%$tukhoa%' ";
+        $rows = mysqli_query($this->con, $qr);
+        $arr = array();
+        while ($row = mysqli_fetch_array($rows)) {
+            $arr[] = $row;
+        }
+        return json_encode($arr);
+    }
+
+    public function insert($matp, $tentp, $dongia, $anhtp, $loaiTP)
+    {
+        $qr = "INSERT INTO topping VALUES ('" . $matp . "', '" . $tentp . "','" . $dongia . "', '" . $anhtp . "', '" . $loaiTP . "')";
         return mysqli_query($this->con, $qr);
     }
 }

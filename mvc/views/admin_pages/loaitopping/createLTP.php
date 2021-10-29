@@ -4,10 +4,14 @@
             <h2 class="text-center">Thêm loại topping</h2>
         </div>
         <div class="panel-body">
-            <form action="" method="post">
+            <form action="LoaiTopping/Store" method="post">
                 <div class="form-group">
                     <label>Mã loại topping:</label>
                     <input type="text" class="form-control" id="maltp" name="maltp">
+                     <span class="text-danger"><?php if (isset($_SESSION['error'])) {
+                                                echo $_SESSION['error'];
+                                                unset($_SESSION['error']);
+                                            } ?></span>
                 </div>
 
                 <div class="form-group">
@@ -19,3 +23,5 @@
         </div>
     </div>
 </div>
+
+
