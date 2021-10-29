@@ -203,11 +203,6 @@
         echo "";
     }
     ?>
-<<<<<<< HEAD
-
-=======
-    <!-- </div> -->
->>>>>>> e3abcefa1b949b977a6a7e7228184c0bfd40f3ab
 </section>
 
 <script src="public/admin/Admin/js/phantrang.js"></script>
