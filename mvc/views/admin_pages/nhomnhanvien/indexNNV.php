@@ -66,7 +66,6 @@
         unset($_SESSION['thongbao']);
     }
     ?>
-<<<<<<< HEAD
       <form action="" method="GET">
                         <table style="margin: auto; width:350px;">
                             <tr>
@@ -82,9 +81,6 @@
                         </table>
                     </form>
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
-=======
-    <div class="form-group" style="width: 100%; display: none; margin-top: 60px;">
->>>>>>> e3abcefa1b949b977a6a7e7228184c0bfd40f3ab
         <!-- Show Numbers Of Rows -->
         <div>
             <span style="line-height: 2.4rem; font-weight: 800; margin-right: 1.5rem;">Số dòng hiển thị: </span>
