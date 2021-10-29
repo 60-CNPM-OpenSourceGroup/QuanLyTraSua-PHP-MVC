@@ -40,7 +40,9 @@ class ToppingModel extends DataBase {
     }
 
     public function TimKiemTP($tukhoa){
-        $qr = "SELECT * FROM topping where TenTP like '%$tukhoa%' ";
+        $qr = "select * from topping left join loaitopping on topping.MaLoaiTP = loaitopping.MaLoaiTP 
+                where 1 and TenTP like '%$tukhoa%' or MaTP like '%$tukhoa%' 
+                or DonGia like '%$tukhoa%' or TenLoaiTP like '%$tukhoa%'";
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
         while ($row = mysqli_fetch_array($rows)) {

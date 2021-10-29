@@ -59,22 +59,24 @@ class Topping extends Controller{
         $listTP = json_decode($this->tpModel->listAll(), true);
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
         //tạo mã tự động
-        $dem = count($listTP);
-        $matp = "TP";
-        if ($dem < 10) {
-            $matp .= "000" . ($dem + 1);
-        } else if ($dem >= 10) {
-            $matp .= "00" . ($dem + 1);
-        } else if ($dem >= 100) {
-            $matp .= "0" . ($dem + 1);
-        } else if ($dem >= 1000) {
-            $matp .= ($dem + 1);
+        $getma = end($listTP);
+        $madu = substr($getma["MaTP"], 2 );
+        $ma = "TP";
+
+        if ((int)$matp < 10) {
+            $ma .= "000" . ((int)$matp + 1);
+        } else if ((int)$matp >= 10) {
+            $ma .= "00" . ((int)$matp + 1);
+        } else if ((int)$matp >= 100) {
+            $ma .= "0" . ((int)$matp + 1);
+        } else if ((int)$matp >= 1000) {
+            $ma .= ((int)$matp + 1);
         }
         // thêm mới topping
         $this->view("layoutAdmin",
         [
             "page"=>"topping/createTP",
-            "matp" => $matp,
+            "matp" => $ma,
             'listTenLoaiTP' => $listTenLoaiTP
         ]
         );
@@ -99,21 +101,12 @@ class Topping extends Controller{
     function Store() 
         // thêm thành công
     {
-        $listTP = json_decode($this->tpModel->listAll(), true);
-        //tạo mã tự động
-        $dem = count($listTP);
-        $matp = "TP";
-        if ($dem < 10) {
-            $matp .= "000" . ($dem + 1);
-        } else if ($dem >= 10) {
-            $matp .= "00" . ($dem + 1);
-        } else if ($dem >= 100) {
-            $matp .= "0" . ($dem + 1);
-        } else if ($dem >= 1000) {
-            $matp .= ($dem + 1);
-        }
+       
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["matp"])) {
+                $matp = $_POST['matp'];
+            }
             if (isset($_POST["tentp"])) {
                 $tentp = $_POST['tentp'];
             }
