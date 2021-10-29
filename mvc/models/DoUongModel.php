@@ -35,10 +35,12 @@ class DoUongModel extends DataBase
         if ($_FILES["hinh"]['name'] != NULL) {
             $anhdu = $_FILES["hinh"]['name'];
             move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/douong/" . $_FILES["hinh"]["name"]);
-            
-            $qr = "UPDATE douong SET TenDU = '$tendu', DonGia = '$dongia', HinhAnh ='$anhdu', NgayThem = '$ngaythem', BanCHay  = '$banchay', MaLoaiDU = '$loaiDU' WHERE MaDU = '$madu'";
+
+            $qr = "UPDATE douong SET TenDU = '$tendu', DonGia = '$dongia', HinhAnh ='$anhdu', 
+            NgayThem = '$ngaythem', BanCHay  = '$banchay', MaLoaiDU = '$loaiDU' WHERE MaDU = '$madu'";
         } else {
-            $qr = "UPDATE douong SET TenDU = '$tendu', DonGia = '$dongia', NgayThem = '$ngaythem', BanCHay  = '$banchay', MaLoaiDU = '$loaiDU' WHERE MaDU = '$madu'";
+            $qr = "UPDATE douong SET TenDU = '$tendu', DonGia = '$dongia', 
+            NgayThem = '$ngaythem', BanCHay  = '$banchay', MaLoaiDU = '$loaiDU' WHERE MaDU = '$madu'";
         }
 
         return mysqli_query($this->con, $qr);
@@ -50,10 +52,11 @@ class DoUongModel extends DataBase
         return mysqli_query($this->con, $qr);
     }
 
-
     public function TimKiemDU($tukhoa)
     {
-        $qr = "SELECT * FROM douong where TenDU like '%$tukhoa%' ";
+        $qr = "select * from douong left join loaidouong on douong.MaLoaiDU = loaidouong.MaLoaiDU 
+				where 1 and TenDU like '%$tukhoa%' or MaDU like '%$tukhoa%' 
+                or DonGia like '%$tukhoa%' or TenLoaiDU like '%$tukhoa%'";
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
         while ($row = mysqli_fetch_array($rows)) {
