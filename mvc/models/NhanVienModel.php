@@ -77,22 +77,25 @@ class NhanVienModel extends DataBase {
         return mysqli_query($this->con, $qr);
     }
 
-    public function TimKiemMaNV($maNV)
+    public function TimKiem($maNV, $tenNV, $gioiTinh, $idNhom)
     {
-        $qr = "select * from nhanvien left join nhomnhanvien on nhanvien.IDNhom = nhomnhanvien.IDNhom 
-				where 1 and maNV like '%$maNV%'";
-        $rows = mysqli_query($this->con, $qr);
-        $arr = array();
-        while ($row = mysqli_fetch_array($rows)) {
-            $arr[] = $row;
+        // Query mặc định khi chưa truyền tham số tìm kiếm nào
+        $qr = "select nv.*, nnv.TenNhom from nhanvien nv, nhomnhanvien nnv
+				where nv.IDNhom = nnv.IDNhom";
+        
+        // Có tìm mã
+        if($maNV != "") {
+            $qr .= " and nv.maNV LIKE '%$maNV%'";
         }
-        return json_encode($arr);
-    }
-
-    public function TimKiemTenNV($tenNV)
-    {
-        $qr = "select * from nhanvien left join nhomnhanvien on nhanvien.IDNhom = nhomnhanvien.IDNhom 
-				where 1 and TenNV like '%$tenNV%'";
+        if($tenNV != "") {
+            $qr .= " and nv.tenNV LIKE '%$tenNV%'";
+        }
+        if($gioiTinh != "") {
+            $qr .= " and nv.gioiTinh = '$gioiTinh'";
+        }
+        if($idNhom != "") {
+            $qr .= " and nv.IDNhom = '$idNhom'";
+        }
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
         while ($row = mysqli_fetch_array($rows)) {

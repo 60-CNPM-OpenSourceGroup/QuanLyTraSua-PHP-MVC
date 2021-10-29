@@ -1,6 +1,4 @@
 <style>
-
-
     .row_head,
     .row_body {
         vertical-align: middle !important;
@@ -59,7 +57,7 @@
     }
     ?>
     <!-- fix lại -->
-    <form action="NhanVien/TimKiem" method="POST">
+    <form action="NhanVien/Index" method="POST">
         <table style="margin: auto; width:350px;">
             <tr>
                 <td><b>Mã nhân viên: </b></td>
@@ -72,23 +70,23 @@
             <tr>
                 <td><b>Giới tính: </b></td>
                 <td>
-                <input type="radio" name="gioiTinh" value="1" <?php if (isset($_POST['gioiTinh'])) echo $_POST['gioiTinh']; ?> > Nam
-                <input style="margin-left: 10px;" type="radio" name="gioiTinh" value="0" <?php if (isset($_POST['gioiTinh'])) echo $_POST['gioiTinh']; ?>> Nữ
+                <input type="radio" name="gioiTinh" value="1" <?php if (isset($_POST['gioiTinh']) && $_POST['gioiTinh'] == '1') echo "checked"; ?> > Nam
+                <input style="margin-left: 10px;" type="radio" name="gioiTinh" value="0" <?php if (isset($_POST['gioiTinh']) && $_POST['gioiTinh'] == '0') echo "checked"; ?>> Nữ
                 </td>
             </tr>
             <tr>
                 <td><b>Nhóm nhân viên: </b></td>
-                <td><select name="nhomNV" class="form-control text-box single-line">
+                <td><select name="idNhom" class="form-control text-box single-line">
                     <option value="">------ Chọn tất cả ------</option>
                     <?php
                     foreach ($data['listTenNhomNV'] as $nhomNV) {
-                        if ($nhomNV['IDNhom'] == $_SESSION['nv']['nnv']) {
+                        if($nhomNV['IDNhom'] == $_POST['idNhom'] && isset($_POST['idNhom'])) {
                             $s = "selected";
-                            unset( $_SESSION['nv']['nnv']);
-                        } else {
+                        }
+                        else {
                             $s = "";
                         }
-                        echo '<option ' . $s . ' value="' . $nhomNV['IDNhom'] . '" class = "form-control">' . $nhomNV['TenNhom'] . '</option>';
+                        echo '<option '. $s .' value="' . $nhomNV['IDNhom'] . '" class = "form-control">' . $nhomNV['TenNhom'] . '</option>';
                     }
                     ?>
                 </select></td>
@@ -132,7 +130,8 @@
         </tr>
         <?php
         $i = 1;
-        foreach ($data['listNV'] as $item) {
+        if(count($data['listNV']) > 0) {
+            foreach ($data['listNV'] as $item) {
         ?>
             <tr>
                 <td><?php echo $i; ?></td>
@@ -169,7 +168,11 @@
                 </td>
             </tr>
         <?php
-            $i++;
+                $i++;
+            }
+        }
+        else {
+            echo "<tr><td colspan='10' style='text-align:center'>Chưa có nhân viên nào</td></tr>";
         }
         ?>
 

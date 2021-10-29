@@ -21,7 +21,19 @@ class NhanVien extends Controller
 
     function Index()
     {
-        $listNV = json_decode($this->nvModel->getNV(), true);
+        $maNV = "";
+        $tenNV = "";
+        $gioiTinh = "";
+        $idNhom = "";
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $maNV = $_POST['maNV'];
+            $tenNV = $_POST['tenNV'];
+            $gioiTinh = isset($_POST['gioiTinh']) ? $_POST['gioiTinh'] : "";
+            $idNhom = $_POST['idNhom'];
+        } //mà mặc định là get rồi '-', uawf thi tu get r ma
+        
+        $listNV = json_decode($this->nvModel->TimKiem($maNV, $tenNV, $gioiTinh, $idNhom), true);
         $listTenNhomNV = json_decode($this->nnvModel->getNNV(), true);
         $this->view(
             "layoutAdmin",
@@ -32,36 +44,6 @@ class NhanVien extends Controller
             ]
         );
     }
-
-    function TimKiem()
-    {       
-        $listTenNhomNV = json_decode($this->nnvModel->getNNV(), true);
-        // $tukhoa ="";
-        //  $db_tk = [];
-
-        if(isset($_POST['maNV'])){
-            $maNV = $_POST['maNV'];
-            $db_tk = json_decode($this->nvModel->TimKiemMaNV($maNV), true);
-        }
-        
-        if(isset($_POST['tenNV'])){
-            $tenNV = $_POST['tenNV'];
-            $db_tk = json_decode($this->nvModel->TimKiemTenNV($tenNV), true);
-        }
-        
-        // trả về list đồ uống
-        $this->view(
-            "layoutAdmin",
-            [
-                "page" => "nhanvien/timkiem",
-                // 'listDU' => $listDU,
-                'listTenNhomNV' => $listTenNhomNV,
-                "timkiem" => $db_tk,
-                // "thongbao" => $tb
-            ]
-        );
-    }
-
 
     function Details($id)
     {
