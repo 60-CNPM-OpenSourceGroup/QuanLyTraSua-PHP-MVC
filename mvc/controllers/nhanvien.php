@@ -49,24 +49,28 @@ class NhanVien extends Controller{
     {
         $listNV = json_decode($this->nvModel->getNV(), true);
         $listTenNhomNV = json_decode($this->nnvModel->getNNV(), true);
+
         //tạo mã tự động
-        $dem = count($listNV);
-        $manv = "NV";
-        if ($dem < 10) {
-            $manv .= "000" . ($dem + 1);
-        } else if ($dem >= 10) {
-            $manv .= "00" . ($dem + 1);
-        } else if ($dem >= 100) {
-            $manv .= "0" . ($dem + 1);
-        } else if ($dem >= 1000) {
-            $manv .= ($dem + 1);
+        $getma = end($listNV);
+        $manv = substr($getma["maNV"], 2 );
+        $ma = "NV";
+
+        if ((int)$manv < 10) {
+            $ma .= "000" . ((int)$manv + 1);
+        } else if ((int)$manv >= 10) {
+            $ma .= "00" . ((int)$manv + 1);
+        } else if ((int)$manv >= 100) {
+            $ma .= "0" . ((int)$manv + 1);
+        } else if ((int)$manv >= 1000) {
+            $ma .= ((int)$manv + 1);
         }
+
         // thêm mới đồ uống
         $this->view(
             "layoutAdmin",
             [
                 "page"=>"nhanvien/createNV",
-                "manv" => $manv,
+                "manv" => $ma,
                 'listTenNhomNV' => $listTenNhomNV
             ]
         );
@@ -74,21 +78,10 @@ class NhanVien extends Controller{
 
     function Store()
     {
-        $listNV = json_decode($this->nvModel->getNV(), true);
-        //tạo mã tự động
-        $dem = count($listNV);
-        $manv = "NV";
-        if ($dem < 10) {
-            $manv .= "000" . ($dem + 1);
-        } else if ($dem >= 10) {
-            $manv .= "00" . ($dem + 1);
-        } else if ($dem >= 100) {
-            $manv .= "0" . ($dem + 1);
-        } else if ($dem >= 1000) {
-            $manv .= ($dem + 1);
-        }
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["manv"])) {
+                $manv = $_POST['manv'];
+            }
             if (isset($_POST["tennv"])) {
                 $tennv = $_POST['tennv'];
             }

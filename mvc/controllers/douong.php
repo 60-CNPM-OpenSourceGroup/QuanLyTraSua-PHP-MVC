@@ -46,7 +46,6 @@ class DoUong extends Controller
             $db_tk = json_decode($this->duModel->TimKiemDU($tukhoa), true);
         }
         
-
         // trả về list đồ uống
         $this->view(
             "layoutAdmin",
@@ -64,24 +63,28 @@ class DoUong extends Controller
     {
         $listDU = json_decode($this->duModel->listAll(), true);
         $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
+
         //tạo mã tự động
-        $dem = count($listDU);
-        $madu = "DU";
-        if ($dem < 10) {
-            $madu .= "000" . ($dem + 1);
-        } else if ($dem >= 10) {
-            $madu .= "00" . ($dem + 1);
-        } else if ($dem >= 100) {
-            $madu .= "0" . ($dem + 1);
-        } else if ($dem >= 1000) {
-            $madu .= ($dem + 1);
+        $getma = end($listDU);
+        $madu = substr($getma["MaDU"], 2 );
+        $ma = "DU";
+
+        if ((int)$madu < 10) {
+            $ma .= "000" . ((int)$madu + 1);
+        } else if ((int)$madu >= 10) {
+            $ma .= "00" . ((int)$madu + 1);
+        } else if ((int)$madu >= 100) {
+            $ma .= "0" . ((int)$madu + 1);
+        } else if ((int)$madu >= 1000) {
+            $ma .= ((int)$madu + 1);
         }
+        
         // thêm mới đồ uống
         $this->view(
             "layoutAdmin",
             [
                 "page" => "douong/createDU",
-                "madu" => $madu,
+                "madu" => $ma,
                 'listTenLoaiDU' => $listTenLoaiDU
             ]
         );
@@ -106,21 +109,11 @@ class DoUong extends Controller
 
     function Store()
     {
-        $listDU = json_decode($this->duModel->listAll(), true);
-        //tạo mã tự động
-        $dem = count($listDU);
-        $madu = "DU";
-        if ($dem < 10) {
-            $madu .= "000" . ($dem + 1);
-        } else if ($dem >= 10) {
-            $madu .= "00" . ($dem + 1);
-        } else if ($dem >= 100) {
-            $madu .= "0" . ($dem + 1);
-        } else if ($dem >= 1000) {
-            $madu .= ($dem + 1);
-        }
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["madu"])) {
+                $madu = $_POST['madu'];
+            }
             if (isset($_POST["tendu"])) {
                 $tendu = $_POST['tendu'];
             }
