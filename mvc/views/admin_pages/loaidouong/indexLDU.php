@@ -43,6 +43,11 @@
         background-color: #ddd;
         border-radius: 5px;
     }
+    
+    h3{
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
 </style>
 <?php
 // echo "INDEX ĐỒ UỐNG";

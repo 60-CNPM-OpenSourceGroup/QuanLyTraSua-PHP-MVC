@@ -49,18 +49,19 @@
     }
 
     #searchInput {
-        position: absolute;
-        right: 0;
+        /* position: absolute; */
+        /* right: 0; */
         line-height: 2.1rem;
         border-radius: 4px;
         outline: none;
         border: 0.1px solid #7877775c;
+        margin: 10px;
     }
 
     .group_head {
         width: 100%;
         display: flex;
-        margin-top: 60px;
+        margin-top: 30px;
         position: relative;
     }
 
@@ -69,25 +70,26 @@
         font-weight: 800;
         margin-right: 1.5rem;
     }
+
+    h3{
+        text-align: center;
+    }
 </style>
 
 <section>
     <h3>DANH SÁCH ĐƠN ĐẶT HÀNG TRỰC TUYẾN</h3>
     <div class="form-group group_head">
         <!-- Show Numbers Of Rows -->
-        <div>
+        <div style="display: none;">
             <span class="lable_dong">Số dòng hiển thị: </span>
         </div>
-        <div style="width: 12%;">
+        <div style="width: 12%; display: none;">
             <select class="form-control" name="state" id="maxRows">
                 <option value="5000">Hiện tất cả</option>
                 <option value="5">5</option>
-                <option value="10">10</option>
+                <!-- <option value="10">10</option>
                 <option value="15">15</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="70">70</option>
-                <option value="100">100</option>
+                -->
             </select>
         </div>
         <input type="text" id="searchInput" onkeyup="searchFunc()" placeholder="Tìm theo họ tên..." title="Tìm theo họ tên">
