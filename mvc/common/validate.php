@@ -113,8 +113,11 @@
 
   function validateGia($inputGia)
   {
-      if (empty($inputTenDU)) {
-          $_SESSION['error']['gia'] = "Giá đồ uống không được để trống";
+      if (empty($inputGia)) {
+          $_SESSION['error']['donGia'] = "Giá đồ uống không được để trống";
+      }
+      if (!preg_match ("/^[0-9]*$/", $inputGia) ){  
+        $_SESSION['error']['donGia'] = "Bạn chỉ được nhập giá trị số nguyên vào trường này";
       }
   }
 
@@ -129,6 +132,20 @@
   {
       if (empty($inputNgayThem)) {
           $_SESSION['error']['ngayThem'] = "Ngày thêm không được để trống";
+      }
+  }
+
+  function validateMaLDU($inputMaLDU)
+  {
+      if (empty($inputMaLDU)) {
+          $_SESSION['error']['maLDU'] = "Mã loại đồ uống không được để trống";
+      }
+  }
+
+  function validateTenLDU($inputTenLDU)
+  {
+      if (empty($inputTenLDU)) {
+          $_SESSION['error']['tenLDU'] = "Tên loại đồ uống không được để trống";
       }
   }
 ?>

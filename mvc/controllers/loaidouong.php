@@ -1,4 +1,5 @@
 <?php
+require_once './mvc/common/validate.php';
 class LoaiDoUong extends Controller
 {
     public $lduModel;
@@ -67,11 +68,20 @@ class LoaiDoUong extends Controller
             if (isset($_POST["tenldu"])) {
                 $tenldu = $_POST['tenldu'];
             }
-            $result = $this->lduModel->checkPK($maldu);
-            if (mysqli_num_rows($result) > 0) {
-                $_SESSION['error'] = "Mã loại đồ uống đã tồn tại";
+            validateMaLDU($maldu);
+            if(!isset($_SESSION['error']['maLDU'])) {
+                $result = $this->lduModel->checkPK($maldu);
+                if (mysqli_num_rows($result) > 0) {
+                    $_SESSION['error']['maLDU'] = "Mã loại đồ uống đã tồn tại";
+                }
+            }
+            validateTenLDU($tenldu);
+            if(isset($_SESSION['error']) && count($_SESSION['error']) > 0){
+                // Lấy lại giá trị trước khi redirect về
+                $_SESSION['ldu'] = ['maLDU' => $maldu, 'tenLDU' => $tenldu];
                 return $this->redirectTo("LoaiDoUong", "Create");
             }
+            
             else{
                 $save = $this->model("LoaiDoUongModel");
                 $save->insert($maldu, $tenldu);
@@ -83,20 +93,29 @@ class LoaiDoUong extends Controller
         return $this->redirectTo("LoaiDoUong", "Index");
     }
 
-    function Save($id)
+    function Save()
     {
         //sửa thành công, lưu
         //return redirectTo("DoUong", "Index")
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST["tenloaidu"])) {
-                $tenldu = $_POST['tenloaidu'];
+            $maldu = $_POST['maldu'];
+            $tenldu = $_POST['tenldu'];
+            validateTenLDU($tenldu);
+
+            if (isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
+                $_SESSION['ldu'] = [
+                    'tenLDU' => $tenldu,
+                ];
+                return $this->redirectTo("LoaiDoUong", "Edit", ['id' => $maldu]);
             }
-
-            $save = $this->model("LoaiDoUongModel");
-            $save->update($id, $tenldu);
+            else{
+                $result = $this->lduModel->update($maldu, $tenldu);
+            }
+            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
+                return $this->redirectTo("LoaiDoUong", "Index");
+            }
         }
-
-        return $this->redirectTo("LoaiDoUong", "Index");
     }
 
 

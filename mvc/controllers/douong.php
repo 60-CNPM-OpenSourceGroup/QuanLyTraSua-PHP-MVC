@@ -110,38 +110,36 @@ class DoUong extends Controller
 
     function Store()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST["madu"])) {
-                $madu = $_POST['madu'];
-            }
-            if (isset($_POST["tendu"])) {
-                $tendu = $_POST['tendu'];
-            }
-            if (isset($_POST["dongia"])) {
-                $dongia = $_POST['dongia'];
-            }
+            $madu = $_POST['madu'];
+            $tendu = $_POST['tendu'];
+            $dongia = $_POST['dongia']; 
             if ($_FILES["hinh"]['name'] != NULL) {
                 $hinh = $_FILES["hinh"]['name'];
                 move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/douong/" . $_FILES["hinh"]["name"]);
             }
+            $ngaythem = $_POST['ngaythem'];
+            $banChay = $_POST['banchay'];
+            $loaiDU = $_POST['loaiDU'];
             
-            if (isset($_POST["ngaythem"])) {
-                $ngaythem = $_POST['ngaythem'];
-                $ngaythem = str_replace('/', '-', $ngaythem);
-                $ngaythem = date('Y-m-d', strtotime($ngaythem));
+            validateTenDU($tendu);
+            validateGia($dongia);
+            validateAnhDU($_FILES["hinh"]['name']);
+            validateNgayThem($ngaythem);
+            if (isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
+                $_SESSION['du'] = [
+                    'tenDU' => $tendu,
+                    'donGia' => $dongia,
+                    'ngayThem' => $ngaythem,
+                    'banChay' => $banChay,
+                    'ldu' => $loaiDU
+                ];
+                return $this->redirectTo("DoUong", "Create");
+            } else {
+                $save = $this->model("DoUongModel");
+                $save->insert($madu, $tendu, $dongia, $hinh, $ngaythem, $banChay, $loaiDU);
+                $_SESSION['thongbao'] = "Thêm mới đồ uống thành công";
             }
-
-            if (isset($_POST["banchay"])) {
-                $banchay = $_POST['banchay'];
-            }
-
-            if (isset($_POST["loaiDU"])) {
-                $loaiDU = $_POST['loaiDU'];
-            }
-
-            $save = $this->model("DoUongModel");
-            $save->insert($madu, $tendu, $dongia, $hinh, $ngaythem, $banchay, $loaiDU);
         }
 
         return $this->redirectTo("DoUong", "Index");
@@ -203,7 +201,8 @@ class DoUong extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirm = $this->model("DoUongModel");
-            $confirm->delete($id);
+            $confirm->delete($id);   
+            $_SESSION['thongbao'] = " Xóa đồ uống thành công";
         }
         return $this->redirectTo("DoUong", "Index");
     }
