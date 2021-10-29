@@ -111,7 +111,6 @@ class NhanVien extends Controller
 
     function Store()
     {
-<<<<<<< HEAD
         // $listNV = json_decode($this->nvModel->getNV(), true);
         // //tạo mã tự động
         // $dem = count($listNV);
@@ -135,7 +134,6 @@ class NhanVien extends Controller
             $email = $_POST['email'];
             $password = $_POST['password'];
             $sdt = $_POST['sdt'];
-=======
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST["manv"])) {
                 $manv = $_POST['manv'];
@@ -166,7 +164,6 @@ class NhanVien extends Controller
             if (isset($_POST["sdt"])) {
                 $sdt = $_POST['sdt'];
             }
->>>>>>> e3abcefa1b949b977a6a7e7228184c0bfd40f3ab
             if ($_FILES["hinhanh"]['name'] != NULL) {
                 $hinhanh = $_FILES["hinhanh"]['name'];
                 move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "public/upload/nguoidung/" . $_FILES["hinhanh"]["name"]);

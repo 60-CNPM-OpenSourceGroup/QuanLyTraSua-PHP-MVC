@@ -60,7 +60,7 @@ class Topping extends Controller{
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
         //tạo mã tự động
         $getma = end($listTP);
-        $madu = substr($getma["MaTP"], 2 );
+        $matp = substr($getma["MaTP"], 2 );
         $ma = "TP";
 
         if ((int)$matp < 10) {
