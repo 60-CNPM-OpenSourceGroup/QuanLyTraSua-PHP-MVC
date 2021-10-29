@@ -134,36 +134,6 @@ class NhanVien extends Controller
             $email = $_POST['email'];
             $password = $_POST['password'];
             $sdt = $_POST['sdt'];
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST["manv"])) {
-                $manv = $_POST['manv'];
-            }
-            if (isset($_POST["tennv"])) {
-                $tennv = $_POST['tennv'];
-            }
-            if (isset($_POST["gioitinh"])) {
-                $gioitinh = $_POST['gioitinh'];
-            }
-            if (isset($_POST["ngaysinh"])) {
-                $ngaysinh = $_POST['ngaysinh'];
-                $ngaysinh = str_replace('/', '-', $ngaysinh);
-                $ngaysinh = date('Y-m-d', strtotime($ngaysinh));
-            }
-            if (isset($_POST["diachi"])) {
-                $diachi = $_POST['diachi'];
-            }
-
-            if (isset($_POST["email"])) {
-                $email = $_POST['email'];
-            }
-
-            if (isset($_POST["password"])) {
-                $password = $_POST['password'];
-            }
-
-            if (isset($_POST["sdt"])) {
-                $sdt = $_POST['sdt'];
-            }
             if ($_FILES["hinhanh"]['name'] != NULL) {
                 $hinhanh = $_FILES["hinhanh"]['name'];
                 move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "public/upload/nguoidung/" . $_FILES["hinhanh"]["name"]);
@@ -290,3 +260,4 @@ class NhanVien extends Controller
         return $this->redirectTo("NhanVien", "Index");
     }
 }
+
