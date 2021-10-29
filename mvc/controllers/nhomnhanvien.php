@@ -1,4 +1,6 @@
 <?php
+//require_once '../../mvc/common/validate.php'; //sao lại k đúng nhờ , cay @@
+require_once './mvc/common/validate.php';
 class NhomNhanVien extends Controller{
 
     public $nnvModel;
@@ -47,11 +49,23 @@ class NhomNhanVien extends Controller{
             if (isset($_POST["tenNhom"])) {
                 $tenNhom = $_POST['tenNhom'];
             }
-            $result = $this->nnvModel->checkPK($idNhom);
-            if (mysqli_num_rows($result) > 0) {
-                $_SESSION['error'] = "Mã nhóm nhân viên đã tồn tại";
+            validateMaNNV($idNhom);
+            // Đã nhập, tiếp theo ktra khóa
+            if(!isset($_SESSION['error']['maNNV'])) {
+                $result = $this->nnvModel->checkPK($idNhom);
+                if (mysqli_num_rows($result) > 0) {
+                    $_SESSION['error']['maNNV'] = "Mã nhóm nhân viên đã tồn tại";
+                }
+            }
+            // Kiểm tra nhập liệu tên
+            validateTenNNV($tenNhom);
+            // 1 trong 2 trường có lỗi gì đó
+            if(isset($_SESSION['error']) && count($_SESSION['error']) > 0){
+                // Lấy lại giá trị trước khi redirect về
+                $_SESSION['nnv'] = ['maNNV' => $idNhom, 'tenNNV' => $tenNhom];
                 return $this->redirectTo("NhomNhanVien", "Create");
             }
+            
             else{
                 $save = $this->model("NhomNhanVienModel");
                 $save->insert($idNhom, $tenNhom);
@@ -86,7 +100,16 @@ class NhomNhanVien extends Controller{
         return $this->redirectTo("NhomNhanVien", "Index");
     }
 
-    
+    // function SearchNNV($searchTenNhom){
+    //     $searchTenNhom = "";
+    //     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['searchBtn']) && $_GET['searchBtn'] != "") {
+    //         $searchTenNhom = $_GET['tenNhom'];
+    //         $confirm = $this->model("NhomNhanVienModel");
+    //         $confirm->delete($searchTenNhom);
+    //     }
+    // }
+
+
 
 }
 ?>

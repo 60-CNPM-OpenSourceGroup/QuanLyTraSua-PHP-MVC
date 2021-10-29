@@ -1,12 +1,13 @@
 <h3>THÊM MỚI PHÂN QUYỀN</h3>
 <?php 
-    if(isset($_SESSION['error'])) {
+    if (isset($_SESSION['error']['pv'])) {
         echo '<div class="alert alert-danger">';
-        echo $_SESSION['error'];
+        echo $_SESSION['error']['pv'];
         echo '</div>';
-        unset($_SESSION['error']); 
-    }
+        unset($_SESSION['error']);
+    } 
 ?>
+
 <form action="PhanQuyen/Store" method="post">
     <div class="form-horizontal">
         <hr />
@@ -17,11 +18,17 @@
 
                     <?php
                     foreach ($data['nnv'] as $item) {
-                        echo "<option value='" . $item['IDNhom'] . "'>" . $item['TenNhom'] . "</option>";
+                        if ($item['IDNhom'] == $_SESSION['pv']['idNhom']) {
+                            echo "<option value='" . $item['IDNhom'] . "' selected>" . $item['TenNhom'] . "</option>";
+                            unset($_SESSION['pv']['idNhom']);
+                        } else {
+                            echo "<option value='" . $item['IDNhom'] . "'>" . $item['TenNhom'] . "</option>";
+                        }
                     }
                     ?>
                 </select>
             </div>
+
         </div>
 
         <div class="form-group1">
@@ -30,7 +37,12 @@
                 <select name="idQuyen" id="idQuyen" class="form-control">>
                     <?php
                     foreach ($data['quyen'] as $item) {
-                        echo "<option value='" . $item['IDQuyen'] . "'>" . $item['TenQuyen'] . "</option>";
+                        if ($item['IDQuyen'] == $_SESSION['pv']['idQuyen']) {
+                            echo "<option value='" . $item['IDQuyen'] . "' selected>" . $item['TenQuyen'] . "</option>";
+                            unset($_SESSION['pv']['idQuyen']);
+                        } else {
+                            echo "<option value='" . $item['IDQuyen'] . "'>" . $item['TenQuyen'] . "</option>";
+                        }
                     }
                     ?>
                 </select>

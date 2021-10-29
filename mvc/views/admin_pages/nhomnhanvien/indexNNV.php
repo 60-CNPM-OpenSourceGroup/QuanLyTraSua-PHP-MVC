@@ -56,6 +56,20 @@
         unset($_SESSION['thongbao']);
     }
     ?>
+      <form action="" method="GET">
+                        <table style="margin: auto; width:350px;">
+                            <tr>
+                                <td><b>Họ tên: </b></td>
+                                <td><input type="text" name="tenNhom" class="form-control" value="<?php if(isset($_POST['searchTenNhom'])) echo $_POST['searchTenNhom'] ?>"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <input type="submit" value="Lọc" class="btn btn-primary" name="searchBtn" />
+                                    <a href="nhomnhanvien/index" class="btn btn-primary">Làm mới</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
         <div>

@@ -1,4 +1,5 @@
 <?php
+require_once './mvc/common/validate.php';
 class DoUong extends Controller
 {
     public $duModel;

@@ -36,7 +36,7 @@
             <div class="col-md-offset-2 col-md-6">
                     <input type="submit" value="Xóa" class="btn btn-primary" />
                 <button class="comeback">
-                    <a href="javascript:window.history.back(-1);">Quay lại</a>
+                    <a href="NhanVien/Index">Quay lại</a>
                 </button>
             </div>
         </div>

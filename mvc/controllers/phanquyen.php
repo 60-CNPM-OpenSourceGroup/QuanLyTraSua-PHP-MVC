@@ -46,15 +46,16 @@ class PhanQuyen extends Controller{
 
     function Store()
     {
-        // thêm thành công
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $idNhom = $_POST['idNhom'];
             $idQuyen = $_POST['idQuyen'];
             $result = $this->dsquyenModel->checkPK($idNhom, $idQuyen);
             if(mysqli_num_rows($result) > 0) {
-                $_SESSION['error'] = "Phân quyền này đã tồn tại";
+                $_SESSION['error']['pv'] = "Phân quyền này đã tồn tại";
+                $_SESSION['pv'] = ['idNhom' => $idNhom, 'idQuyen' => $idQuyen];
                 return $this->redirectTo('PhanQuyen', 'Create');
             }
+
             $this->dsquyenModel->insert($idNhom, $idQuyen);
             $_SESSION['thongbao'] = "Thêm mới thành công";
         }

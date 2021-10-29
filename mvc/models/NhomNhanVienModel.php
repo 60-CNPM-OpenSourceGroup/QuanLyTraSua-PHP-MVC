@@ -39,6 +39,12 @@ class NhomNhanVienModel extends DataBase {
         return mysqli_query($this->con, $qr);
     }
 
+    public function search($searchTenNhom){
+        $strSQL = "SELECT *
+                FROM nhomnhanvien
+                WHERE TenNhom LIKE '$searchTenNhom'";
+                return mysqli_query($this->con, $strSQL);
+    }
    
 }
 ?>

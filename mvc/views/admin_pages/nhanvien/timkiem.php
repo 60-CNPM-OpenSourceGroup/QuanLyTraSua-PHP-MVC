@@ -126,7 +126,7 @@
         </tr>
         <?php
         $i = 1;
-        foreach ($data['listNV'] as $item) {
+        foreach ($data['timkiem'] as $item) {
         ?>
             <tr>
                 <td><?php echo $i; ?></td>
@@ -166,12 +166,20 @@
             $i++;
         }
         ?>
+        <tr>
+            <?php
+            $tb = "";
+            if (count($data['timkiem']) == 0) {
+                echo '<td colspan="9" style="text-align: center; color: red;font-weight: bold;">Không tìm thấy nhân viên </td>';
+            }
+            ?>
 
+        </tr>
 
     </table>
     <!-- Start Pagination -->
     <?php
-    if (count($data['listNV']) > 5) {
+    if (count($data['timkiem']) > 5) {
         echo '
         <div class="pagination-container">
             <nav style="text-align: center;">

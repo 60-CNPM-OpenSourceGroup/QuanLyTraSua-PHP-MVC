@@ -55,18 +55,19 @@ class NhanVienModel extends DataBase {
         return mysqli_query($this->con, $qr);
     }
 
-    public function update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $hinhAnh)
+    public function update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $hinhAnh, $nhomNV)
     {
+
         // Có update hình ảnh
         if($hinhAnh != null){
             $qr = "UPDATE nhanvien SET tenNV = '$tenNV',
             ngaySinh = '$ngaySinh', gioiTinh = '$gioiTinh', diaChi = '$diaChi',
-            hinhAnh = '$hinhAnh', sdt ='$sdt' WHERE maNV = '$maNV'";
+            hinhAnh = '$hinhAnh', sdt ='$sdt', IDNhom = '$nhomNV' WHERE maNV = '$maNV'";
         }
         else {
             $qr = "UPDATE nhanvien SET tenNV = '$tenNV',
             ngaySinh = '$ngaySinh', gioiTinh = '$gioiTinh', diaChi = '$diaChi',
-            sdt ='$sdt' WHERE maNV = '$maNV'";
+            sdt ='$sdt', IDNhom = '$nhomNV' WHERE maNV = '$maNV'";
         }
         return mysqli_query($this->con, $qr);
     }
@@ -75,5 +76,30 @@ class NhanVienModel extends DataBase {
         $qr = "UPDATE nhanvien SET password = '$matKhauMoi' WHERE maNV = '$maNV'";
         return mysqli_query($this->con, $qr);
     }
+
+    public function TimKiemMaNV($maNV)
+    {
+        $qr = "select * from nhanvien left join nhomnhanvien on nhanvien.IDNhom = nhomnhanvien.IDNhom 
+				where 1 and maNV like '%$maNV%'";
+        $rows = mysqli_query($this->con, $qr);
+        $arr = array();
+        while ($row = mysqli_fetch_array($rows)) {
+            $arr[] = $row;
+        }
+        return json_encode($arr);
+    }
+
+    public function TimKiemTenNV($tenNV)
+    {
+        $qr = "select * from nhanvien left join nhomnhanvien on nhanvien.IDNhom = nhomnhanvien.IDNhom 
+				where 1 and TenNV like '%$tenNV%'";
+        $rows = mysqli_query($this->con, $qr);
+        $arr = array();
+        while ($row = mysqli_fetch_array($rows)) {
+            $arr[] = $row;
+        }
+        return json_encode($arr);
+    }
+    
 }
 ?>

@@ -1,4 +1,5 @@
 <?php
+require_once './mvc/common/validate.php';
 class CaNhan extends Controller
 {
 
@@ -48,10 +49,10 @@ class CaNhan extends Controller
                 $hinh = $_FILES['hinhAnh'];
                 $tenAnh = $hinh['name'];
                 move_uploaded_file($hinh['tmp_name'], "public/upload/nguoidung/" . $tenAnh);
-                $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $tenAnh);
+                $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $tenAnh, $_SESSION['user']['IDNhom']);
             }
             else {
-                $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, null);
+                $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, null, $_SESSION['user']['IDNhom']);
             }
             if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
                 if($tenAnh != "") $_SESSION['user']['hinhAnh'] = $tenAnh;
@@ -77,17 +78,29 @@ class CaNhan extends Controller
             $oldPass = $_POST['oldPass'];
             $newPass = $_POST['newPass'];
             $againPass = $_POST['againPass'];
-            if($newPass != $againPass) {
-                $_SESSION['error'] = "Mật khẩu nhập lại không khớp";
-                $this->redirectTo('CaNhan', 'DoiMatKhau');
+            if($againPass == "") {
+                $_SESSION['error']['againPass'] = "Mật khẩu nhập lại không được để trống";
             }
-            else if(md5($oldPass) != $nv[0]['password']) {
-                $_SESSION['error'] = "Mật khẩu cũ không đúng";
-                $this->redirectTo('CaNhan', 'DoiMatKhau');
+            elseif($newPass != $againPass) {
+                $_SESSION['error']['againPass'] = "Mật khẩu nhập lại không khớp";
             }
-            else if(md5($newPass) == $nv[0]['password']) {
-                $_SESSION['error'] = "Mật khẩu mới phải khác mật khẩu cũ";
-                $this->redirectTo('CaNhan', 'DoiMatKhau');
+            if($oldPass == "") {
+                $_SESSION['error']['oldPass'] = "Mật khẩu cũ không được để trống";
+            }
+            elseif(md5($oldPass) != $nv[0]['password']) {
+                $_SESSION['error']['oldPass'] = "Mật khẩu cũ không đúng";
+            }
+            if(md5($newPass) == $nv[0]['password']) {
+                $_SESSION['error']['newPass'] = "Mật khẩu mới phải khác mật khẩu cũ";
+            }
+            validateMatKhauMoi($newPass);
+            if(isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
+                $_SESSION['dmk'] = [
+                    'oldPass' => $oldPass,
+                    'newPass' => $newPass,
+                    'againPass' => $againPass
+                ];
+                return $this->redirectTo('CaNhan', 'DoiMatKhau');
             }
             else {
                 $result = $this->nvModel->doiMK($_SESSION["user"]["maNV"], md5($newPass));

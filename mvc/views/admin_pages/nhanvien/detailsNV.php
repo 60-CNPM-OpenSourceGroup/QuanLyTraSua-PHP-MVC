@@ -66,6 +66,6 @@
 <?php
     echo "<div style='margin-left:50px;'>";
     echo "<a href='NhanVien/Edit/" . $data['nv']['maNV']. "'>Cập nhật</a> | ";
-    echo "<a href='javascript:window.history.back(-1);'>Quay lại</a>";
+    echo "<a href='NhanVien/Index'>Quay lại</a>"; //javascript:window.history.back(-1);
     echo "</div>";
 ?>
