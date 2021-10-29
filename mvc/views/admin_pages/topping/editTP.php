@@ -3,7 +3,7 @@
 		<div class="panel-heading">
 			<h2 class="text-center">Chỉnh sửa topping</h2>
 		</div>
-		<div class="panel-body">
+		
 			<form action="Topping/Save/<?php echo $data["tp"]['MaTP'] ?>" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Mã topping:</label>
@@ -22,10 +22,8 @@
 
 				<div class="form-group">
 					<label>Ảnh topping:</label>
-					<input type="text" class="form-control" name="anhtp" value="<?php echo $data['tp']['HinhAnh'] ?>">
-					<input type="file" id="anhtp" name="anhtp" value="<?php echo $data['tp']['HinhAnh'] ?>">
+					<input type="file" id="hinh" name="hinh">
 				</div>
-
 				
 
 				<div class="form-group">
@@ -33,7 +31,7 @@
 					<select name="loaiTP" class="form-control">
 						<!-- <option value="<?php echo $data["tp"]["MaLoaiTP"]; ?>" class="form-control"> -->
 						<?php
-						echo $data["tp"]["TenLoaiTP"];
+						//echo $data["tp"]["TenLoaiTP"];
 
 						?></option>
 						<?php
@@ -58,7 +56,6 @@
 						</button>
 					</div>
 				</div>
-			</form>
-		</div>
+		</form>
 	</div>
 </div>

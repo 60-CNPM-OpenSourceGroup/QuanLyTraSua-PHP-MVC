@@ -43,6 +43,11 @@
         background-color: #ddd;
         border-radius: 5px;
     }
+
+    h3{
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
 </style>
 
 <h3 class="text-center">DANH SÁCH LOẠI TOPPING</h3>

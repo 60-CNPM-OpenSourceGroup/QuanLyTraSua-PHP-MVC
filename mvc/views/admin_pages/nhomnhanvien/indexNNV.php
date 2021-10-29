@@ -13,10 +13,11 @@
     .row_body {
         vertical-align: middle !important;
     }
-    
-    .pagination-container{
+
+    .pagination-container {
         margin-top: 40px;
     }
+
     .pagination li:hover {
         cursor: pointer;
     }
@@ -24,20 +25,29 @@
     .pagination {
         display: inline-block;
     }
-    .pagination li.active{
+
+    .pagination li.active {
         background-color: darkseagreen;
         color: white;
         border-radius: 5px;
     }
+
     .pagination li {
         color: black;
         float: left;
         padding: 8px 16px;
         text-decoration: none;
     }
+
     .pagination li:hover:not(.active) {
         background-color: #ddd;
         border-radius: 5px;
+    }
+
+    h3{
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        text-align: center;
     }
 </style>
 <?php
@@ -56,6 +66,7 @@
         unset($_SESSION['thongbao']);
     }
     ?>
+<<<<<<< HEAD
       <form action="" method="GET">
                         <table style="margin: auto; width:350px;">
                             <tr>
@@ -71,6 +82,9 @@
                         </table>
                     </form>
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
+=======
+    <div class="form-group" style="width: 100%; display: none; margin-top: 60px;">
+>>>>>>> e3abcefa1b949b977a6a7e7228184c0bfd40f3ab
         <!-- Show Numbers Of Rows -->
         <div>
             <span style="line-height: 2.4rem; font-weight: 800; margin-right: 1.5rem;">Số dòng hiển thị: </span>
@@ -79,9 +93,9 @@
             <select class="form-control" name="state" id="maxRows">
                 <option value="5000">Hiện tất cả</option>
                 <option value="5">5</option>
-                <option value="10">10</option>
+                <!-- <option value="10">10</option>
                 <option value="15">15</option>
-                <option value="20">20</option>
+                <option value="20">20</option> -->
             </select>
         </div>
     </div>
@@ -93,43 +107,51 @@
             <th class="row_head">Chức năng</th>
         </tr>
         <?php
-          $i = 1;
-          foreach ($data['listNNV'] as $item) { 
-          ?>
+        $i = 1;
+        foreach ($data['listNNV'] as $item) {
+        ?>
             <tr>
-            <td><?php echo $i; ?></td>
-              <td><?php echo $item["IDNhom"]; ?></td>
-              <td><?php echo $item["TenNhom"]; ?></td>
-              <td width="30">
+                <td><?php echo $i; ?></td>
+                <td><?php echo $item["IDNhom"]; ?></td>
+                <td><?php echo $item["TenNhom"]; ?></td>
+                <td width="30">
                     <?php
                     echo "<a href='NhomNhanVien/Delete/" . $item["IDNhom"] . "'><img src='public/upload/topping/delete.png' width='20' height='20'/></a>&nbsp; ";
                     ?>
                 </td>
             </tr>
-          <?php
+        <?php
             $i++;
-          }
-          ?>
+        }
+        ?>
 
-      
+
     </table>
     <!-- Start Pagination -->
-    <div class='pagination-container'>
-        <nav style="text-align: center;">
-            <ul class="pagination">
-                <li data-page="prev" class="page-item">
-                    <span>
-                    &laquo; <span class="sr-only">(current)
-                    </span></span>
-                </li>
-                <!--	Here the JS Function Will Add the Rows -->
-                <li data-page="next" id="prev">
-                    <span> &raquo; <span class="sr-only">(current)</span></span>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    </div>
+    <?php
+    if(count($data['listNNV']) > 5){
+        echo '
+        <div class="pagination-container">
+            <nav style="text-align: center;">
+                <ul class="pagination">
+                    <li data-page="prev" class="page-item">
+                        <span>
+                            &laquo; <span class="sr-only">(current)
+                            </span></span>
+                    </li>
+                    <!--	Here the JS Function Will Add the Rows -->
+                    <li data-page="next" id="prev">
+                        <span> &raquo; <span class="sr-only">(current)</span></span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        ';
+    } else {
+        echo "";
+    }
+    ?>
+    <!-- </div> -->
 </section>
 
 <script src="public/admin/Admin/js/phantrang.js"></script>

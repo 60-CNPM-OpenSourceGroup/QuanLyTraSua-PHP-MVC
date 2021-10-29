@@ -4,10 +4,10 @@
 			<h2 class="text-center">Thêm topping</h2>
 		</div>
 		<div class="panel-body">
-			<form action="" method="post" enctype="multipart/form-data">
+			<form action="Topping/Store" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Mã topping:</label>
-					<input type="text" class="form-control" id="matp" name="matp" disabled>
+					<input type="text" class="form-control" id="matp" name="matp" readonly value="<?php echo $data['matp']?>">
 				</div>
 
 				<div class="form-group">
@@ -17,14 +17,13 @@
 
 				<div class="form-group">
 					<label>Giá:</label>
-					<input required="true" type="number" class="form-control" id="dongia" name="dongia">
+					<input required="true" type="text" class="form-control" id="dongia" name="dongia">
 				</div>
 
 				<div class="form-group">
 					<label>Ảnh topping:</label>
-					<input required="true" type="file" id="anhtp" name="anhtp">
+					<input required="true" type="file" id="hinh" name="hinh">
 				</div>
-
 
 				<div class="form-group">
 					<label>Loại topping:</label>
@@ -41,7 +40,8 @@
 						?>
 					</select>
 				</div>
-				<button class="btn btn-success">Thêm</button>
+				<!-- <button class="btn btn-success">Thêm</button> -->
+				<input type="submit" name="them" class="btn btn-success" size="10" value="Thêm mới" />
 			</form>
 		</div>
 	</div>

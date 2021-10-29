@@ -43,11 +43,6 @@
         background-color: #ddd;
         border-radius: 5px;
     }
-
-    h3{
-        padding-top: 1rem;
-        padding-bottom: 2rem;
-    }
 </style>
 <section>
     <h3 class="text-center">DANH SÁCH ĐỒ UỐNG</h3>
@@ -67,8 +62,7 @@
             </form>
         </div>
     </div>
-
-    <div class="form-group" style="width: 100%; display: none; margin-top: 60px;">
+    <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
         <div>
             <span style="line-height: 2.4rem; font-weight: 800; margin-right: 1.5rem;">Số dòng hiển thị: </span>
@@ -77,9 +71,9 @@
             <select class="form-control" name="state" id="maxRows">
                 <option value="5000">Hiện tất cả</option>
                 <option value="5">5</option>
-                <!-- <option value="10">10</option>
+                <option value="10">10</option>
                 <option value="15">15</option>
-                <option value="20">20</option> -->
+                <option value="20">20</option>
             </select>
         </div>
     </div>
@@ -97,7 +91,8 @@
         </tr>
         <?php
         $i = 1;
-        foreach ($data['listDU'] as $item) {
+
+        foreach ($data['timkiem'] as $item) {
         ?>
             <tr>
                 <td><?php echo $i; ?></td>
@@ -132,16 +127,25 @@
                     ?>
                 </td>
             </tr>
+
         <?php
             $i++;
         }
 
         ?>
+        <tr>
+            <?php
+            $tb = "";
+            if (count($data['timkiem']) == 0) {
+                echo '<td colspan="9" style="text-align: center; color: red;font-weight: bold;">Không tìm thấy sản phẩm </td>';
+            }
+            ?>
 
+        </tr>
     </table>
     <!-- Start Pagination -->
     <?php
-    if(count($data['listDU']) > 5){
+    if(count($data['timkiem']) > 5){
         echo '
         <div class="pagination-container">
             <nav style="text-align: center;">

@@ -13,10 +13,11 @@
     .row_body {
         vertical-align: middle !important;
     }
-    
-    .pagination-container{
+
+    .pagination-container {
         margin-top: 40px;
     }
+
     .pagination li:hover {
         cursor: pointer;
     }
@@ -24,20 +25,28 @@
     .pagination {
         display: inline-block;
     }
-    .pagination li.active{
+
+    .pagination li.active {
         background-color: darkseagreen;
         color: white;
         border-radius: 5px;
     }
+
     .pagination li {
         color: black;
         float: left;
         padding: 8px 16px;
         text-decoration: none;
     }
+
     .pagination li:hover:not(.active) {
         background-color: #ddd;
         border-radius: 5px;
+    }
+
+    h3{
+        padding-top: 1rem;
+        padding-bottom: 2rem;
     }
 </style>
 <?php
@@ -45,9 +54,21 @@
 ?>
 <section>
     <h3 class="text-center">DANH SÁCH TOPPING</h3>
-    <a href="Topping/Create">
-        <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Sản Phẩm</button>
-    </a>
+    <div class="row">
+        <div class="col-lg-6">
+            <a href="Topping/Create">
+                <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Sản Phẩm</button>
+            </a>
+        </div>
+        <div class="col-lg-6" style="position: relative;">
+            <form action="Topping/TimKiem" method="POST">
+                <div class="form-group" style="display: flex; position: absolute; right: 0;">
+                    <input style="width: 300px;" type="text" class="form-control" placeholder="Tìm kiếm..." id="tukhoa" name="tukhoa" value="<?php if (isset($_POST['tukhoa'])) echo $_POST['tukhoa']; ?>">
+                    <input type="submit" value="Tìm kiếm">
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
@@ -58,9 +79,6 @@
             <select class="form-control" name="state" id="maxRows">
                 <option value="5000">Hiện tất cả</option>
                 <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
             </select>
         </div>
     </div>
@@ -71,23 +89,23 @@
             <th class="row_head">Mã topping</th>
             <th class="row_head">Tên topping</th>
             <th class="row_head">Giá</th>
-<!--             <th class="row_head">Ngày thêm</th> -->
-<!--             <th class="row_head">Bán chạy</th> -->
+            <!--             <th class="row_head">Ngày thêm</th> -->
+            <!--             <th class="row_head">Bán chạy</th> -->
             <th class="row_head">Loại topping</th>
             <th class="row_head">Chức năng</th>
         </tr>
         <?php
-          $i = 1;
-          foreach ($data['listTP'] as $item) { 
+        $i = 1;
+        foreach ($data['listTP'] as $item) {
         ?>
             <tr>
                 <td><?php echo $i; ?></td>
-                <td><?php echo '<img src="public/upload/topping/'.$item['HinhAnh'].'"style ="max-width: 50px">';?></td> 
+                <td><?php echo '<img src="public/upload/topping/' . $item['HinhAnh'] . '"style ="max-width: 50px">'; ?></td>
                 <td><?php echo $item["MaTP"]; ?></td>
                 <td><?php echo $item["TenTP"]; ?></td>
-                <td><?php echo $item['DonGia'] ?></td> 
+                <td><?php echo $item['DonGia'] ?></td>
 
-              
+
                 <td><?php
 
                     foreach ($data['listTenLoaiTP'] as $loaiTP) {
@@ -98,36 +116,42 @@
 
                     ?></td>
                 <td>
-                   <?php
+                    <?php
                     echo "<a href='Topping/Edit/" . $item["MaTP"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;";
                     echo "<a href='Topping/Delete/" . $item["MaTP"] . "'><i class='fa fa-trash'></i></a>&nbsp; ";
                     ?>
                 </td>
             </tr>
-          <?php
+        <?php
             $i++;
-          }
-          ?>
+        }
+        ?>
 
     </table>
     <!-- Start Pagination -->
-    <div class='pagination-container'>
-        <nav style="text-align: center;">
-            <ul class="pagination">
-                <li data-page="prev" class="page-item">
-                    <span>
-                    &laquo; <span class="sr-only">(current)
-                    </span></span>
-                </li>
-                <!--	Here the JS Function Will Add the Rows -->
-                <li 
-                    data-page="next" id="prev">
-                    <span> &raquo; <span class="sr-only">(current)</span></span>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    </div>
+    <?php
+    if(count($data['listTP']) > 5){
+        echo '
+        <div class="pagination-container">
+            <nav style="text-align: center;">
+                <ul class="pagination">
+                    <li data-page="prev" class="page-item">
+                        <span>
+                            &laquo; <span class="sr-only">(current)
+                            </span></span>
+                    </li>
+                    <!--	Here the JS Function Will Add the Rows -->
+                    <li data-page="next" id="prev">
+                        <span> &raquo; <span class="sr-only">(current)</span></span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        ';
+    } else {
+        echo "";
+    }
+    ?>
 </section>
 
 <script src="public/admin/Admin/js/phantrang.js"></script>

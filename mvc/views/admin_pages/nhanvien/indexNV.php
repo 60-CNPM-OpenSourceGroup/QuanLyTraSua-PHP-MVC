@@ -35,6 +35,12 @@
         background-color: #ddd;
         border-radius: 5px;
     }
+
+    h3{
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        text-align: center;
+    }
 </style>
 <?php
 // echo "INDEX ĐỒ UỐNG";
@@ -52,6 +58,7 @@
         unset($_SESSION['thongbao']);
     }
     ?>
+<<<<<<< HEAD
     <!-- fix lại -->
     <form action="NhanVien/TimKiem" method="POST">
         <table style="margin: auto; width:350px;">
@@ -97,6 +104,9 @@
     </form>
 
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
+=======
+    <div class="form-group" style="width: 100%; display: none; margin-top: 60px;">
+>>>>>>> e3abcefa1b949b977a6a7e7228184c0bfd40f3ab
         <!-- Show Numbers Of Rows -->
         <div>
             <span style="line-height: 2.4rem; font-weight: 800; margin-right: 1.5rem;">Số dòng hiển thị: </span>
@@ -105,9 +115,9 @@
             <select class="form-control" name="state" id="maxRows">
                 <option value="5000">Hiện tất cả</option>
                 <option value="5">5</option>
-                <option value="10">10</option>
+                <!-- <option value="10">10</option>
                 <option value="15">15</option>
-                <option value="20">20</option>
+                <option value="20">20</option> -->
             </select>
         </div>
     </div>
@@ -193,7 +203,11 @@
         echo "";
     }
     ?>
+<<<<<<< HEAD
 
+=======
+    <!-- </div> -->
+>>>>>>> e3abcefa1b949b977a6a7e7228184c0bfd40f3ab
 </section>
 
 <script src="public/admin/Admin/js/phantrang.js"></script>
