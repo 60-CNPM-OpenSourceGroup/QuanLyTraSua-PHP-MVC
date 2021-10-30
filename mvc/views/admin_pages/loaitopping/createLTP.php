@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="form-group1">
-                    <label for="tenltp" class="control-label col-md-4"><b>Tên loại đồ uống</b></label>
+                    <label for="tenltp" class="control-label col-md-4"><b>Tên loại topping</b></label>
                     <div class="col-md-8">
                         <input type="text" class="form-control text-box single-line" id="tenltp" name="tenltp" value="<?php if (isset($_SESSION['ltp']['tenLTP'])) echo $_SESSION['ltp']['tenLTP'];
                                                                                                                         unset($_SESSION['ltp']['tenLTP']); ?>">
@@ -91,7 +91,10 @@
                         <input type="submit" name="them" value="Thêm mới" class="btn btn-primary" />
                     </div>
                     <div class="col-md-offset-2 col-md-6">
-                        <a class="comeback" href="javascript:window.history.back(-1);">Quay lại</a>
+                        <button class="comeback">
+                            <a class="" href="LoaiTopping/Index">Quay lại</a>
+                        </button>
+
                     </div>
                 </div>
 

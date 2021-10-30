@@ -87,8 +87,9 @@
                     </div>
                     <div class="col-md-offset-2 col-md-6">
                         <button class="comeback">
-                            <a class="" href="javascript:window.history.back(-1);">Quay lại</a>
+                            <a class="" href="LoaiDoUong/Index">Quay lại</a>
                         </button>
+
                     </div>
                 </div>
 

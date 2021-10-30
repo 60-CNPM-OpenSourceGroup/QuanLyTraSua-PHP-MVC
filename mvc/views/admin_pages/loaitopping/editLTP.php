@@ -93,7 +93,10 @@ if (isset($_SESSION['ltp']['tenLTP'])) {
                         <input type="submit" name="them" value="Lưu" class="btn btn-primary" />
                     </div>
                     <div class="col-md-offset-2 col-md-6">
-                        <a class="comeback" href="LoaiDoUong/Index">Quay lại</a>
+                        <button class="comeback">
+                            <a class="" href="LoaiTopping/Index">Quay lại</a>
+                        </button>
+
                     </div>
                 </div>
 
