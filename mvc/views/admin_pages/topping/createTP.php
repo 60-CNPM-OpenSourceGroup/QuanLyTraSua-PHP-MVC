@@ -128,10 +128,10 @@
                     <div style="margin-top: 10px;" class="col-md-offset-2 col-md-6">
                         <input type="submit" name="them" value="Thêm mới" class="btn btn-primary" />
                     </div>
-                    <div class="col-md-offset-2 col-md-6">
-                        <button class="comeback">
-                            <a class="" href="Topping/Index">Quay lại</a>
-                        </button>
+                    <div class="col-md-offset-2 col-md-6 comback_div">
+                        <!-- <button class="comeback"> -->
+                            <a class="comeback" href="Topping/Index">Quay lại</a>
+                        <!-- </button> -->
 
                     </div>
                 </div>

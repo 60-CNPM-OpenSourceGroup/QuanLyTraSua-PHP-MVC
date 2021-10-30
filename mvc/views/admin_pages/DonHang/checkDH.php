@@ -53,19 +53,6 @@
         border-radius: 6px;
         padding: 5px;
     }
-
-    .comeback {
-        border: none;
-        outline: none;
-        background-color: #eaecf4;
-        border-radius: 6px;
-        padding: 5px;
-
-    }
-
-    .comeback>a {
-        text-decoration: none;
-    }
 </style>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -125,10 +112,10 @@
                     <div class="col-md-offset-2 col-md-6">
                         <input type="submit" value="Lưu" class="btn btn-primary" />
                     </div>
-                    <div class="col-md-offset-2 col-md-6">
-                        <button class="comeback">
-                            <a href="DonHang/Index">Quay lại</a>
-                        </button>
+                    <div class="col-md-offset-2 col-md-6 comback_div">
+                        <!-- <button > -->
+                        <a class="comeback" href="DonHang/Index">Quay lại</a>
+                        <!-- </button> -->
                     </div>
                 </div>
             </div>

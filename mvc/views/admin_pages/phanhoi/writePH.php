@@ -110,10 +110,10 @@
                     <div class="col-md-offset-2 col-md-6">
                         <input type="submit" value="Gửi ngay" class="btn btn-primary" />
                     </div>
-                    <div class="col-md-offset-2 col-md-6">
-                        <button class="comeback">
-                            <a href="javascript:window.history.back(-1);">Quay lại</a>
-                        </button>
+                    <div class="col-md-offset-2 col-md-6 comback_div">
+                        <!-- <button class="comeback"> -->
+                            <a class="comeback" href="javascript:window.history.back(-1);">Quay lại</a>
+                        <!-- </button> -->
                     </div>
                 </div>
             </div>

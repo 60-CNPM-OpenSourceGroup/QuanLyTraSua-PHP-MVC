@@ -61,13 +61,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-6">
+                <div class="col-md-offset-2 col-md-6 comback_div">
                     <input type="submit" value="Xóa" class="btn btn-primary" />
                 </div>
                 <div class="col-md-offset-2 col-md-6">
-                        <button class="comeback">
-                            <a class="" href="LoaiDoUong/Index">Quay lại</a>
-                        </button>
+                        <!-- <button class="comeback"> -->
+                            <a class="comeback" href="LoaiDoUong/Index">Quay lại</a>
+                        <!-- </button> -->
 
                     </div>
             </div>

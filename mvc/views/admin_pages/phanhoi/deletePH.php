@@ -109,7 +109,7 @@
                     <div class="col-md-offset-2 col-md-6">
                         <input type="submit" value="Xóa" class="btn btn-primary" />
                     </div>
-                    <div class="col-md-offset-2 col-md-6">
+                    <div class="col-md-offset-2 col-md-6 comback_div">
                         <button class="comeback">
                             <a href="javascript:window.history.back(-1);">Quay lại</a>
                         </button>

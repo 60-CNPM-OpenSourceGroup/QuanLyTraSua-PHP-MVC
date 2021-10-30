@@ -17,16 +17,19 @@
         display: flex;
         justify-content: center;
         margin-top: 6rem;
-        
+
     }
-    .content{
+
+    .content {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         padding: 20px;
         border-radius: 8px;
     }
+
     .title {
         padding-bottom: 1.5rem;
     }
+
     .form-group {
         display: flex;
         margin-bottom: 0.2rem;
@@ -34,6 +37,7 @@
         text-align: center;
         margin-top: 1.5rem;
     }
+
     .form-group1 {
         display: flex;
         /* justify-content: ; */
@@ -49,16 +53,16 @@
         padding: 5px;
     }
 
-    .comeback{
+    .comeback {
         border: none;
         outline: none;
         background-color: #eaecf4;
         border-radius: 6px;
         padding: 5px;
-        
+
     }
 
-    .comeback > a{
+    .comeback>a {
         text-decoration: none;
     }
 </style>
@@ -125,7 +129,7 @@ $date = str_replace('-', '/', $data['donhang']['NgayLap']);
                     <label for="" class="control-label col-md-4">Tình trạng: </label>
                     <div class="col-md-8">
                         <input type="text" readonly class="form-control" value="
-                        <?php 
+                        <?php
                         $tt = ($data['donhang']['TinhTrang'] == 0) ? 'Đơn hủy' : (($data['donhang']['TinhTrang'] == 1) ? 'Đơn chưa kiểm' : 'Đã giao');
                         echo $tt;
                         ?>">
@@ -135,19 +139,18 @@ $date = str_replace('-', '/', $data['donhang']['NgayLap']);
                 <div class="form-group1">
                     <label for="" class="control-label col-md-4">Người giao hàng: </label>
                     <div class="col-md-8">
-                        <input type="text" readonly class="form-control" value="<?php 
-                        $s = "";
-                        if($data['donhang']['MaNV'] == NULL){
-                            echo $s = "Chưa có";
-                        }
-                        else {
-                            foreach($data['shipper'] as $s){
-                                if($s['maNV'] == $data['donhang']['MaNV']){
-                                    echo $s['tenNV'];
-                                }                          
-                            }
-                        }          
-                        ?>">
+                        <input type="text" readonly class="form-control" value="<?php
+                                                                                $s = "";
+                                                                                if ($data['donhang']['MaNV'] == NULL) {
+                                                                                    echo $s = "Chưa có";
+                                                                                } else {
+                                                                                    foreach ($data['shipper'] as $s) {
+                                                                                        if ($s['maNV'] == $data['donhang']['MaNV']) {
+                                                                                            echo $s['tenNV'];
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                                ?>">
                     </div>
                 </div>
 
@@ -155,10 +158,10 @@ $date = str_replace('-', '/', $data['donhang']['NgayLap']);
                     <div class="col-md-offset-2 col-md-6">
                         <input type="submit" value="Xóa" class="btn btn-primary" />
                     </div>
-                    <div class="col-md-offset-2 col-md-6">
-                        <button class="comeback">
-                            <a href="DonHang/Index">Quay lại</a>
-                        </button>
+                    <div class="col-md-offset-2 col-md-6 comback_div">
+                        <!-- <button > -->
+                        <a class="comeback" href="DonHang/Index">Quay lại</a>
+                        <!-- </button> -->
                     </div>
                 </div>
             </div>

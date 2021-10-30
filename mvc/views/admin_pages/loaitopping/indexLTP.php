@@ -44,7 +44,7 @@
         border-radius: 5px;
     }
 
-    h3{
+    h3 {
         padding-top: 1rem;
         padding-bottom: 2rem;
     }
@@ -55,13 +55,13 @@
     <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Loại Topping</button>
 </a>
 <?php
-    if (isset($_SESSION['thongbao'])) {
-        echo "<div class='alert alert-success'>";
-        echo $_SESSION['thongbao'];
-        echo "</div>";
-        unset($_SESSION['thongbao']);
-    }
-    ?>
+if (isset($_SESSION['thongbao'])) {
+    echo "<div class='alert alert-success'>";
+    echo $_SESSION['thongbao'];
+    echo "</div>";
+    unset($_SESSION['thongbao']);
+}
+?>
 <table class="table table-striped table-class" id="table-id">
     <tr>
         <th class="row_head">STT</th>

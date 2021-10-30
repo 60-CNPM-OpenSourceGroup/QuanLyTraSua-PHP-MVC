@@ -60,12 +60,14 @@ if (isset($_SESSION['thongbao'])) {
 
 ?>
 
-<table class="" cellpadding="0" cellspacing="0" style="font-size:20px; margin-left: auto; margin-right: auto;">
+<table class="content" cellpadding="0" cellspacing="0" style="font-size:20px; margin-left: auto; margin-right: auto; margin-top: 80px;">
     <tr>
         <td>
-            <table cellpadding="2" cellspacing="10">
+            <table style="margin: 60px;" cellpadding="2" cellspacing="10">
                 <tr>
-                    <td colspan="2" style="text-align: center;"><b>THÔNG TIN CHI TIẾT</b></td>
+                    <td colspan="3">
+                        <h3><b>THÔNG TIN CHI TIẾT</b></h3>
+                    </td>
                 </tr>
                 <tr>
                     <td rowspan="8"><img src="public/upload/nguoidung/<?php echo $data['nv']['hinhAnh'] ?>" width="300" height="300" /></td>
@@ -118,8 +120,8 @@ if (isset($_SESSION['thongbao'])) {
 </table>
 
 <?php
-echo "<div style='text-align: center; margin-top: 20px'>";
-echo "<a href='NhanVien/Edit/" . $data['nv']['maNV'] . "'>Cập nhật</a> | ";
-echo "<a href='NhanVien/Index'>Quay lại</a>"; //javascript:window.history.back(-1);
+echo "<div style='margin-top:60px; text-align: center; font-size: 1.6rem;'>";
+echo "<a style='line-height: 2.2rem;' class='btn btn-primary' href='NhanVien/Edit/" . $data['nv']['maNV'] . "'>Cập nhật</a> | ";
+echo "<a class='comeback' style='font-size: 1.4rem;' href='NhanVien/Index'>Quay lại</a>"; //javascript:window.history.back(-1);
 echo "</div>";
 ?>

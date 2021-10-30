@@ -107,7 +107,7 @@
                     <div style="margin-top: 10px;" class="col-md-offset-2 col-md-6">
                         <input type="submit" name="them" value="Thêm mới" class="btn btn-primary" />
                     </div>
-                    <div class="col-md-offset-2 col-md-6">
+                    <div class="col-md-offset-2 col-md-6 comback_div">
                         <a class="comeback" href="phanquyen/index">Quay lại</a>
                     </div>
                 </div>

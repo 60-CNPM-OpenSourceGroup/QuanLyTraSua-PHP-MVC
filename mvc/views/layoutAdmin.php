@@ -50,11 +50,36 @@
             color: #FFAD33;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
-        input[type="date"], input[type="file"], input[type="radio"]{
+
+        input[type="date"],
+        input[type="file"],
+        input[type="radio"] {
             cursor: pointer;
         }
-        select{
+
+        select {
             cursor: pointer;
+        }
+
+        .comeback {
+            border: none !important;
+            outline: none !important;
+            background-color: #eaecf4 !important;
+            border-radius: 6px !important;
+            padding: 8px !important;
+
+        }
+
+        .comeback {
+            text-decoration: none !important;
+        }
+
+        .comeback:hover {
+            text-decoration: none !important;
+        }
+
+        .comback_div {
+            line-height: 2.3rem !important;
         }
     </style>
 
@@ -88,7 +113,7 @@
                     </span>
                 </a>
             </li>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -195,14 +220,14 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php if(isset($_SESSION["user"])) echo $_SESSION["user"]["tenNV"]; ?></span>
-                                <?php 
-                                    if(isset($_SESSION["user"])) {
-                                        $hinhAnh = $_SESSION["user"]["hinhAnh"];
-                                        echo "<img class='img-profile rounded-circle' src='public/upload/nguoidung/$hinhAnh'>";
-                                    }
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php if (isset($_SESSION["user"])) echo $_SESSION["user"]["tenNV"]; ?></span>
+                                <?php
+                                if (isset($_SESSION["user"])) {
+                                    $hinhAnh = $_SESSION["user"]["hinhAnh"];
+                                    echo "<img class='img-profile rounded-circle' src='public/upload/nguoidung/$hinhAnh'>";
+                                }
                                 ?>
-                                
+
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

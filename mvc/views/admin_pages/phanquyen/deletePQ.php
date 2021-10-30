@@ -65,7 +65,7 @@
                 <div style="margin-top: 10px;" class="col-md-offset-2 col-md-6">
                     <input type="submit" value="Xóa" class="btn btn-primary" />
                 </div>
-                <div class="col-md-offset-2 col-md-6">
+                <div class="col-md-offset-2 col-md-6 comback_div">
                     <a class="comeback" href="javascript:window.history.back(-1);">Quay lại</a>
                 </div>
             </div>
