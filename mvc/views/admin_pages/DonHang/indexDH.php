@@ -15,7 +15,7 @@
     }
 
     #table-id tr:nth-child(even) {
-        background-color: aqua;
+        background-color: white;
     }
 
     .pagination-container {
