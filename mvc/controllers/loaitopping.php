@@ -1,4 +1,5 @@
 <?php
+require_once './mvc/common/validate.php';
 class LoaiTopping extends Controller
 {
     public $ltpModel;
@@ -67,11 +68,20 @@ class LoaiTopping extends Controller
             if (isset($_POST["tenltp"])) {
                 $tenltp = $_POST['tenltp'];
             }
-            $result = $this->ltpModel->checkPK($maltp);
-            if (mysqli_num_rows($result) > 0) {
-                $_SESSION['error'] = "Mã loại topping đã tồn tại";
+            validateMaLTP($maltp);
+            if(!isset($_SESSION['error']['maLTP'])) {
+                $result = $this->ltpModel->checkPK($maltp);
+                if (mysqli_num_rows($result) > 0) {
+                    $_SESSION['error']['maLTP'] = "Mã loại topping đã tồn tại";
+                }
+            }
+            validateTenLTP($tenltp);
+            if(isset($_SESSION['error']) && count($_SESSION['error']) > 0){
+                // Lấy lại giá trị trước khi redirect về
+                $_SESSION['ltp'] = ['maLTP' => $maltp, 'tenLTP' => $tenltp];
                 return $this->redirectTo("LoaiTopping", "Create");
             }
+            
             else{
                 $save = $this->model("LoaiToppingModel");
                 $save->insert($maltp, $tenltp);
@@ -86,18 +96,25 @@ class LoaiTopping extends Controller
 
     function Save($id)
     {
-        //sửa thành công, lưu
-        //return redirectTo("DoUong", "Index")
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST["tenloaitp"])) {
-                $tenltp = $_POST['tenloaitp'];
+            $maltp = $_POST['maltp'];
+            $tenltp = $_POST['tenltp'];
+            validateTenLTP($tenltp);
+
+            if (isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
+                $_SESSION['ltp'] = [
+                    'tenLTP' => $tenltp,
+                ];
+                return $this->redirectTo("LoaiTopping", "Edit", ['id' => $maltp]);
             }
-
-            $save = $this->model("LoaiToppingModel");
-            $save->update($id, $tenltp);
+            else{
+                $result = $this->ltpModel->update($maltp, $tenltp);
+            }
+            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
+                return $this->redirectTo("LoaiTopping", "Index");
+            }
         }
-
-        return $this->redirectTo("LoaiTopping", "Index");
     }
 
     function Delete($id)

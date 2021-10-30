@@ -32,17 +32,13 @@ class DoUongModel extends DataBase
 
     public function update($madu, $tendu, $dongia, $anhdu, $ngaythem, $banchay, $loaiDU)
     {
-        if ($_FILES["hinh"]['name'] != NULL) {
-            $anhdu = $_FILES["hinh"]['name'];
-            move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/douong/" . $_FILES["hinh"]["name"]);
-
+        if($anhdu != null){
             $qr = "UPDATE douong SET TenDU = '$tendu', DonGia = '$dongia', HinhAnh ='$anhdu', 
             NgayThem = '$ngaythem', BanCHay  = '$banchay', MaLoaiDU = '$loaiDU' WHERE MaDU = '$madu'";
         } else {
             $qr = "UPDATE douong SET TenDU = '$tendu', DonGia = '$dongia', 
             NgayThem = '$ngaythem', BanCHay  = '$banchay', MaLoaiDU = '$loaiDU' WHERE MaDU = '$madu'";
         }
-
         return mysqli_query($this->con, $qr);
     }
 

@@ -23,10 +23,7 @@ class ToppingModel extends DataBase {
 
     public function update($matp, $tentp, $dongia, $anhtp, $loaiTP)
     {
-        if ($_FILES["hinh"]['name'] != NULL) {
-            $anhtp = $_FILES["hinh"]['name'];
-            move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/topping/" . $_FILES["hinh"]["name"]);
-            
+        if($anhtp != null){
             $qr = "UPDATE topping SET TenTP = '$tentp', DonGia = '$dongia', HinhAnh ='$anhtp', MaLoaiTP = '$loaiTP' WHERE MaTP = '$matp'";
         } else {
             $qr = "UPDATE topping SET TenTP = '$tentp', DonGia = '$dongia', MaLoaiTP = '$loaiTP' WHERE MaTP = '$matp'";

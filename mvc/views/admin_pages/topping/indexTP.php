@@ -44,7 +44,7 @@
         border-radius: 5px;
     }
 
-    h3{
+    h3 {
         padding-top: 1rem;
         padding-bottom: 2rem;
     }
@@ -60,6 +60,7 @@
                 <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Sản Phẩm</button>
             </a>
         </div>
+   
         <div class="col-lg-6" style="position: relative;">
             <form action="Topping/TimKiem" method="POST">
                 <div class="form-group" style="display: flex; position: absolute; right: 0;">
@@ -69,7 +70,14 @@
             </form>
         </div>
     </div>
-
+    <?php
+        if (isset($_SESSION['thongbao'])) {
+            echo "<div class='alert alert-success'>";
+            echo $_SESSION['thongbao'];
+            echo "</div>";
+            unset($_SESSION['thongbao']);
+        }
+        ?>
     <div class="form-group" style="width: 100%; display: flex; margin-top: 60px;">
         <!-- Show Numbers Of Rows -->
         <div>
@@ -130,7 +138,7 @@
     </table>
     <!-- Start Pagination -->
     <?php
-    if(count($data['listTP']) > 5){
+    if (count($data['listTP']) > 5) {
         echo '
         <div class="pagination-container">
             <nav style="text-align: center;">

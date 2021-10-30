@@ -1,4 +1,5 @@
 <?php
+require_once './mvc/common/validate.php';
 class Topping extends Controller
 {
     public $tpModel;
@@ -105,59 +106,73 @@ class Topping extends Controller
     function Store()
     // thêm thành công
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST["matp"])) {
-                $matp = $_POST['matp'];
-            }
-            if (isset($_POST["tentp"])) {
-                $tentp = $_POST['tentp'];
-            }
-            if (isset($_POST["dongia"])) {
-                $dongia = $_POST['dongia'];
-            }
+            $matp = $_POST['matp'];
+            $tentp = $_POST['tentp'];
+            $dongia = $_POST['dongia'];
             if ($_FILES["hinh"]['name'] != NULL) {
                 $hinh = $_FILES["hinh"]['name'];
                 move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/topping/" . $_FILES["hinh"]["name"]);
             }
+            $loaiTP = $_POST['loaiTP'];
 
-            if (isset($_POST["loaiTP"])) {
-                $loaiTP = $_POST['loaiTP'];
+            validateTenTP($tentp);
+            validateGiaTP($dongia);
+            validateAnhTP($_FILES["hinh"]['name']);
+
+            if (isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
+                $_SESSION['tp'] = [
+                    'tenTP' => $tentp,
+                    'donGia' => $dongia,
+                    'ltp' => $loaiTP
+                ];
+                return $this->redirectTo("Topping", "Create");
+            } else {
+                $save = $this->model("ToppingModel");
+                $save->insert($matp, $tentp, $dongia, $hinh, $loaiTP);
+                $_SESSION['thongbao'] = "Thêm mới topping thành công";
             }
-
-            $save = $this->model("ToppingModel");
-            $save->insert($matp, $tentp, $dongia, $hinh, $loaiTP);
         }
-
         return $this->redirectTo("Topping", "Index");
     }
 
-    function Save($id)
+    function Save()
     {
-        //sửa thành công, lưu
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $tenAnh = "";
+            $matp = $_POST['matp'];
+            $tentp = $_POST['tentp'];
+            $dongia = $_POST['dongia'];
+            $ngaythem = $_POST['ngaythem'];
+            // $banChay = $_POST['banchay'] || '0';
+            $banChay = isset($_POST['banchay']) ? $_POST['banchay']  : '0';
+            $loaiTP = $_POST['loaiTP'];
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST["tentp"])) {
-                $tentp = $_POST['tentp'];
+            validateTenTP($tentp);
+            validateGiaTP($dongia);
+            
+            if (isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
+                $_SESSION['tp'] = [
+                    'tenTP' => $tentp,
+                    'donGia' => $dongia,
+                    'ltp' => $loaiTP
+                ];
+                return $this->redirectTo("Topping", "Edit", ['id' => $matp]);
             }
-            if (isset($_POST["dongia"])) {
-                $dongia = $_POST['dongia'];
-            }
-            if ($_FILES["hinh"]['name'] != NULL) {
-                $hinh = $_FILES["hinh"]['name'];
-                move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/topping/" . $_FILES["hinh"]["name"]);
-            }
-
-
-            if (isset($_POST["loaiTP"])) {
-                $loaiTP = $_POST['loaiTP'];
+            else if (isset($_FILES['hinh']) && $_FILES['hinh']['name'] != "") {
+                $hinh = $_FILES['hinh'];
+                $tenAnh = $hinh['name'];
+                move_uploaded_file($hinh['tmp_name'], "public/upload/topping/" . $tenAnh);
+                $result = $this->tpModel->update($matp, $tentp, $dongia, $tenAnh, $loaiTP);
+            } else {
+                $result = $this->tpModel->update($matp, $tentp, $dongia, null, $loaiTP);
             }
 
-
-            $save = $this->model("ToppingModel");
-            $save->update($id, $tentp, $dongia, $hinh, $loaiTP);
-        }
-        return $this->redirectTo("Topping", "Index");
+            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
+                return $this->redirectTo("Topping", "Index");
+            }
+        } 
     }
 
 
@@ -182,6 +197,7 @@ class Topping extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirm = $this->model("ToppingModel");
             $confirm->delete($id);
+            $_SESSION['thongbao'] = " Xóa topping thành công";
         }
         return $this->redirectTo("Topping", "Index");
     }

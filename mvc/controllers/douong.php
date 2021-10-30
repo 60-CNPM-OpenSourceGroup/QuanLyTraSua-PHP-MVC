@@ -146,39 +146,47 @@ class DoUong extends Controller
 
 
 
-    function Save($id)
+    function Save()
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST["tendu"])) {
-                $tendu = $_POST['tendu'];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $tenAnh = "";
+            $madu = $_POST['madu'];
+            $tendu = $_POST['tendu'];
+            $dongia = $_POST['dongia'];
+            $ngaythem = $_POST['ngaythem'];
+            // $banChay = $_POST['banchay'] || '0';
+            $banChay = isset($_POST['banchay']) ? $_POST['banchay']  : '0';
+            $loaiDU = $_POST['loaiDU'];
+
+
+            validateTenDU($tendu);
+            validateGia($dongia);
+            validateNgayThem($ngaythem);
+            
+            if (isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
+                $_SESSION['du'] = [
+                    'tenDU' => $tendu,
+                    'donGia' => $dongia,
+                    'ngayThem' => $ngaythem,
+                    'banChay' => $banChay,
+                    'ldu' => $loaiDU
+                ];
+                return $this->redirectTo("DoUong", "Edit", ['id' => $madu]);
             }
-            if (isset($_POST["dongia"])) {
-                $dongia = $_POST['dongia'];
+            else if (isset($_FILES['hinh']) && $_FILES['hinh']['name'] != "") {
+                $hinh = $_FILES['hinh'];
+                $tenAnh = $hinh['name'];
+                move_uploaded_file($hinh['tmp_name'], "public/upload/douong/" . $tenAnh);
+                $result = $this->duModel->update($madu, $tendu, $dongia, $tenAnh, $ngaythem, $banChay, $loaiDU);
+            } else {
+                $result = $this->duModel->update($madu, $tendu, $dongia, null, $ngaythem, $banChay, $loaiDU);
             }
 
-            if ($_FILES["hinh"]['name'] != NULL) {
-                $hinh = $_FILES["hinh"]['name'];
-                move_uploaded_file($_FILES["hinh"]["tmp_name"], "public/upload/douong/" . $_FILES["hinh"]["name"]);
+            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
+                return $this->redirectTo("DoUong", "Index");
             }
-
-            if (isset($_POST["ngaythem"])) {
-                $ngaythem = $_POST['ngaythem'];
-                $ngaythem = str_replace('/', '-', $ngaythem);
-                $ngaythem = date('Y-m-d', strtotime($ngaythem));
-            }
-
-            if (isset($_POST["banchay"])) {
-                $banchay = $_POST['banchay'];
-            }
-
-            if (isset($_POST["loaiDU"])) {
-                $loaiDU = $_POST['loaiDU'];
-            }
-
-            $save = $this->model("DoUongModel");
-            $save->update($id, $tendu, $dongia, $hinh, $ngaythem, $banchay, $loaiDU);
-        }
-        return $this->redirectTo("DoUong", "Index");
+        } 
     }
 
     function Delete($id)

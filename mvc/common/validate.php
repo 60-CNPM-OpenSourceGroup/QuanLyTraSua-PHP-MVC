@@ -74,7 +74,7 @@
         $_SESSION['error']['soDienThoai'] = "Số điện thoại phải là 10 ký tự";
       }
       if (!preg_match ("/^[0-9]*$/", $inputSoDienThoai) ){  
-        $_SESSION['error']['soDienThoai'] = "Bạn chỉ được nhập giá trị số vào trường này";
+        $_SESSION['error']['soDienThoai'] = "Bạn chỉ được nhập giá trị số nguyên dương vào trường này";
       }
 
   }
@@ -117,7 +117,7 @@
           $_SESSION['error']['donGia'] = "Giá đồ uống không được để trống";
       }
       if (!preg_match ("/^[0-9]*$/", $inputGia) ){  
-        $_SESSION['error']['donGia'] = "Bạn chỉ được nhập giá trị số nguyên vào trường này";
+        $_SESSION['error']['donGia'] = "Bạn chỉ được nhập giá trị số nguyên dương vào trường này";
       }
   }
 
@@ -146,6 +146,44 @@
   {
       if (empty($inputTenLDU)) {
           $_SESSION['error']['tenLDU'] = "Tên loại đồ uống không được để trống";
+      }
+  }
+
+  function validateTenTP($inputTenTP)
+  {
+      if (empty($inputTenTP)) {
+          $_SESSION['error']['tenTP'] = "Tên topping không được để trống";
+      }
+  }
+
+  function validateGiaTP($inputGiaTP)
+  {
+      if (empty($inputGiaTP)) {
+          $_SESSION['error']['donGia'] = "Giá topping không được để trống";
+      }
+      if (!preg_match ("/^[0-9]*$/", $inputGiaTP) ){  
+        $_SESSION['error']['donGia'] = "Bạn chỉ được nhập giá trị số nguyên dương vào trường này";
+      }
+  }
+
+  function validateAnhTP($inputAnhTP)
+  {
+      if ($inputAnhTP == null) {
+          $_SESSION['error']['anhTP'] = "Vui lòng chọn ảnh topping";
+      }
+  }
+
+  function validateMaLTP($inputMaLTP)
+  {
+      if (empty($inputMaLTP)) {
+          $_SESSION['error']['maLTP'] = "Mã loại topping không được để trống";
+      }
+  }
+
+  function validateTenLTP($inputTenLTP)
+  {
+      if (empty($inputTenLTP)) {
+          $_SESSION['error']['tenLTP'] = "Tên loại topping không được để trống";
       }
   }
 ?>

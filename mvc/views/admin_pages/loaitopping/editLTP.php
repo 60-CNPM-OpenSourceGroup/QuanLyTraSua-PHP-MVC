@@ -1,34 +1,45 @@
-<div class="checkform">
-	<div class="content">
-		<h3 class="title">Chỉnh sửa loại topping</h3>
+<?php
+    if(isset($_SESSION['ltp']['tenLTP'])) {
+        $tenLTP = $_SESSION['ltp']['tenLTP'];
+        unset($_SESSION['ltp']['tenLTP']);
+    }
+    else {
+        $tenLTP = $data['ltp']['TenLoaiTP'];
+    }
+?>
 
-		<form action="LoaiTopping/Save/<?php echo $data["ltp"]['MaLoaiTP'] ?>" method="post">
-			<div class="form-horizontal">
-				<div class="form-group1">
-					<label for="" class="control-label col-md-4">Mã loại topping: </label>
-					<div class="col-md-8">
-						<input type="text" name="maltp" class="form-control" readonly value="<?php echo $data['ltp']['MaLoaiTP'] ?>">
-					</div>
-				</div>
+<h3>CẬP NHẬT THÔNG TIN LOẠI TOPPING</h3>
+<form action="LoaiTopping/Save/<?php echo $data['ltp']['MaLoaiTP'] ?>"  method="POST" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group1">
+            <label for="maltp" class="control-label col-md-2"><b>Mã loại topping</b></label>
+            <div class="col-md-6">
+                <input type="text" class="form-control text-box single-line" id="maltp" name="maltp" readonly value="<?php echo $data['ltp']['MaLoaiTP']; ?>">
+            </div>
+        </div>
 
-				<div class="form-group1">
-					<label for="" class="control-label col-md-4">Tên loại topping: </label>
-					<div class="col-md-8">
-						<input type="text" name="tenloaitp" class="form-control" value="<?php echo $data['ltp']['TenLoaiTP'] ?>">
-					</div>
-				</div>
+        <div class="form-group1">
+            <label for="tenltp" class="control-label col-md-2"><b>Tên loại topping</b></label>
+            <div class="col-md-6">
+                <input type="text" class="form-control text-box single-line" id="tenltp" name="tenltp" value="<?php echo $tenLTP; ?>">
+                <span class="text-danger"><?php if (isset($_SESSION['error']['tenLTP'])) {
+                                                echo $_SESSION['error']['tenLTP'];   
+                                                unset($_SESSION['error']['tenLTP']);
+                                            } ?></span>
+            </div>
+        </div>
 
-				<div class="form-group">
-					<div class="col-md-offset-2 col-md-6">
-						<input type="submit" value="Lưu" class="btn btn-primary" />
-					</div>
-					<div class="col-md-offset-2 col-md-6">
-						<button class="comeback">
-							<a href="javascript:window.history.back(-1);">Quay lại</a>
-						</button>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
+        <div class="form-group">
+            <div style="margin-top: 10px;" class="col-md-offset-2 col-md-10">
+                <input type="submit" name="them" value="Lưu" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-primary" href="LoaiDoUong/Index">Quay lại</a>
+            </div>
+        </div>
+    </div>
+</form>

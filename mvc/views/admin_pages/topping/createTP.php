@@ -1,48 +1,79 @@
-<div class="container">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h2 class="text-center">Thêm topping</h2>
-		</div>
-		<div class="panel-body">
-			<form action="Topping/Store" method="post" enctype="multipart/form-data">
-				<div class="form-group">
-					<label>Mã topping:</label>
-					<input type="text" class="form-control" id="matp" name="matp" readonly value="<?php echo $data['matp']?>">
-				</div>
+<h3>THÊM MỚI TOPPING</h3>
+<form action="Topping/Store" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group1">
+            <label for="matp" class="control-label col-md-2"><b>Mã topping</b></label>
+            <div class="col-md-6">
+                <input type="text" class="form-control text-box single-line" id="matp" name="matp" readonly value="<?php echo $data['matp'] ?>">
+            </div>
+        </div>
 
-				<div class="form-group">
-					<label>Tên sản phẩm:</label>
-					<input required="true" type="text" class="form-control" id="tentp" name="tentp">
-				</div>
+        <div class="form-group1">
+            <label for="tentp" class="control-label col-md-2"><b>Tên topping</b></label>
+            <div class="col-md-6">
+                <input type="text" class="form-control text-box single-line" id="tentp" name="tentp"
+                value="<?php if(isset($_SESSION['tp']['tenTP'])) echo $_SESSION['tp']['tenTP']; unset($_SESSION['tp']['tenTP']);?>">
+                <span class="text-danger"><?php if (isset($_SESSION['error']['tenTP'])) {
+                                                echo $_SESSION['error']['tenTP'];   
+                                                unset($_SESSION['error']['tenTP']);
+                                            } ?></span>
+            </div>
+        </div>
 
-				<div class="form-group">
-					<label>Giá:</label>
-					<input required="true" type="text" class="form-control" id="dongia" name="dongia">
-				</div>
+		<div class="form-group1">
+            <label for="dongia" class="control-label col-md-2"><b>Giá</b></label>
+            <div class="col-md-6">
+                <input type="text" class="form-control text-box single-line" id="dongia" name="dongia"
+                value="<?php if(isset($_SESSION['tp']['donGia'])) echo $_SESSION['tp']['donGia']; unset($_SESSION['tp']['donGia']);?>">
+                <span class="text-danger"><?php if (isset($_SESSION['error']['donGia'])) {
+                                                echo $_SESSION['error']['donGia'];   
+                                                unset($_SESSION['error']['donGia']);
+                                            } ?></span>
+            </div>
+        </div>	
+		
+		<div class="form-group1">
+            <label for="hinh" class="control-label col-md-2"><b>Ảnh topping</b></label>
+            <div class="col-md-6">
+                <input type="FILE" id="hinh" name="hinh">
+                <br>
+                <span class="text-danger"><?php if (isset($_SESSION['error']['anhTP'])) {
+                                                echo $_SESSION['error']['anhTP'];   
+                                                unset($_SESSION['error']['anhTP']);
+                                            } ?></span>
+            </div>
+        </div>
 
-				<div class="form-group">
-					<label>Ảnh topping:</label>
-					<input required="true" type="file" id="hinh" name="hinh">
-				</div>
+        <div class="form-group1">
+            <label for="loaiTP" class="control-label col-md-2"><b>Loại topping</b></label>
+            <div class="col-md-6">
+                <select name="loaiTP" class="form-control text-box single-line">
+                    <?php
+                    foreach ($data['listTenLoaiTP'] as $loaiTP) {
+                        if ($loaiTP['MaLoaiTP'] == $_SESSION['tp']['ltp']) {
+                            $s = "selected";
+                            unset( $_SESSION['tp']['ltp']);
+                        } else {
+                            $s = "";
+                        }
+                        echo '<option ' . $s . ' value="' . $loaiTP['MaLoaiTP'] . '" class = "form-control">' . $loaiTP['TenLoaiTP'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
 
-				<div class="form-group">
-					<label>Loại topping:</label>
-					<select name="loaiTP" class="form-control">
-						<?php
-						foreach ($data['listTenLoaiTP'] as $loaiTP) {
-							if ($data["tp"]["MaLoaiTP"] == $loaiTP['MaLoaiTP']) {
-								$s = "selected";
-							} else {
-								$s = "";
-							}
-							echo '<option ' . $s . ' value="' . $loaiTP['MaLoaiTP'] . '" class = "form-control">' . $loaiTP['TenLoaiTP'] . '</option>';
-						}
-						?>
-					</select>
-				</div>
-				<!-- <button class="btn btn-success">Thêm</button> -->
-				<input type="submit" name="them" class="btn btn-success" size="10" value="Thêm mới" />
-			</form>
-		</div>
-	</div>
-</div>
+        <div class="form-group">
+            <div style="margin-top: 10px;" class="col-md-offset-2 col-md-10">
+                <input type="submit" name="them" value="Thêm mới" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-primary" href="douong/index">Quay lại</a>
+            </div>
+        </div>
+    </div>
+</form>
