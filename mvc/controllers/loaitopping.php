@@ -106,14 +106,12 @@ class LoaiTopping extends Controller
                     'tenLTP' => $tenltp,
                 ];
                 return $this->redirectTo("LoaiTopping", "Edit", ['id' => $maltp]);
+            }else{
+                $this->ltpModel->update($maltp, $tenltp);
             }
-            else{
-                $result = $this->ltpModel->update($maltp, $tenltp);
-            }
-            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
                 $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
                 return $this->redirectTo("LoaiTopping", "Index");
-            }
+
         }
     }
 

@@ -201,7 +201,8 @@ class Topping extends Controller
             //     $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
             //     return $this->redirectTo("Topping", "Index");
             // }
-        } 
+        }
+        return $this->redirectTo("Topping", "Index"); 
     }
 
 

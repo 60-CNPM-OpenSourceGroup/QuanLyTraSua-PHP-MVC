@@ -8,6 +8,13 @@
     table td {
         text-align: center;
     }
+    .dg{
+        line-height: 2.1rem;
+        border-radius: 4px;
+        outline: none;
+        border: 0.1px solid #7877775c;
+        width: 140px;
+    }
 
     .row_head,
     .row_body {
@@ -78,7 +85,7 @@
             </tr>
             <tr>
                 <td><b>Loại Topping: </b></td>
-                <td><select name="MaLoaiTP" class="form-control text-box single-line">
+                <td align="center" ><select name="MaLoaiTP" class="form-control text-box single-line">
                         <option value="">------ Chọn tất cả ------</option>
                         <?php
                         foreach ($data['listTenLoaiTP'] as $nhomNV) {
