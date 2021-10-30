@@ -35,7 +35,7 @@ class HoaDonModel extends DataBase
         return json_encode($arr);
     }
 
-    public function TimKiem($hoten, $ngaymua, $tinhtrang, $shipper)
+    public function TimKiem($hoten, $tinhtrang, $shipper)
     {
         // Query mặc định
         $qr = "SELECT * FROM hoadon hd WHERE 1";
@@ -44,9 +44,9 @@ class HoaDonModel extends DataBase
         if ($hoten != "") {
             $qr .= " AND hd.HoTen LIKE '%$hoten%'";
         }
-        if ($ngaymua != "") {
-            $qr .= " AND hd.NgayLap = '$ngaymua'";
-        }
+        // if ($ngaymua != "") {
+        //     $qr .= " AND hd.NgayLap LIKE '%$ngaymua%'";
+        // }
         if ($tinhtrang != "") {
             $qr .= " AND hd.TinhTrang = '$tinhtrang'";
         }

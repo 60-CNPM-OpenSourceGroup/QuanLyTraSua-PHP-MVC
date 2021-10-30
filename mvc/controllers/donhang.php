@@ -27,25 +27,25 @@ class DonHang extends Controller
     function Index()
     {
         $hoten = "";
-        $ngaymua = "";
+        // $ngaymua = "";
         $tinhtrang = "";
         $shipper = "";
         $year = 2000;
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hoten = trim($_POST['hoten']);
-            $ngaymua = $_POST['ngaymua'];
-            $ngaymua = str_replace('/', '-', $ngaymua);
-            $ngaymua = date('Y-m-d', strtotime($ngaymua));
+            // $ngaymua = $_POST['ngaymua'];
+            // $ngaymua = str_replace('/', '-', $ngaymua);
+            // $ngaymua = date('Y-m-d', strtotime($ngaymua));
             $tinhtrang = isset($_POST['tinhtrang']) ? $_POST['tinhtrang'] : "";
             $shipper = $_POST['shipper'];
         }
 
-        if (substr($ngaymua, 0, -6) <= $year)
-            $ngaymua = "";
+        // if (substr($ngaymua, 0, -6) <= $year)
+        //     $ngaymua = "";
 
         // echo $ngaymua;
-        $listHD = json_decode($this->dhModel->TimKiem($hoten, $ngaymua, $tinhtrang, $shipper), true);
+        $listHD = json_decode($this->dhModel->TimKiem($hoten,  $tinhtrang, $shipper), true);
         $NV = json_decode($this->nvModel->getNV(), true);
         $listShipper = json_decode($this->nvModel->listShipper(), true);
 

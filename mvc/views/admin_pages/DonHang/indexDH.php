@@ -87,10 +87,7 @@
                 <td><b>Tên khách hàng: </b></td>
                 <td><input type="text" id="hoten" name="hoten" class="form-control" value="<?php if (isset($_POST['hoten'])) echo $_POST['hoten']; ?>"></td>
             </tr>
-            <tr>
-                <td><b>Ngày mua: </b></td>
-                <td><input type="date" id="ngaymua" name="ngaymua" class="form-control" value="<?php if (isset($_POST['ngaymua'])) echo $_POST['ngaymua']; ?>"></td>
-            </tr>
+            
             <tr>
                 <td><b>Tình trạng: </b></td>
                 <td>
@@ -138,11 +135,6 @@
                 <option value="20">20</option>
             </select>
         </div>
-        <!-- <form action="DonHang/TimKiem" method="POST">
-            <div class="form-group" style="display: flex; ">
-                <input style="width: 300px;" type="text" class="form-control" placeholder="Tìm kiếm..." id="tukhoa" name="tukhoa" value="<?php if (isset($_POST['tukhoa'])) echo $_POST['tukhoa']; ?>">
-            </div>
-        </form> -->
     </div>
     <?php
     if (isset($_SESSION['thongbao'])) {
@@ -247,24 +239,4 @@
     <!-- </div> -->
 </section>
 
-<!-- <script>
-    function searchFunc() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("table-id");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-</script> -->
 <script src="public/admin/Admin/js/phantrang.js"></script>

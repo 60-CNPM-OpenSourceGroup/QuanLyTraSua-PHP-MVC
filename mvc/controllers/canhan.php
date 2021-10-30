@@ -66,12 +66,12 @@ class CaNhan extends Controller
                 $hinh = $_FILES['hinhAnh'];
                 $tenAnh = $hinh['name'];
                 move_uploaded_file($hinh['tmp_name'], "public/upload/nguoidung/" . $tenAnh);
-                $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $tenAnh, $_SESSION['user']['IDNhom']);
+                $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $tenAnh, $_SESSION['user']['IDNhom']);
             } else {
-                $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, null, $_SESSION['user']['IDNhom']);
+                $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, null, $_SESSION['user']['IDNhom']);
             }
 
-            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+            // if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
                 if ($_SESSION['user']['maNV'] == $maNV) {
                     if ($tenAnh != "") {
                         $_SESSION['user']['hinhAnh'] = $tenAnh;
@@ -80,7 +80,7 @@ class CaNhan extends Controller
                 }
                 $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
                 return $this->redirectTo('CaNhan', 'IndexCN');
-            }
+            // }
         }
     }
 

@@ -101,9 +101,7 @@
                 <div class="form-group1">
                     <label for="" class="control-label col-md-4">Nội dung: </label>
                     <div class="col-md-8">
-                        <textarea readonly name="noidung" rows="4" cols="50" class="form-control" id="noiDung" required style="font-size: 15px">
-                            <?php echo $data["ph"]['noiDung'] ?>
-                        </textarea>
+                        <textarea readonly name="noidung" rows="4" cols="50" class="form-control" id="noiDung" required style="font-size: 15px"><?php echo $data["ph"]['noiDung'] ?></textarea>
                     </div>
                 </div>
 
