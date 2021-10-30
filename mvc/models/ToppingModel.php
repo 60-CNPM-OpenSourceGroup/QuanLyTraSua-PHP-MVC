@@ -36,22 +36,58 @@ class ToppingModel extends DataBase {
         return mysqli_query($this->con, $qr);
     }
 
-    public function TimKiemTP($tukhoa){
-        $qr = "select * from topping left join loaitopping on topping.MaLoaiTP = loaitopping.MaLoaiTP 
-                where 1 and TenTP like '%$tukhoa%' or MaTP like '%$tukhoa%' 
-                or DonGia like '%$tukhoa%' or TenLoaiTP like '%$tukhoa%'";
+    // public function TimKiemTP($tukhoa){
+    //     $qr = "select * from topping left join loaitopping on topping.MaLoaiTP = loaitopping.MaLoaiTP 
+    //             where 1 and TenTP like '%$tukhoa%' or MaTP like '%$tukhoa%' 
+    //             or DonGia like '%$tukhoa%' or TenLoaiTP like '%$tukhoa%'";
+    //     $rows = mysqli_query($this->con, $qr);
+    //     $arr = array();
+    //     while ($row = mysqli_fetch_array($rows)) {
+    //         $arr[] = $row;
+    //     }
+    //     return json_encode($arr);
+    // }
+
+    public function insert($matp, $tentp, $dongia, $anhtp, $loaiTP)
+    {
+        $qr = "INSERT INTO topping VALUES ('" . $matp . "', '" . $tentp . "','" . $dongia . "', '" . $anhtp . "', '" . $loaiTP . "')";
+        return mysqli_query($this->con, $qr);
+    }
+    public function TimKiem($maTP, $ten,  $MaLoaiTP, $dongia1, $dongia2)
+    {
+        // Query mặc định khi chưa truyền tham số tìm kiếm nào
+        $qr = "select tp.*, ltp.TenLoaiTP from topping tp, loaitopping ltp
+                where tp.MaLoaiTP = ltp.MaLoaiTP" ;
+        
+        // Có tìm mã
+        if($maTP != "") {
+            $qr .= " and tp.MaTP LIKE '%$maTP%'";
+        }
+        if($ten != "") {
+            $qr .= " and tp.TenTP LIKE '%$ten%'";
+        }
+        if($MaLoaiTP != "") {
+            $qr .= " and tp.MaLoaiTP = '$MaLoaiTP'";
+        }
+        if($dongia1 != "" && $dongia2 != "") {
+            $qr .= " and tp.DonGia BETWEEN '$dongia1' and '$dongia2'";
+        }
+        if($dongia1 == "" && $dongia2 != "") {
+            $qr .= " and tp.DonGia BETWEEN '0' and '$dongia2'";
+        }
+        if($dongia1 != "" && $dongia2 == "") {
+            $a = PHP_INT_MAX ;
+            $qr .= " and tp.DonGia BETWEEN '$dongia1' and '$a'";
+        }
+
+        $qr .= " ORDER BY tp.MaTP ";
+
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
         while ($row = mysqli_fetch_array($rows)) {
             $arr[] = $row;
         }
         return json_encode($arr);
-    }
-
-    public function insert($matp, $tentp, $dongia, $anhtp, $loaiTP)
-    {
-        $qr = "INSERT INTO topping VALUES ('" . $matp . "', '" . $tentp . "','" . $dongia . "', '" . $anhtp . "', '" . $loaiTP . "')";
-        return mysqli_query($this->con, $qr);
     }
 }
 ?>

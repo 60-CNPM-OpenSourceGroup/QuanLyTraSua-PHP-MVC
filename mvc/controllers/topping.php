@@ -23,15 +23,38 @@ class Topping extends Controller
 
     function Index()
     {
-        $listTP = json_decode($this->tpModel->listAll(), true);
+        // $listTP = json_decode($this->tpModel->listAll(), true);
+        // $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
+        // // trả về list topping
+        // $this->view(
+        //     "layoutAdmin",
+        //     [
+        //         "page" => "topping/indexTP",
+        //         'listTP' => $listTP,
+        //         'listTenLoaiTP' => $listTenLoaiTP
+        //     ]
+        // );
+        $maTP = "";
+        $tenTP = "";
+        $MaLoaiTP = "";
+        $dongia1 = $dongia2 = "";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $maTP = trim($_POST['maTP']);
+            $tenTP = trim($_POST['tenTP']);
+            //$banChay = isset($_POST['banChay']) ? $_POST['banChay'] : "";
+            $MaLoaiTP = $_POST['MaLoaiTP'];
+            $dongia1 = trim($_POST['dongia1']);
+            $dongia2 = trim($_POST['dongia2']);
+        } //mà mặc định là get rồi '-', uawf thi tu get r ma
+        
+        $listTP = json_decode($this->tpModel->TimKiem($maTP, $tenTP, $MaLoaiTP, $dongia1, $dongia2), true);
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
-        // trả về list topping
         $this->view(
             "layoutAdmin",
             [
                 "page" => "topping/indexTP",
                 'listTP' => $listTP,
-                'listTenLoaiTP' => $listTenLoaiTP
+                'listTenLoaiTP' => $listTenLoaiTP,
             ]
         );
     }
@@ -143,9 +166,9 @@ class Topping extends Controller
             $matp = $_POST['matp'];
             $tentp = $_POST['tentp'];
             $dongia = $_POST['dongia'];
-            $ngaythem = $_POST['ngaythem'];
+            //$ngaythem = $_POST['ngaythem'];
             // $banChay = $_POST['banchay'] || '0';
-            $banChay = isset($_POST['banchay']) ? $_POST['banchay']  : '0';
+            //$banChay = isset($_POST['banchay']) ? $_POST['banchay']  : '0';
             $loaiTP = $_POST['loaiTP'];
 
             validateTenTP($tentp);
@@ -163,16 +186,23 @@ class Topping extends Controller
                 $hinh = $_FILES['hinh'];
                 $tenAnh = $hinh['name'];
                 move_uploaded_file($hinh['tmp_name'], "public/upload/topping/" . $tenAnh);
-                $result = $this->tpModel->update($matp, $tentp, $dongia, $tenAnh, $loaiTP);
+                // $result = $this->tpModel->update($matp, $tentp, $dongia, $tenAnh, $loaiTP);
+                $save = $this->model("ToppingModel");
+                $save->update($matp, $tentp, $dongia, $tenAnh, $loaiTP);
+                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
             } else {
-                $result = $this->tpModel->update($matp, $tentp, $dongia, null, $loaiTP);
+               // $result = $this->tpModel->update($matp, $tentp, $dongia, null, $loaiTP);
+                 $save = $this->model("ToppingModel");
+                $save->update($matp, $tentp, $dongia,null, $loaiTP);
+                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
             }
 
-            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
-                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
-                return $this->redirectTo("Topping", "Index");
-            }
-        } 
+            // if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+            //     $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
+            //     return $this->redirectTo("Topping", "Index");
+            // }
+        }
+        return $this->redirectTo("Topping", "Index"); 
     }
 
 
