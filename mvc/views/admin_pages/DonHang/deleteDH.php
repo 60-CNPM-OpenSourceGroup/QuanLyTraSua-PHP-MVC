@@ -37,7 +37,7 @@
     .form-group1 {
         display: flex;
         /* justify-content: ; */
-        align-items: center;
+        align-items: baseline;
         margin-bottom: 0.2rem;
     }
 

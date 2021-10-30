@@ -44,9 +44,15 @@ class HoaDonModel extends DataBase
         if ($hoten != "") {
             $qr .= " AND hd.HoTen LIKE '%$hoten%'";
         }
+<<<<<<< Updated upstream
         // if ($ngaymua != "") {
         //     $qr .= " AND hd.NgayLap LIKE '%$ngaymua%'";
         // }
+=======
+        if ($ngaymua != "") {
+            $qr .= " AND hd.NgayLap = '$ngaymua'";
+        }
+>>>>>>> Stashed changes
         if ($tinhtrang != "") {
             $qr .= " AND hd.TinhTrang = '$tinhtrang'";
         }
