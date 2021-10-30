@@ -44,7 +44,7 @@ class QuanLyPH extends Controller
                     'ph' => $ph[0],
                 ]);
             } else if ($ph[0]['tinhTrang'] == 2) {
-                $_SESSION['error'] = "Phản hồi này đã được xử lý trước đó !";
+                $_SESSION['error']['donhang'] = "Phản hồi này đã được xử lý trước đó !";
                 return $this->redirectTo("QuanLyPH", "Index");
             }
         } else {
@@ -107,7 +107,7 @@ class QuanLyPH extends Controller
                 $_SESSION['thongbao'] = "Đã gửi mail thành công !";
             } catch (Exception $e) {
                 // echo 'Mail không gửi được. Lỗi: ', $mail->ErrorInfo;
-                $_SESSION['error'] = "Mail không gửi được. Lỗi: " . $mail->ErrorInfo;
+                $_SESSION['error']['donhang'] = "Mail không gửi được. Lỗi: " . $mail->ErrorInfo;
             }
         }
         return $this->redirectTo("QuanLyPH", "Index");
