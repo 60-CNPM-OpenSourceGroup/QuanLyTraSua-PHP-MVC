@@ -83,6 +83,14 @@ class DoUongModel extends DataBase
         if($dongia1 != "" && $dongia2 != "") {
             $qr .= " and du.DonGia BETWEEN '$dongia1' and '$dongia2'";
         }
+        if($dongia1 == "" && $dongia2 != "") {
+            $qr .= " and du.DonGia BETWEEN '0' and '$dongia2'";
+        }
+        if($dongia1 != "" && $dongia2 == "") {
+            $a = PHP_INT_MAX ;
+            $qr .= " and du.DonGia BETWEEN '$dongia1' and '$a'";
+        }
+
         $qr .= " ORDER BY du.MaDU ";
 
         $rows = mysqli_query($this->con, $qr);

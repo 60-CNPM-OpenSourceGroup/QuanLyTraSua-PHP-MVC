@@ -10,10 +10,9 @@ class LoaiDoUong extends Controller
 
         if (!isset($_SESSION["user"])) {
             $this->redirectTo("Login", "Index");
-        }
-        else {
+        } else {
             $pq = new HasCredentials("QUANLYDANHMUC");
-            if(!$pq->hasCredentials()) {
+            if (!$pq->hasCredentials()) {
                 return $this->redirectTo("Credentials", "Index");
             }
         }
@@ -69,25 +68,22 @@ class LoaiDoUong extends Controller
                 $tenldu = $_POST['tenldu'];
             }
             validateMaLDU($maldu);
-            if(!isset($_SESSION['error']['maLDU'])) {
+            if (!isset($_SESSION['error']['maLDU'])) {
                 $result = $this->lduModel->checkPK($maldu);
                 if (mysqli_num_rows($result) > 0) {
                     $_SESSION['error']['maLDU'] = "Mã loại đồ uống đã tồn tại";
                 }
             }
             validateTenLDU($tenldu);
-            if(isset($_SESSION['error']) && count($_SESSION['error']) > 0){
+            if (isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
                 // Lấy lại giá trị trước khi redirect về
                 $_SESSION['ldu'] = ['maLDU' => $maldu, 'tenLDU' => $tenldu];
                 return $this->redirectTo("LoaiDoUong", "Create");
-            }
-            
-            else{
+            } else {
                 $save = $this->model("LoaiDoUongModel");
                 $save->insert($maldu, $tenldu);
                 $_SESSION['thongbao'] = "Thêm mới loại đồ uống thành công";
             }
-            
         }
 
         return $this->redirectTo("LoaiDoUong", "Index");
@@ -107,14 +103,14 @@ class LoaiDoUong extends Controller
                     'tenLDU' => $tenldu,
                 ];
                 return $this->redirectTo("LoaiDoUong", "Edit", ['id' => $maldu]);
+            } else {
+                $this->lduModel->update($maldu, $tenldu);
             }
-            else{
-                $result = $this->lduModel->update($maldu, $tenldu);
-            }
-            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
-                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
-                return $this->redirectTo("LoaiDoUong", "Index");
-            }
+
+            // if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+            $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
+            return $this->redirectTo("LoaiDoUong", "Index");
+            // }
         }
     }
 
