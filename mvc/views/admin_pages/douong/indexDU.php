@@ -48,6 +48,13 @@
         padding-top: 1rem;
         padding-bottom: 2rem;
     }
+    .dg{
+        line-height: 2.1rem;
+        border-radius: 4px;
+        outline: none;
+        border: 0.1px solid #7877775c;
+        width: 140px;
+    }
 </style>
 <section>
     <div class="col-lg-6">
@@ -57,7 +64,7 @@
     </div>
     <h3 class="text-center">DANH SÁCH ĐỒ UỐNG</h3>
     <form action="DoUong/Index" method="POST">
-        <table style="margin: auto; width:350px;">
+        <table style="margin: auto; width:460px;">
             <tr>
                 <td><b>Mã đồ uống: </b></td>
                 <td><input type="text" id="maDU" name="maDU" class="form-control" value="<?php if (isset($_POST['maDU'])) echo $_POST['maDU']; ?>"></td>
@@ -69,8 +76,8 @@
             <tr>
                 <td><b>Đơn giá: </b></td>
                 <td>
-                    Từ<input style="width: 100px;" type="text" id="dongia1" name="dongia1"  value="<?php if (isset($_POST['dongia1'])) echo $_POST['dongia1']; ?>">
-                    Đến<input style="width: 100px;" type="text" id="dongia2" name="dongia2"  value="<?php if (isset($_POST['dongia2'])) echo $_POST['dongia2']; ?>">
+                    Từ: <input class="dg" type="text" id="dongia1" name="dongia1"  value="<?php if (isset($_POST['dongia1'])) echo $_POST['dongia1']; ?>">
+                    Đến: <input  class="dg" type="text" id="dongia2" name="dongia2"  value="<?php if (isset($_POST['dongia2'])) echo $_POST['dongia2']; ?>">
                 </td>
             </tr>
             <tr>

@@ -176,9 +176,9 @@
             </div>
             <br />
             <?php
-            if (isset($_SESSION['error']))
-                echo '<div class="bg-danger p-2" style="font-weight:bold">' . $_SESSION['error'] . '</div>';
-            unset($_SESSION['error']);
+            if (isset($_SESSION['error']['menu']))
+                echo '<div class="bg-danger p-2" style="font-weight:bold">' . $_SESSION['error']['menu'] . '</div>';
+            unset($_SESSION['error']['menu']);
             ?>
         </form>
         <!-- End Form  add-to-cart buttons -->

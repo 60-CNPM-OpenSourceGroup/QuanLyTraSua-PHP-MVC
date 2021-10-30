@@ -77,7 +77,7 @@ class Menu extends Controller{
                         }
                         if ($flag == false)
                         {
-                            $_SESSION['error'] = "Đã tồn tại tùy chọn này trong giỏ hàng, bạn có thể vào giỏ hàng để thay đổi số lượng.";
+                            $_SESSION['error']['menu'] = "Đã tồn tại tùy chọn này trong giỏ hàng, bạn có thể vào giỏ hàng để thay đổi số lượng.";
                             return $this->redirectTo("Menu", "Details", ["id" => $_POST['MaDU']]);
                         }
                     }
