@@ -72,7 +72,7 @@ class DonHang extends Controller
                     'listShipper' => $listShipper
                 ]);
             } else if ($listDH[0]['TinhTrang'] == 2 || $listDH[0]['TinhTrang'] == 0) {
-                $_SESSION['error'] = "Đơn bạn chọn đã giao hoặc đã hủy, không thể thao tác !";
+                $_SESSION['error']['donhang'] = "Đơn bạn chọn đã giao hoặc đã hủy, không thể thao tác !";
                 return $this->redirectTo("DonHang", "Index");
             }
         } else {

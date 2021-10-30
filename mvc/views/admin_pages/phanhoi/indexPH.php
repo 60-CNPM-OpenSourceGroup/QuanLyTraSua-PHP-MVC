@@ -135,15 +135,7 @@
             }
         }
         ?>
-        <tr>
-            <?php
-            $tb = "";
-            if (count($data['ph']) == 0) {
-                echo '<td colspan="9" style="text-align: center; color: red;font-weight: bold;">Chưa có phản hồi nào từ khách hàng</td>';
-            }
-            ?>
-
-        </tr>
+ 
     </table>
     <!-- Start Pagination -->
     <?php
