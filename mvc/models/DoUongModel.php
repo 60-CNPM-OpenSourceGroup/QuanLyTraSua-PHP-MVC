@@ -13,6 +13,14 @@ class DoUongModel extends DataBase
         return json_encode($arr);
     }
 
+    public function getMaMax()
+    {
+        $qr = "SELECT MaDU FROM douong ORDER BY MaDU DESC LIMIT 0,1";
+        $row = mysqli_query($this->con, $qr);
+        $result = mysqli_fetch_array($row);
+        return $result['MaDU'];
+    }
+
     public function getDoUongById($id)
     {
         $qr = "SELECT * FROM douong,loaidouong WHERE douong.MaLoaiDU = loaidouong.MaLoaiDU AND MaDU = '$id'";

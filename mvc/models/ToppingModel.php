@@ -11,6 +11,14 @@ class ToppingModel extends DataBase {
         return json_encode($arr);
     }
 
+    public function getMaMax()
+    {
+        $qr = "SELECT MaTP FROM topping ORDER BY MaTP DESC LIMIT 0,1";
+        $row = mysqli_query($this->con, $qr);
+        $result = mysqli_fetch_array($row);
+        return $result['MaTP'];
+    }
+
     public function getToppingById($id) {
         $qr = "SELECT * FROM topping,loaitopping WHERE topping.MaLoaiTP = loaitopping.MaLoaiTP AND MaTP = '$id'";
         $rows = mysqli_query($this->con, $qr);
@@ -35,18 +43,6 @@ class ToppingModel extends DataBase {
         $qr = "DELETE FROM topping WHERE MaTP = '$matp'";
         return mysqli_query($this->con, $qr);
     }
-
-    // public function TimKiemTP($tukhoa){
-    //     $qr = "select * from topping left join loaitopping on topping.MaLoaiTP = loaitopping.MaLoaiTP 
-    //             where 1 and TenTP like '%$tukhoa%' or MaTP like '%$tukhoa%' 
-    //             or DonGia like '%$tukhoa%' or TenLoaiTP like '%$tukhoa%'";
-    //     $rows = mysqli_query($this->con, $qr);
-    //     $arr = array();
-    //     while ($row = mysqli_fetch_array($rows)) {
-    //         $arr[] = $row;
-    //     }
-    //     return json_encode($arr);
-    // }
 
     public function insert($matp, $tentp, $dongia, $anhtp, $loaiTP)
     {

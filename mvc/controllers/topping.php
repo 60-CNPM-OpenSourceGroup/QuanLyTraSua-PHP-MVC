@@ -20,20 +20,17 @@ class Topping extends Controller
         }
     }
 
+    function LayMaTP()
+    {
+        $maMax = $this->tpModel->getMaMax();
+        $maTP = (int)(substr($maMax, 2)) + 1; 
+        $TP = "000". (string)$maTP; 
+        return "TP" . substr($TP, -4); 
+    }
+
 
     function Index()
     {
-        // $listTP = json_decode($this->tpModel->listAll(), true);
-        // $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
-        // // trả về list topping
-        // $this->view(
-        //     "layoutAdmin",
-        //     [
-        //         "page" => "topping/indexTP",
-        //         'listTP' => $listTP,
-        //         'listTenLoaiTP' => $listTenLoaiTP
-        //     ]
-        // );
         $maTP = "";
         $tenTP = "";
         $MaLoaiTP = "";
@@ -58,53 +55,20 @@ class Topping extends Controller
             ]
         );
     }
-    function TimKiem()
-    {
-        $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
-        // $tukhoa ="";
-        //  $db_tk = [];
-        if (isset($_POST['tukhoa'])) {
-            $tukhoa = trim($_POST['tukhoa']);
-            $db_tk = json_decode($this->tpModel->TimKiemTP($tukhoa), true);
-        }
-        // trả về list đồ uống
-        $this->view(
-            "layoutAdmin",
-            [
-                "page" => "topping/timkiem",
-                // 'listDU' => $listDU,
-                'listTenLoaiTP' => $listTenLoaiTP,
-                "timkiem" => $db_tk,
-                // "thongbao" => $tb
-            ]
-        );
-    }
-
 
     function Create()
     {
         $listTP = json_decode($this->tpModel->listAll(), true);
         $listTenLoaiTP = json_decode($this->ltpModel->listAll(), true);
         //tạo mã tự động
-        $getma = end($listTP);
-        $matp = substr($getma["MaTP"], 2);
-        $ma = "TP";
+        $matp = $this->LayMaTP();
 
-        if ((int)$matp < 10) {
-            $ma .= "000" . ((int)$matp + 1);
-        } else if ((int)$matp >= 10) {
-            $ma .= "00" . ((int)$matp + 1);
-        } else if ((int)$matp >= 100) {
-            $ma .= "0" . ((int)$matp + 1);
-        } else if ((int)$matp >= 1000) {
-            $ma .= ((int)$matp + 1);
-        }
         // thêm mới topping
         $this->view(
             "layoutAdmin",
             [
                 "page" => "topping/createTP",
-                "matp" => $ma,
+                "matp" => $matp,
                 'listTenLoaiTP' => $listTenLoaiTP
             ]
         );

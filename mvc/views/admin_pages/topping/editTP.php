@@ -92,7 +92,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <a class="btn btn-primary" href="DoUong/Index">Quay lại</a>
+                <a class="btn btn-primary" href="Topping/Index">Quay lại</a>
             </div>
         </div>
     </div>

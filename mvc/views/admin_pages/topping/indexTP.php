@@ -107,22 +107,7 @@
             </tr>
         </table>
     </form>
-    <!-- <div class="row">
-        <div class="col-lg-6">
-            <a href="DoUong/Create">
-                <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Sản Phẩm</button>
-            </a>
-        </div>
 
-        <div class="col-lg-6" style="position: relative;">
-            <form action="DoUong/TimKiem" method="POST">
-                <div class="form-group" style="display: flex; position: absolute; right: 0;">
-                    <input style="width: 300px;" type="text" class="form-control" placeholder="Tìm kiếm..." id="tukhoa" name="tukhoa" value="<?php if (isset($_POST['tukhoa'])) echo $_POST['tukhoa']; ?>">
-                    <input type="submit" value="Tìm kiếm">
-                </div>
-            </form>
-        </div>
-    </div> -->
     <?php
     if (isset($_SESSION['thongbao'])) {
         echo "<div class='alert alert-success'>";

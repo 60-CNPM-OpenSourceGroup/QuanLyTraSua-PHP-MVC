@@ -20,36 +20,16 @@ class DoUong extends Controller
         }
     }
 
+    function LayMaDU()
+    {
+        $maMax = $this->duModel->getMaMax();
+        $maDU = (int)(substr($maMax, 2)) + 1; 
+        $DU = "000". (string)$maDU; 
+        return "DU" . substr($DU, -4); 
+    }
 
-    // function Index()
-    // {
-    //     $listDU = json_decode($this->duModel->listAll(), true);
-    //     $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
-    //     // trả về list đồ uống
-    //     $this->view(
-    //         "layoutAdmin",
-    //         [
-    //             "page" => "douong/indexDU",
-    //             'listDU' => $listDU,
-    //             'listTenLoaiDU' => $listTenLoaiDU,
-    //         ]
-    //     );
-    // }
     function Index()
     {
-        
-        // $listDU = json_decode($this->duModel->listAll(), true);
-        // $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
-        // // trả về list đồ uống
-        // $this->view(
-        //     "layoutAdmin",
-        //     [
-        //         "page" => "douong/indexDU",
-        //         'listDU' => $listDU,
-        //         'listTenLoaiDU' => $listTenLoaiDU,
-        //     ]
-        // );
-
         $maDU = "";
         $tenDU = "";
         $banChay = "";
@@ -77,55 +57,20 @@ class DoUong extends Controller
 
     }
     
-    function TimKiem()
-    {
-        $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
-        // $tukhoa ="";
-        //  $db_tk = [];
-        if (isset($_POST['tukhoa'])) {
-            $tukhoa = trim($_POST['tukhoa']);
-            $db_tk = json_decode($this->duModel->TimKiemDU($tukhoa), true);
-        }
-
-        // trả về list đồ uống
-        $this->view(
-            "layoutAdmin",
-            [
-                "page" => "douong/timkiem",
-                // 'listDU' => $listDU,
-                'listTenLoaiDU' => $listTenLoaiDU,
-                "timkiem" => $db_tk,
-                // "thongbao" => $tb
-            ]
-        );
-    }
-
     function Create()
     {
         $listDU = json_decode($this->duModel->listAll(), true);
         $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
 
         //tạo mã tự động
-        $getma = end($listDU);
-        $madu = substr($getma["MaDU"], 2);
-        $ma = "DU";
-
-        if ((int)$madu < 10) {
-            $ma .= "000" . ((int)$madu + 1);
-        } else if ((int)$madu >= 10) {
-            $ma .= "00" . ((int)$madu + 1);
-        } else if ((int)$madu >= 100) {
-            $ma .= "0" . ((int)$madu + 1);
-        } else if ((int)$madu >= 1000) {
-            $ma .= ((int)$madu + 1);
-        }
+        $madu = $this->LayMaDU();
 
         // thêm mới đồ uống
         $this->view(
             "layoutAdmin",
             [
                 "page" => "douong/createDU",
-                "madu" => $ma,
+                "madu" => $madu,
                 'listTenLoaiDU' => $listTenLoaiDU
             ]
         );

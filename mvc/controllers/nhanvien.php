@@ -22,9 +22,9 @@ class NhanVien extends Controller
     function LayMaNV()
     {
         $maMax = $this->nvModel->getMaMax();
-        $maNV = (int)(substr($maMax, 2)) + 1; // tu tu coi lai ti
-        $NV = "000". (string)$maNV;
-        return "NV" . substr($NV, -4);
+        $maNV = (int)(substr($maMax, 2)) + 1; 
+        $NV = "000". (string)$maNV; 
+        return "NV" . substr($NV, -4); 
     }
     function Index()
     {
@@ -87,19 +87,6 @@ class NhanVien extends Controller
 
     function Store()
     {
-        // $listNV = json_decode($this->nvModel->getNV(), true);
-        // //tạo mã tự động
-        // $dem = count($listNV);
-        // $manv = "NV";
-        // if ($dem < 10) {
-        //     $manv .= "000" . ($dem + 1);
-        // } else if ($dem >= 10) {
-        //     $manv .= "00" . ($dem + 1);
-        // } else if ($dem >= 100) {
-        //     $manv .= "0" . ($dem + 1);
-        // } else if ($dem >= 1000) {
-        //     $manv .= ($dem + 1);
-        // }
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $manv = $_POST['manv'];
