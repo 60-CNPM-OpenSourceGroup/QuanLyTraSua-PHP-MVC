@@ -19,6 +19,13 @@ class NhanVien extends Controller
         }
     }
 
+    function LayMaNV()
+    {
+        $maMax = $this->nvModel->getMaMax();
+        $maNV = (int)(substr($maMax, 2)) + 1; // tu tu coi lai ti
+        $NV = "000". (string)$maNV;
+        return "NV" . substr($NV, -4);
+    }
     function Index()
     {
         $maNV = "";
@@ -66,26 +73,13 @@ class NhanVien extends Controller
         $listTenNhomNV = json_decode($this->nnvModel->getNNV(), true);
 
         //tạo mã tự động
-        $getma = end($listNV);
-        $manv = substr($getma["maNV"], 2 );
-        $ma = "NV";
-
-        if ((int)$manv < 10) {
-            $ma .= "000" . ((int)$manv + 1);
-        } else if ((int)$manv >= 10) {
-            $ma .= "00" . ((int)$manv + 1);
-        } else if ((int)$manv >= 100) {
-            $ma .= "0" . ((int)$manv + 1);
-        } else if ((int)$manv >= 1000) {
-            $ma .= ((int)$manv + 1);
-        }
-        
+        $manv = $this->LayMaNV();
         // thêm mới đồ uống
         $this->view(
             "layoutAdmin",
             [
                 "page" => "nhanvien/createNV",
-                "manv" => $ma,
+                "manv" => $manv,
                 'listTenNhomNV' => $listTenNhomNV
             ]
         );
@@ -126,6 +120,12 @@ class NhanVien extends Controller
             validateNgaySinh($ngaysinh);
             validateDiaChi($diachi);
             validateEmail($email);
+            if(validateEmail($email) == null){
+                $result = $this->nvModel->checkEmail($email);
+                if (mysqli_num_rows($result) > 0) {
+                    $_SESSION['error']['email'] = "Email này đã tồn tại!";
+                }
+            }
             validateMatKhau($password);
             validateSoDienThoai($sdt);
             validateAnhNV($_FILES["hinhanh"]['name']);

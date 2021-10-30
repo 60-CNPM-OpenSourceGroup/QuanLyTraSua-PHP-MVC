@@ -11,6 +11,14 @@ class NhanVienModel extends DataBase {
         return json_encode($arr);
     }
 
+    public function getMaMax()
+    {
+        $qr = "SELECT maNV FROM nhanvien ORDER BY maNV DESC LIMIT 0,1";
+        $row = mysqli_query($this->con, $qr);
+        $result = mysqli_fetch_array($row);
+        return $result['maNV'];
+    }
+
     public function getNhanVienById($id)
     {
         $qr = "SELECT * FROM nhanvien, nhomnhanvien WHERE nhanvien.IDNhom = nhomnhanvien.IDNhom AND nhanvien.maNV = '$id'";
@@ -96,6 +104,8 @@ class NhanVienModel extends DataBase {
         if($idNhom != "") {
             $qr .= " and nv.IDNhom = '$idNhom'";
         }
+        $qr .= " ORDER BY nv.maNV ";
+
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
         while ($row = mysqli_fetch_array($rows)) {
@@ -103,6 +113,12 @@ class NhanVienModel extends DataBase {
         }
         return json_encode($arr);
     }
+
+    public function checkEmail($email){
+        $result = "SELECT * FROM nhanvien WHERE email = '$email'";
+        return mysqli_query($this->con, $result);
+    }
+
     
 }
 ?>
