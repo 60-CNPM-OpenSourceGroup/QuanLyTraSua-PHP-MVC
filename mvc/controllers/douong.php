@@ -218,16 +218,24 @@ class DoUong extends Controller
                 $hinh = $_FILES['hinh'];
                 $tenAnh = $hinh['name'];
                 move_uploaded_file($hinh['tmp_name'], "public/upload/douong/" . $tenAnh);
-                $result = $this->duModel->update($madu, $tendu, $dongia, $tenAnh, $ngaythem, $banChay, $loaiDU);
+                // $result = $this->duModel->update($madu, $tendu, $dongia, $tenAnh, $ngaythem, $banChay, $loaiDU);
+                $save = $this->model("DoUongModel");
+                $save->update($madu, $tendu, $dongia, $tenAnh, $ngaythem, $banChay, $loaiDU);
+                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
             } else {
-                $result = $this->duModel->update($madu, $tendu, $dongia, null, $ngaythem, $banChay, $loaiDU);
+                // $result = $this->duModel->update($madu, $tendu, $dongia, null, $ngaythem, $banChay, $loaiDU);
+                $save = $this->model("DoUongModel");
+                $save->update($madu, $tendu, $dongia, null, $ngaythem, $banChay, $loaiDU);
+                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
             }
 
-            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
-                $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
-                return $this->redirectTo("DoUong", "Index");
-            }
+            // if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+            //     $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
+            //     return $this->redirectTo("DoUong", "Index");
+            // }
+            
         } 
+        return $this->redirectTo("DoUong", "Index");
     }
 
     function Delete($id)

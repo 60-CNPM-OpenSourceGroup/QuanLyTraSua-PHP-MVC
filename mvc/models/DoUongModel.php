@@ -65,7 +65,7 @@ class DoUongModel extends DataBase
     {
         // Query mặc định khi chưa truyền tham số tìm kiếm nào
         $qr = "select du.*, ldu.TenLoaiDU from douong du, loaidouong ldu
-				where du.MaLoaiDU = ldu.MaLoaiDU";
+				where du.MaLoaiDU = ldu.MaLoaiDU" ;
         
         // Có tìm mã
         if($maDU != "") {
@@ -83,6 +83,7 @@ class DoUongModel extends DataBase
         if($dongia1 != "" && $dongia2 != "") {
             $qr .= " and du.DonGia BETWEEN '$dongia1' and '$dongia2'";
         }
+        $qr .= " ORDER BY du.MaDU ";
 
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
