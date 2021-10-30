@@ -12,6 +12,8 @@
             <div class="mb-3 col-md-12">
                 <label for="newPass" class="form-label"><b>Mật khẩu mới</b></label>
                 <input type="password" class="form-control w-50" id="newPass" name="newPass" value="<?php if(isset($_SESSION['dmk']['newPass'])) echo $_SESSION['dmk']['newPass']; unset($_SESSION['dmk']['newPass']); ?>">
+                <i style="font-size: small;">(*)Mật khẩu phải chứa ít nhất 8 ký tự, ít nhất 1 số, ít nhất 1 chữ cái viết hoa và ít nhất 1 chữ cái thường</i>
+                <br>
                 <span class="text-danger"><?php if(isset($_SESSION['error']['newPass'])) echo $_SESSION['error']['newPass']; unset($_SESSION['error']['newPass']); ?></span>
             </div>
             <div class="mb-3 col-md-12">

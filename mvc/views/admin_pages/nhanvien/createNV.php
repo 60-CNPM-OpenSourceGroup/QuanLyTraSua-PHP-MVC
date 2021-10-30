@@ -68,6 +68,8 @@
             <div class="col-md-6">
                 <input type="text" class="form-control text-box single-line" id="password" name="password"
                 value="<?php if(isset($_SESSION['nv']['matKhau'])) echo $_SESSION['nv']['matKhau']; unset($_SESSION['nv']['matKhau']);?>">
+                <i style="font-size: small;">(*)Mật khẩu phải chứa ít nhất 8 ký tự, ít nhất 1 số, ít nhất 1 chữ cái viết hoa và ít nhất 1 chữ cái thường</i>
+                <br>
                 <span class="text-danger"><?php if (isset($_SESSION['error']['matKhau'])) {
                                                 echo $_SESSION['error']['matKhau'];   
                                                 unset($_SESSION['error']['matKhau']);
