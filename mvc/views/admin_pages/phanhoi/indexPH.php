@@ -82,11 +82,11 @@
         echo "</div>";
         unset($_SESSION['thongbao']);
     }
-    if (isset($_SESSION['error'])) {
+    if (isset($_SESSION['error']['donhang'])) {
         echo "<div class='alert alert-danger'>";
-        echo $_SESSION['error'];
+        echo $_SESSION['error']['donhang'];
         echo "</div>";
-        unset($_SESSION['error']);
+        unset($_SESSION['error']['donhang']);
     }
     ?>
     <table class="table table-striped table-class" id="table-id">
