@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -44,9 +45,6 @@
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Chào mừng bạn trở lại!</h1>
                                         </div>
-                                        <!-- @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { role = "form" }))
-                                    
-                                        @Html.ValidationSummary(true, "", new { @class = "alert-danger" }) -->
                                         <?php
                                         if (isset($data["result"])) {
                                             if ($data["result"] == true) {
@@ -57,28 +55,23 @@
                                                 </div>";
                                             }
                                         }
-                                        if (isset($data["result1"])) {
-                                            if ($data["result1"] == true) {
-                                            } else {
-                                                echo "<div class='alert-danger' style='padding-left:10px;'>
-                                                • Tên đăng nhập hoặc mật khẩu không được để trống.
-                                                </div>";
-                                            }
-                                        }
                                         ?>
                                         <div class="form-group">
                                             <?php echo "<br>"; ?>
-                                            <!-- @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Nhập tên tài khoản..." })
-                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" }) -->
-                                            <input type="text" placeholder="Nhập tên tài khoản..." name="email" class="form-control">
+                                            <input type="text" placeholder="Nhập tên tài khoản..." name="email" class="form-control" value="<?php if(isset($_SESSION['login']['Email'])) echo $_SESSION['login']['Email']; unset($_SESSION['login']['Email']);?>">
+                                            <span class="text-danger"><?php if (isset($_SESSION['error']['Email'])) {
+                                                echo $_SESSION['error']['Email'];
+                                                unset($_SESSION['error']['Email']); 
+                                            } ?></span>
                                         </div>
                                         <div class="form-group">
-                                            <!-- @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
-                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" }) -->
                                             <input type="password" placeholder="Mật khẩu" name="password" class="form-control">
+                                            <span class="text-danger"><?php if (isset($_SESSION['error']['Password'])) {
+                                                echo $_SESSION['error']['Password'];
+                                                unset($_SESSION['error']['Password']); 
+                                            } ?></span>
                                         </div>
-                                        <div class="form-group">
-                                            <!-- @Html.CheckBoxFor(model => model.RememberMe) Ghi nhớ đăng nhập -->
+                                        <div class="form-group"> 
                                         </div>
                                         <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Đăng nhập</button>
 

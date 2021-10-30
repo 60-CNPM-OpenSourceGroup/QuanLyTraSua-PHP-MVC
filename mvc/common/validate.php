@@ -186,6 +186,20 @@
           $_SESSION['error']['tenLTP'] = "Tên loại topping không được để trống";
       }
   }
+
+  function validateUser($inputEmail)
+  {
+      if ($inputEmail == null) {
+          $_SESSION['error']['Email'] = "Tên tài khoản không được để trống";
+      }
+  }
+
+  function validatePassword($inputPassword)
+  {
+      if ($inputPassword == null) {
+          $_SESSION['error']['Password'] = "Mật khẩu không được để trống";
+      }
+  }
 ?>
 
   

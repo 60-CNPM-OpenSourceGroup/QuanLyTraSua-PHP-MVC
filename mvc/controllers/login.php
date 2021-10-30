@@ -1,4 +1,5 @@
 <?php 
+require_once './mvc/common/validate.php';
     class login extends controller{
 
         public $loginmodel;
@@ -28,12 +29,13 @@
                 $password = $_POST["password"];
                 $password_input = $_POST["password"];
                 // email và password để trống thì in ra lỗi
-                if(empty($_POST["email"]) || empty($_POST["password"])){
-                    $this->view("login",
-                    [
-                        "result1"=>$result_mess,
-                    ]);
+                validateUser($email);
+                validatePassword($password);
+                if (isset($_SESSION['error']) && count($_SESSION['error']) > 0) {
+                    $_SESSION['login'] = ['Email' => $email];
+                    return $this->redirectTo("Login", "Index");
                 }
+                else{
                 // mớ này email đúng mk đúng thì vào trang HomeAdmin index
                 // email đúng mk sai thì in ra lỗi
                 $result = $this->loginmodel->login($email);
@@ -69,6 +71,7 @@
                     [
                         "result"=>$result_mess,
                     ]);
+                }
                 }
             }
         }
