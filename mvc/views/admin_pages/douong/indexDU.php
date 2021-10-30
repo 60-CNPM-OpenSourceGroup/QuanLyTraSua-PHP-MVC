@@ -44,15 +44,71 @@
         border-radius: 5px;
     }
 
-    h3{
+    h3 {
         padding-top: 1rem;
         padding-bottom: 2rem;
     }
 </style>
 <section>
+    <div class="col-lg-6">
+        <a href="DoUong/Create">
+            <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Sản Phẩm</button>
+        </a>
+    </div>
     <h3 class="text-center">DANH SÁCH ĐỒ UỐNG</h3>
+    <form action="DoUong/Index" method="POST">
+        <table style="margin: auto; width:350px;">
+            <tr>
+                <td><b>Mã đồ uống: </b></td>
+                <td><input type="text" id="maDU" name="maDU" class="form-control" value="<?php if (isset($_POST['maDU'])) echo $_POST['maDU']; ?>"></td>
+            </tr>
+            <tr>
+                <td><b>Tên đồ uống: </b></td>
+                <td><input type="text" id="tenDU" name="tenDU" class="form-control" value="<?php if (isset($_POST['tenDU'])) echo $_POST['tenDU']; ?>"></td>
+            </tr>
+            <tr>
+                <td><b>Đơn giá: </b></td>
+                <td>
+                    Từ<input style="width: 100px;" type="text" id="dongia1" name="dongia1"  value="<?php if (isset($_POST['dongia1'])) echo $_POST['dongia1']; ?>">
+                    Đến<input style="width: 100px;" type="text" id="dongia2" name="dongia2"  value="<?php if (isset($_POST['dongia2'])) echo $_POST['dongia2']; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td><b>Bán chạy: </b></td>
+                <td>
+                    <!-- <input type="radio" name="banChay" value="1" <?php if (isset($_POST['banChay']) && $_POST['banChay'] == '1') echo "checked"; ?>> Bán chạy
+                    <input style="margin-left: 10px;" type="radio" name="banChay" value="0" <?php if (isset($_POST['banChay']) && $_POST['banChay'] == '0') echo "checked"; ?>> Không -->
 
-    <div class="row">
+                    <input type="checkbox" name="banChay" value="1" <?php if (isset($_POST['banChay']) && $_POST['banChay'] == 1) echo "checked"; ?>> Bán chạy
+
+
+                </td>
+            </tr>
+            <tr>
+                <td><b>Loại đồ uống: </b></td>
+                <td><select name="MaLoaiDU" class="form-control text-box single-line">
+                        <option value="">------ Chọn tất cả ------</option>
+                        <?php
+                        foreach ($data['listTenLoaiDU'] as $nhomNV) {
+                            if ($nhomNV['MaLoaiDU'] == $_POST['MaLoaiDU'] && isset($_POST['MaLoaiDU'])) {
+                                $s = "selected";
+                            } else {
+                                $s = "";
+                            }
+                            echo '<option ' . $s . ' value="' . $nhomNV['MaLoaiDU'] . '" class = "form-control">' . $nhomNV['TenLoaiDU'] . '</option>';
+                        }
+                        ?>
+                    </select></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="padding-left: 91px;padding-top: 10px;">
+                    <input type="submit" value="Tìm kiếm" class="btn btn-primary" name="searchBtn" />
+                    <a href="douong/index" class="btn btn-primary">Làm mới</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <!-- <div class="row">
         <div class="col-lg-6">
             <a href="DoUong/Create">
                 <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Sản Phẩm</button>
@@ -67,7 +123,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
     <?php
     if (isset($_SESSION['thongbao'])) {
         echo "<div class='alert alert-success'>";
@@ -105,43 +161,47 @@
         </tr>
         <?php
         $i = 1;
-        foreach ($data['listDU'] as $item) {
+        if (count($data['listDU']) > 0) {
+            foreach ($data['listDU'] as $item) {
         ?>
-            <tr>
-                <td><?php echo $i; ?></td>
-                <td><?php echo '<img src="public/upload/douong/' . $item['HinhAnh'] . '"style ="max-width: 50px">'; ?></td>
-                <td><?php echo $item["MaDU"]; ?></td>
-                <td><?php echo $item["TenDU"]; ?></td>
-                <td><?php echo $item['DonGia'] ?></td>
-                <td><?php
-                    $date = str_replace('-', '/', $item["NgayThem"]);
-                    echo date('d/m/Y', strtotime($date));
-                    ?></td>
-                <td><?php if ($item["BanChay"] == 1)
-                        echo "X";
-                    else
-                        echo " "; ?>
-                </td>
+                <tr>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo '<img src="public/upload/douong/' . $item['HinhAnh'] . '"style ="max-width: 50px">'; ?></td>
+                    <td><?php echo $item["MaDU"]; ?></td>
+                    <td><?php echo $item["TenDU"]; ?></td>
+                    <td><?php echo $item['DonGia'] ?></td>
+                    <td><?php
+                        $date = str_replace('-', '/', $item["NgayThem"]);
+                        echo date('d/m/Y', strtotime($date));
+                        ?></td>
+                    <td><?php if ($item["BanChay"] == 1)
+                            echo "X";
+                        else
+                            echo " "; ?>
+                    </td>
 
-                <td><?php
+                    <td><?php
 
-                    foreach ($data['listTenLoaiDU'] as $loaiDU) {
-                        if ($item["MaLoaiDU"] == $loaiDU['MaLoaiDU']) {
-                            echo $loaiDU['TenLoaiDU'];
+                        foreach ($data['listTenLoaiDU'] as $loaiDU) {
+                            if ($item["MaLoaiDU"] == $loaiDU['MaLoaiDU']) {
+                                echo $loaiDU['TenLoaiDU'];
+                            }
                         }
-                    }
 
-                    ?></td>
+                        ?></td>
 
-                <td>
-                    <?php
-                    echo "<a href='DoUong/Edit/" . $item["MaDU"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;";
-                    echo "<a href='DoUong/Delete/" . $item["MaDU"] . "'><i class='fa fa-trash'></i></a>&nbsp; ";
-                    ?>
-                </td>
-            </tr>
+                    <td>
+                        <?php
+                        echo "<a href='DoUong/Edit/" . $item["MaDU"] . "'><i class='fa fa-edit'></i></a>&nbsp;|&nbsp;";
+                        echo "<a href='DoUong/Delete/" . $item["MaDU"] . "'><i class='fa fa-trash'></i></a>&nbsp; ";
+                        ?>
+                    </td>
+                </tr>
         <?php
-            $i++;
+                $i++;
+            }
+        } else {
+            echo "<tr><td colspan='10' style='text-align:center'>Không có đồ uống bạn tìm</td></tr>";
         }
 
         ?>
@@ -149,7 +209,7 @@
     </table>
     <!-- Start Pagination -->
     <?php
-    if(count($data['listDU']) > 5){
+    if (count($data['listDU']) > 5) {
         echo '
         <div class="pagination-container">
             <nav style="text-align: center;">

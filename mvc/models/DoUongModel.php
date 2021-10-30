@@ -48,11 +48,42 @@ class DoUongModel extends DataBase
         return mysqli_query($this->con, $qr);
     }
 
-    public function TimKiemDU($tukhoa)
+    // public function TimKiemDU($tukhoa)
+    // {
+    //     $qr = "select * from douong left join loaidouong on douong.MaLoaiDU = loaidouong.MaLoaiDU 
+	// 			where 1 and TenDU like '%$tukhoa%' or MaDU like '%$tukhoa%' 
+    //             or DonGia like '%$tukhoa%' or TenLoaiDU like '%$tukhoa%'";
+    //     $rows = mysqli_query($this->con, $qr);
+    //     $arr = array();
+    //     while ($row = mysqli_fetch_array($rows)) {
+    //         $arr[] = $row;
+    //     }
+    //     return json_encode($arr);
+    // }
+
+    public function TimKiem($maDU, $ten, $banChay, $MaLoaiDU, $dongia1, $dongia2)
     {
-        $qr = "select * from douong left join loaidouong on douong.MaLoaiDU = loaidouong.MaLoaiDU 
-				where 1 and TenDU like '%$tukhoa%' or MaDU like '%$tukhoa%' 
-                or DonGia like '%$tukhoa%' or TenLoaiDU like '%$tukhoa%'";
+        // Query mặc định khi chưa truyền tham số tìm kiếm nào
+        $qr = "select du.*, ldu.TenLoaiDU from douong du, loaidouong ldu
+				where du.MaLoaiDU = ldu.MaLoaiDU";
+        
+        // Có tìm mã
+        if($maDU != "") {
+            $qr .= " and du.MaDU LIKE '%$maDU%'";
+        }
+        if($ten != "") {
+            $qr .= " and du.TenDU LIKE '%$ten%'";
+        }
+        if($banChay != "") {
+            $qr .= " and du.BanChay = '$banChay'";
+        }
+        if($MaLoaiDU != "") {
+            $qr .= " and du.MaLoaiDU = '$MaLoaiDU'";
+        }
+        if($dongia1 != "" && $dongia2 != "") {
+            $qr .= " and du.DonGia BETWEEN '$dongia1' and '$dongia2'";
+        }
+
         $rows = mysqli_query($this->con, $qr);
         $arr = array();
         while ($row = mysqli_fetch_array($rows)) {

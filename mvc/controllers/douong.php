@@ -21,11 +21,51 @@ class DoUong extends Controller
     }
 
 
+    // function Index()
+    // {
+    //     $listDU = json_decode($this->duModel->listAll(), true);
+    //     $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
+    //     // trả về list đồ uống
+    //     $this->view(
+    //         "layoutAdmin",
+    //         [
+    //             "page" => "douong/indexDU",
+    //             'listDU' => $listDU,
+    //             'listTenLoaiDU' => $listTenLoaiDU,
+    //         ]
+    //     );
+    // }
     function Index()
     {
-        $listDU = json_decode($this->duModel->listAll(), true);
+        
+        // $listDU = json_decode($this->duModel->listAll(), true);
+        // $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
+        // // trả về list đồ uống
+        // $this->view(
+        //     "layoutAdmin",
+        //     [
+        //         "page" => "douong/indexDU",
+        //         'listDU' => $listDU,
+        //         'listTenLoaiDU' => $listTenLoaiDU,
+        //     ]
+        // );
+
+        $maDU = "";
+        $tenDU = "";
+        $banChay = "";
+        $MaLoaiDU = "";
+        $dongia1 = $dongia2 = "";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $maDU = trim($_POST['maDU']);
+            $tenDU = trim($_POST['tenDU']);
+            $banChay = isset($_POST['banChay']) ? $_POST['banChay'] : "";
+            $MaLoaiDU = $_POST['MaLoaiDU'];
+            $dongia1 = trim($_POST['dongia1']);
+            $dongia2 = trim($_POST['dongia2']);
+        } //mà mặc định là get rồi '-', uawf thi tu get r ma
+        
+        $listDU = json_decode($this->duModel->TimKiem($maDU, $tenDU, $banChay, $MaLoaiDU, $dongia1, $dongia2), true);
         $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
-        // trả về list đồ uống
         $this->view(
             "layoutAdmin",
             [
@@ -34,8 +74,9 @@ class DoUong extends Controller
                 'listTenLoaiDU' => $listTenLoaiDU,
             ]
         );
-    }
 
+    }
+    
     function TimKiem()
     {
         $listTenLoaiDU = json_decode($this->lduModel->listAll(), true);
