@@ -130,7 +130,8 @@ class NhanVien extends Controller
                 return $this->redirectTo("NhanVien", "Create");
             } else {
                 $save = $this->model("NhanVienModel");
-                $save->insert($manv, $tennv, $gioiTinh, $ngaysinh, $diachi, $email, md5($password), $sdt, $hinhanh, $nhomNV);
+                $save->update($manv, $tennv, $gioiTinh, $ngaysinh, $diachi, $email, md5($password), $sdt, $hinhanh, $nhomNV);
+                // $save->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $hinhAnh, $nhomNV);
                 $_SESSION['thongbao'] = "Thêm mới nhân viên thành công";
             }
         }
@@ -186,12 +187,12 @@ class NhanVien extends Controller
                 $hinh = $_FILES['hinhAnh'];
                 $tenAnh = $hinh['name'];
                 move_uploaded_file($hinh['tmp_name'], "public/upload/nguoidung/" . $tenAnh);
-                $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $tenAnh, $nhomNV);
+                $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $tenAnh, $nhomNV);
             } else {
-                $result = $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, null, $nhomNV);
+                $this->nvModel->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, null, $nhomNV);
             }
 
-            if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
+            // if (mysqli_affected_rows($result) == 1 || mysqli_affected_rows($result) == 0) {
                 if ($_SESSION['user']['maNV'] == $maNV) {
                     if ($tenAnh != "") {
                         $_SESSION['user']['hinhAnh'] = $tenAnh;
@@ -200,7 +201,7 @@ class NhanVien extends Controller
                 }
                 $_SESSION['thongbao'] = "Cập nhật thông tin thành công";
                 return $this->redirectTo("NhanVien", "Index");
-            }
+            // }
         }
     }
 

@@ -79,8 +79,8 @@
             <tr>
                 <td><b>Đơn giá: </b></td>
                 <td>
-                    Từ: <input class="dg" type="text" id="dongia1" name="dongia1"  value="<?php if (isset($_POST['dongia1'])) echo $_POST['dongia1']; ?>">
-                    Đến: <input  class="dg" type="text" id="dongia2" name="dongia2"  value="<?php if (isset($_POST['dongia2'])) echo $_POST['dongia2']; ?>">
+                    Từ: <input class="dg" type="number" min= "1" id="dongia1" name="dongia1"  value="<?php if (isset($_POST['dongia1'])) echo $_POST['dongia1']; ?>">
+                    Đến: <input  class="dg" type="number" min= "1" id="dongia2" name="dongia2"  value="<?php if (isset($_POST['dongia2'])) echo $_POST['dongia2']; ?>">
                 </td>
             </tr>
             <tr>
