@@ -46,8 +46,13 @@
     <h4>Danh sách đồ uống</h4>
     <hr />
     <div>
-        <table class="table table-bordered table-hover customTable">
+        <?php
+        $tongTien = 0;
+        $tongTatCa = 0;
+        $tongSL = 0;
+        echo '<table class="table table-bordered table-hover customTable">
             <tr>
+                <th>Hình ảnh</th>
                 <th>Tên đồ uống</th>
                 <th>Số lượng</th>
                 <th>Kích cỡ</th>
@@ -57,56 +62,54 @@
                 <th>Tiền trà sữa</th>
                 <th>Tiền topping</th>
                 <th>Thành tiền</th>
-            </tr>
-            <?php
-            $tongTatCa = 0;
-            $tongTien = 0;
-            $tongSL = 0;
-            $TienTP = 0;
-            $str = "";
-            $Sl = "";
-            // echo $tb;
-            foreach ($data['cthd'] as $cthd) {
-                $tongSL += $cthd['SoLuong'];
-                $tongTienTP = 0;
-                $tienTS = 0;
-
-                if ($cthd['Size'] == "M") {
-                    // if ($cthd['DonGia'])
-                    $tienTS = $cthd['DonGia'];
-                } else {
-                    // if ($cthd['DonGia'])
-                    $tienTS = $cthd['DonGia'] + 5000;
-                }
-
-                foreach ($data['cttp'] as $cttp) {
-                    // print_r($cttp);
-                    $TienTP = $cttp['DonGia'];
-                    $Sl = $cthd['SoLuong'];
-                    $tongTienTP += $Sl * $TienTP;
-                    $str = $cttp['TenTP'];
-                }
-
-                $tongTien += $tienTS * $cthd['SoLuong'] + $tongTienTP;
-                $tongTatCa += $tongTien;
-
-                echo "
-                    <tr>
-                        <td>" . $cthd['TenDU'] . "</td>
-                        <td>" . $cthd['SoLuong'] . "</td>
-                        <td>" . $cthd['Size'] . "</td>
-                        <td>" . $cthd['PhanTramDa'] . "</td>
-                        <td>" . $cthd['PhanTramDuong'] . "</td>
-                        <td>" . $str . "</td>
-                        <td>" . $cthd['SoLuong'] . " x " . $tienTS . "</td>
-                        <td>" . $Sl . " x " . $TienTP . "</td>
-                        <td>" . $tienTS . "</td>
-                    </tr>
-                    ";
-                //    
+                
+            </tr>';
+        foreach ($data['cthd'] as $key => $item) {
+            $tongSL += $item['SoLuong'];
+            $tongTienTP = 0;
+            $tienTS = 0;
+            if ($item['Size'] == "M") {
+                $tienTS = $item['DonGia'];
+            } else {
+                $tienTS = $item['DonGia'] + 5000;
             }
-            ?>
-        </table>
+
+
+            if (isset($data['cttp']) && count($data['cttp']) > 0) {
+                foreach ($data['cttp'] as $tp) {
+                    if ($item['MaDU'] == $tp['MaDU']) {
+                        $tongTienTP += $tp['DonGia'];
+                    }
+                }
+            }
+
+            $tongTien = $tienTS * $item['SoLuong'] + $tongTienTP * $item['SoLuong'];
+            $tongTatCa += $tongTien;
+
+            echo '<tr>
+                    <td><img height="100px" width="100px" src="public/upload/douong/' . $item['HinhAnh'] . '" /></td>';
+            echo '<td>' . $item['TenDU'] . '</td>';
+            echo '<td>' . $item['SoLuong'] . '</td>';
+            echo '<td>' . $item['Size'] . '</td>';
+            echo '<td>' . $item['PhanTramDa'] . '</td>';
+            echo '<td>' . $item['PhanTramDuong'] . '</td>';
+            echo '<td>';
+            if (isset($data['cttp']) && count($data['cttp']) > 0) {
+                foreach ($data['cttp'] as $tp) {
+                    if ($item['MaDU'] == $tp['MaDU']) {
+                        echo '<span>' . $tp['TenTP'] . '</span><br/>';
+                    }
+                }
+            }
+            echo '</td>';
+            echo '<td>' . $item["SoLuong"] . ' x ' . $tienTS . '</td>';
+            echo '<td>' . $item["SoLuong"] . ' x ' . $tongTienTP . '</td>';
+            echo '<td>' . $tongTien . '</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+        // echo '<div style="float:right; font-size: 24px; font-weight:bold; margin-right: 40px">Tổng hóa đơn: '.$tongTatCa.'</div>';
+        ?>
     </div>
     <hr />
     <div style="text-align:right;">

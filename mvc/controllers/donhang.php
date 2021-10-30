@@ -99,10 +99,23 @@ class DonHang extends Controller
 
     function Details($id)
     {
-        $cthd = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
+        $cthd = "";
+        $hd = json_decode($this->dhModel->getHoaDonById($id), true);
+        $cttpid = json_decode($this->cttpModel->getCTTPById($id), true);
+
         $shipper = json_decode($this->nvModel->listShipper(), true);
         $cttp = json_decode($this->cttpModel->mergeTopping($id), true);
         $ttkh = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
+
+        if (isset($cttpid[0]["MaHD"])) {
+            if ($hd[0]["MaHD"] == $cttpid[0]["MaHD"]) {
+                $cthd = json_decode($this->cthdModel->mergeHd_CttpByID($id), true);
+                // echo "OK";
+            }
+        } else {
+            $cthd = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
+            // echo "NO";
+        }
 
         if (count($cthd) > 0) {
             $this->view("layoutAdmin", [
@@ -119,10 +132,23 @@ class DonHang extends Controller
 
     function Print($id)
     {
-        $cthd = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
+        $cthd = "";
+        $hd = json_decode($this->dhModel->getHoaDonById($id), true);
+        $cttpid = json_decode($this->cttpModel->getCTTPById($id), true);
+
         $shipper = json_decode($this->nvModel->listShipper(), true);
         $cttp = json_decode($this->cttpModel->mergeTopping($id), true);
         $ttkh = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
+
+        if (isset($cttpid[0]["MaHD"])) {
+            if ($hd[0]["MaHD"] == $cttpid[0]["MaHD"]) {
+                $cthd = json_decode($this->cthdModel->mergeHd_CttpByID($id), true);
+                // echo "OK";
+            }
+        } else {
+            $cthd = json_decode($this->cthdModel->mergeHoaDonByID($id), true);
+            // echo "NO";
+        }
 
         if (count($cthd) > 0) {
             $this->view("layoutAdmin", [
