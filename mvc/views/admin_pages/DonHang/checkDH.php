@@ -102,7 +102,7 @@
                         <div class="checkbox" style="width: 475px;">
                             Đơn hủy <input type="radio" name="tinhtrang" id="" value="0"> &nbsp;
                             Chưa kiểm duyệt <input type="radio" name="tinhtrang" id="" value="1" checked> &nbsp;
-                            Đang giao hàng <input type="radio" name="tinhtrang" id="" value="2">
+                            Đã giao hàng <input type="radio" name="tinhtrang" id="" value="2">
                         </div>
                     </div>
                 </div>

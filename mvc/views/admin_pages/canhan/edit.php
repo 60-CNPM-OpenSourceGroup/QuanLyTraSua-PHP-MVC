@@ -64,9 +64,9 @@
         </div>
 
         <div class="form-group1">
-            <label style="margin-left: 10px;padding-top:10px;" for="gioitinh" class="control-label"><b>Giới tính</b></label>
-            <input style="margin-left: 15px;" type="radio" name="gioitinh" value="1" <?php if ($gioiTinh == '1') echo "checked"; ?>> Nam
-            <input style="margin-left: 10px;" type="radio" name="gioitinh" value="0" <?php if ($gioiTinh == '0') echo "checked"; ?>> Nữ
+            <label style="margin-left: 10px;padding-top:10px;" for="gioiTinh" class="control-label"><b>Giới tính</b></label>
+            <input style="margin-left: 15px;" type="radio" name="gioiTinh" value="1" <?php if ($gioiTinh == '1') echo "checked"; ?>> Nam
+            <input style="margin-left: 10px;" type="radio" name="gioiTinh" value="0" <?php if ($gioiTinh == '0') echo "checked"; ?>> Nữ
         </div>
 
         <div class="form-group1">

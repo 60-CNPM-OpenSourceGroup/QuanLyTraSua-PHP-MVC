@@ -113,7 +113,7 @@
     </div>
     <hr />
     <div style="text-align:right;">
-        <p>Tổng tiền: <?php echo $tongTien ?></p>
+        <p>Tổng tiền: <?php echo $tongTatCa ?></p>
     </div>
     <center style="font-weight: bold">Thank you & see you again!!!</center>
 </div>

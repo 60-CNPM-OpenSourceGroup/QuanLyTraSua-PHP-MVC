@@ -184,7 +184,7 @@
             } else if ($item['TinhTrang'] == 1) {
                 echo "<td class='row_body'>Đơn chờ kiểm</td>";
             } else if ($item['TinhTrang'] == 2) {
-                echo "<td class='row_body'>Đang giao hàng</td>";
+                echo "<td class='row_body'>Đã giao hàng</td>";
             }
 
             if ($item['MaNV'] == null) {

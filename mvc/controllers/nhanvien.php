@@ -130,7 +130,7 @@ class NhanVien extends Controller
                 return $this->redirectTo("NhanVien", "Create");
             } else {
                 $save = $this->model("NhanVienModel");
-                $save->update($manv, $tennv, $gioiTinh, $ngaysinh, $diachi, $email, md5($password), $sdt, $hinhanh, $nhomNV);
+                $save->insert($manv, $tennv, $gioiTinh, $ngaysinh, $diachi, $email, md5($password), $sdt, $hinhanh, $nhomNV);
                 // $save->update($maNV, $tenNV, $gioiTinh, $ngaySinh, $diaChi, $sdt, $hinhAnh, $nhomNV);
                 $_SESSION['thongbao'] = "Thêm mới nhân viên thành công";
             }
